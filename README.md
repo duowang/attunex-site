@@ -1,8 +1,7 @@
 # Attunex site
 
 Support and privacy policy pages for [Attunex](https://apps.apple.com/), an iOS app for following
-people across podcasts. Hosted via GitHub Pages at
-[duowang.github.io/attunex-site](https://duowang.github.io/attunex-site/).
+people across podcasts. Hosted via GitHub Pages at [attunex.app](https://attunex.app/).
 
 - `index.html` — landing page
 - `support.html` — support contact
