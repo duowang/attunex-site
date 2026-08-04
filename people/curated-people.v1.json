@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "people": [
+    { "name": "Elon Musk", "subtitle": "Tesla and SpaceX CEO" },
+    { "name": "Sam Altman", "subtitle": "OpenAI CEO" },
+    { "name": "Jensen Huang", "subtitle": "NVIDIA founder and CEO" },
+    { "name": "Mark Zuckerberg", "subtitle": "Meta founder and CEO", "aliases": ["zuck"] },
+    { "name": "Sundar Pichai", "subtitle": "Google and Alphabet CEO" },
+    { "name": "Satya Nadella", "subtitle": "Microsoft CEO" },
+    { "name": "Demis Hassabis", "subtitle": "Google DeepMind CEO" },
+    { "name": "Dario Amodei", "subtitle": "Anthropic co-founder and CEO" },
+    { "name": "Patrick Collison", "subtitle": "Stripe co-founder", "aliases": ["pat collison"] },
+    { "name": "Andrej Karpathy", "subtitle": "AI researcher, OpenAI and Tesla alumnus" },
+    { "name": "Dylan Patel", "subtitle": "SemiAnalysis founder", "imageURL": "https://i0.wp.com/semianalysis.com/wp-content/uploads/2025/05/dylan2.png?resize=300%2C300&quality=80&ssl=1" },
+
+    { "name": "Warren Buffett", "subtitle": "Berkshire Hathaway CEO" },
+    { "name": "Ray Dalio", "subtitle": "Bridgewater founder" },
+    { "name": "Cathie Wood", "subtitle": "ARK Invest founder and CEO" },
+    { "name": "Bill Ackman", "subtitle": "Pershing Square CEO" },
+    { "name": "Howard Marks", "subtitle": "Oaktree Capital co-founder" },
+    { "name": "Stanley Druckenmiller", "subtitle": "Duquesne Family Office" },
+    { "name": "Michael Saylor", "subtitle": "MicroStrategy executive chairman" },
+    { "name": "Naval Ravikant", "subtitle": "AngelList co-founder" },
+    { "name": "Reid Hoffman", "subtitle": "LinkedIn co-founder and investor" },
+    { "name": "Chamath Palihapitiya", "subtitle": "Social Capital founder, All-In podcast co-host", "aliases": ["chamath"] },
+
+    { "name": "Tim Cook", "subtitle": "Apple CEO" },
+    { "name": "Bob Iger", "subtitle": "Disney CEO" },
+    { "name": "Reed Hastings", "subtitle": "Netflix co-founder" },
+    { "name": "Brian Chesky", "subtitle": "Airbnb co-founder and CEO" },
+    { "name": "Jamie Dimon", "subtitle": "JPMorgan Chase CEO" },
+    { "name": "Howard Schultz", "subtitle": "Starbucks former CEO" },
+
+    { "name": "Yuval Noah Harari", "subtitle": "Historian and author" },
+    { "name": "Walter Isaacson", "subtitle": "Author and biographer" },
+    { "name": "Michio Kaku", "subtitle": "Theoretical physicist" },
+    { "name": "Brian Greene", "subtitle": "Physicist and author" },
+    { "name": "David Sinclair", "subtitle": "Harvard geneticist" },
+    { "name": "Robert Sapolsky", "subtitle": "Neuroscientist and author" },
+    { "name": "Neil deGrasse Tyson", "subtitle": "Astrophysicist" },
+    { "name": "Jane Goodall", "subtitle": "Primatologist" },
+    { "name": "Andrew Huberman", "subtitle": "Stanford neuroscientist" },
+
+    { "name": "Tim Ferriss", "subtitle": "Author and podcast host" },
+    { "name": "Lex Fridman", "subtitle": "AI researcher and podcast host" },
+    { "name": "Malcolm Gladwell", "subtitle": "Author and journalist" },
+    { "name": "Michael Lewis", "subtitle": "Author" },
+    { "name": "Brené Brown", "subtitle": "Author and researcher" },
+    { "name": "Esther Perel", "subtitle": "Psychotherapist" },
+    { "name": "Serena Williams", "subtitle": "Tennis champion and investor" }
+  ]
+}
