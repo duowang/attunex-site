@@ -16,25 +16,32 @@
 </head>
 <body>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated July 1, 2026</p>
+  <p class="updated">Last updated August 29, 2026</p>
 
-  <p>Attunex does not require an account and does not use advertising or third-party tracking SDKs.</p>
+  <p>Attunex does not require an account, shows no ads, and uses no third-party tracking SDKs. Nothing is sold or shared for advertising.</p>
 
-  <h2>What's stored on your device</h2>
-  <p>The people and podcasts you follow, your app settings, and any episodes you download are stored locally on your device. This data is not uploaded to any server we operate.</p>
+  <h2>What stays on your device</h2>
+  <p>The people and podcasts you follow, your settings, listening history, downloads, and the transcripts and summaries Attunex generates are stored on your device. Transcription and AI summarization happen entirely on your iPhone — episode audio and text are never uploaded for processing.</p>
+  <p>If iCloud backup is enabled in Attunex, your follows, settings, and listening history are stored in your private iCloud account so they restore on a new phone. That data lives in your iCloud, under Apple's protections; we cannot read it.</p>
 
-  <h2>Network requests Attunex makes</h2>
-  <p>To find and play episodes, Attunex sends requests to:</p>
+  <h2>Attunex's people service</h2>
+  <p>People search and guest-episode lookups are answered by our own service at api.attunex.app. When you search for a person or open a guest's page, your request carries the text you typed or the person requested.</p>
+  <p>Like most web services, ours keeps request logs to run and improve it. A log entry contains the request type and search text, approximate region (country), the Cloudflare data center that served it, a short device/OS string, and status and timing. Entries are keyed by a pseudonymous handle that is derived from the network connection and changes every day — it contains no device or user identifier, and cannot follow a device from one day to the next. Logs are kept for up to 90 days.</p>
+  <p>We use these logs for two things: keeping the service reliable, and seeing — in aggregate — which people are searched for but missing, so they can be added to the Attunex people catalog. Logs are not used to build individual profiles and are never shared or sold.</p>
+  <p>Requests to this service are authenticated with Apple's App Attest, which proves the request comes from a genuine copy of Attunex. Attestation is performed by Apple and is not used to identify you.</p>
+
+  <h2>Requests made directly from your device</h2>
+  <p>To find and play episodes, Attunex also talks directly to:</p>
   <ul>
     <li>Apple's Podcasts directory, to search for and match episodes</li>
-    <li>Podcast RSS feeds directly, to load episode audio and details</li>
-    <li>Wikidata, to suggest names while you're adding a guest</li>
+    <li>Podcast RSS feeds, to load episode audio and details</li>
+    <li>Wikidata, for name suggestions and biographies</li>
     <li>GitHub's public user search, as a fallback source for a guest's profile picture</li>
   </ul>
-  <p>These requests go directly from your device to those services and are not routed through, or logged by, any server we operate.</p>
+  <p>These requests go from your device to those services and are not routed through servers we operate.</p>
 
   <h2>Changes</h2>
-  <p>If Attunex adds features that change what's collected (for example, optional sync or analytics), this page will be updated first and the change will be reflected in the app's iOS Privacy Nutrition Label.</p>
+  <p>If Attunex changes what it collects, this page will be updated first and the change will be reflected in the app's iOS Privacy Nutrition Label.</p>
 
   <h2>Contact</h2>
   <p>Questions about this policy: <a href="mailto:njuiverson@gmail.com">njuiverson@gmail.com</a></p>
