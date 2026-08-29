@@ -1,6 +1,6 @@
 # Attunex site
 
-Support and privacy policy pages for [Attunex](https://apps.apple.com/), an iOS app for following
+Support and privacy policy pages for [Attunex](https://apps.apple.com/us/app/attunex-podcast-player/id6786431074), an iOS app for following
 people across podcasts. Hosted on Cloudflare Workers at [attunex.app](https://attunex.app/).
 
 - `index.html` — landing page
