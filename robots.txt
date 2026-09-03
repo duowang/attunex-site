@@ -1,0 +1,7 @@
+# Attunex — https://attunex.app
+# Search crawlers are welcome across the whole site.
+User-agent: *
+Allow: /
+
+Sitemap: https://attunex.app/sitemap.xml
+Sitemap: https://attunex.app/sitemap-people.xml

@@ -1,21 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attunex Support</title>
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 640px; margin: 80px auto; padding: 0 24px; color: #1c1c1e; line-height: 1.6; }
-  h1 { font-size: 1.75rem; }
-  a { color: #e2562b; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .back { display: inline-block; margin-top: 2rem; font-size: 0.9rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attunex Support</title>
+  <meta name="description" content="Support for Attunex, the iOS podcast player that follows podcast guests across shows. Contact, common questions, and how to report a bug or request a person.">
+  <link rel="canonical" href="https://attunex.app/support">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Attunex">
+  <meta property="og:title" content="Attunex Support">
+  <meta property="og:description" content="Contact, common questions, and how to request a person or report a bug in Attunex.">
+  <meta property="og:url" content="https://attunex.app/support">
+  <meta name="apple-itunes-app" content="app-id=6786431074">
+  <style>
+    :root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 640px; margin: 0 auto; padding: 72px 24px 64px; color: var(--ink); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.75rem; margin: 0 0 0.5rem; }
+    h2 { font-size: 1.05rem; margin: 2rem 0 0.3rem; }
+    .muted { color: var(--muted); }
+    .back { display: inline-block; margin-top: 2.5rem; font-size: 0.9rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I follow a person in Attunex?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Search for the person's name in the app and tap Follow. Attunex then gathers the podcast episodes they appear in, newest first, in one feed." }
+      },
+      {
+        "@type": "Question",
+        "name": "The person I want isn't found. Can you add them?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The people catalog grows over time, and searches for missing people are used to decide who to add next. You can also email njuiverson@gmail.com to request someone." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Attunex work offline?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Downloaded episodes play offline. Transcripts and summaries are generated on your device, so they are available without a connection once processed." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there an account or subscription?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No account is required and there are no ads. Your follows and listening history can sync through your private iCloud so they restore on a new phone." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <h1>Support</h1>
-  <p>Questions, bug reports, or feedback about Attunex — email <a href="mailto:njuiverson@gmail.com">njuiverson@gmail.com</a> and I'll get back to you.</p>
-  <p>Attunex is available <a href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">on the App&nbsp;Store</a>.</p>
-  <a class="back" href="index.html">&larr; Attunex</a>
+  <p>Questions, bug reports, or feedback about Attunex — email <a href="mailto:njuiverson@gmail.com">njuiverson@gmail.com</a> and you'll hear back from the developer who makes the app.</p>
+  <p class="muted">Attunex is available on the <a href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">App&nbsp;Store</a>.</p>
+
+  <h2>How do I follow a person?</h2>
+  <p>Search for the person's name and tap Follow. Attunex gathers the episodes they appear in across shows, newest first, in one feed.</p>
+
+  <h2>The person I want isn't there</h2>
+  <p>The catalog grows over time, and searches for people who aren't found yet help decide who to add next. To request someone directly, email <a href="mailto:njuiverson@gmail.com">njuiverson@gmail.com</a>.</p>
+
+  <h2>Does it work offline?</h2>
+  <p>Yes — download an appearance and it plays offline. Transcripts and summaries are generated on your device and stay available once processed.</p>
+
+  <h2>Is there an account or subscription?</h2>
+  <p>No account and no ads. Your follows and history can sync through your private iCloud so they restore on a new phone. See the <a href="/privacy">Privacy Policy</a> for details.</p>
+
+  <a class="back" href="/">&larr; Attunex</a>
 </body>
 </html>

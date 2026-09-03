@@ -1,31 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attunex</title>
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 640px; margin: 80px auto; padding: 0 24px; color: #1c1c1e; line-height: 1.6; }
-  h1 { font-size: 2rem; margin: 0; }
-  .masthead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
-  p.tagline { color: #6b6b70; margin-top: 0.25rem; }
-  a { color: #e2562b; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  ul { padding-left: 1.2rem; }
-  .appstore img { height: 48px; display: block; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attunex — Follow podcast guests, not just shows</title>
+  <meta name="description" content="Attunex is an iOS podcast player that follows the people you actually want to hear. Search a person and get every episode they appear in, played in-app, kept offline, with on-device transcripts and summaries.">
+  <link rel="canonical" href="https://attunex.app/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Attunex">
+  <meta property="og:title" content="Attunex — Follow podcast guests, not just shows">
+  <meta property="og:description" content="Search a person and get every podcast episode they appear in — played in-app, kept offline, with on-device transcripts and summaries.">
+  <meta property="og:url" content="https://attunex.app/">
+  <meta property="og:image" content="https://attunex.app/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Attunex — Follow podcast guests, not just shows">
+  <meta name="twitter:description" content="Search a person and get every podcast episode they appear in — played in-app, kept offline, with on-device transcripts and summaries.">
+  <meta name="twitter:image" content="https://attunex.app/og-cover.png">
+
+  <!-- Apple Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6786431074">
+
+  <style>
+    :root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --bg:#ffffff; }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: var(--ink); line-height: 1.6; background: var(--bg); }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header.hero { padding: 72px 0 24px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    h1 { font-size: 2.25rem; margin: 0; letter-spacing: -0.02em; }
+    p.tagline { font-size: 1.2rem; color: var(--ink); margin: 1rem 0 1.5rem; }
+    .appstore img { height: 48px; display: block; }
+
+    section { padding: 28px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 1.35rem; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; margin: 0 0 0.25rem; }
+    .lead { color: var(--muted); }
+
+    .steps { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1rem; }
+    .step { padding-left: 2.4rem; position: relative; }
+    .step .n { position: absolute; left: 0; top: 0; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+
+    ul.features { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+    ul.features li { padding-left: 1.4rem; position: relative; }
+    ul.features li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+    ul.features strong { display: block; }
+    ul.features span { color: var(--muted); }
+
+    @media (min-width: 620px) {
+      .steps { grid-template-columns: repeat(3, 1fr); }
+      ul.features { grid-template-columns: 1fr 1fr; }
+    }
+
+    footer { padding: 36px 0 64px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+    footer nav a { margin-right: 1.25rem; }
+  </style>
+
+  <!-- Structured data: helps Google understand the entity. No aggregateRating until real App Store ratings exist. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Attunex",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Podcast Player",
+    "operatingSystem": "iOS",
+    "url": "https://attunex.app/",
+    "description": "An iOS podcast player that follows the people you want to hear. Search a person and get every episode they appear in — played in-app, kept offline, with on-device transcripts and summaries.",
+    "installUrl": "https://apps.apple.com/us/app/attunex-podcast-player/id6786431074",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Attunex",
+    "url": "https://attunex.app/"
+  }
+  </script>
 </head>
 <body>
-  <div class="masthead">
-    <h1>Attunex</h1>
-    <a class="appstore" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">
-      <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
-    </a>
+  <div class="wrap">
+    <header class="hero">
+      <div class="masthead">
+        <h1>Attunex</h1>
+        <a class="appstore" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">
+          <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download Attunex on the App Store">
+        </a>
+      </div>
+      <p class="tagline">Follow the people you actually want to hear. Attunex finds every podcast episode featuring them, plays it in&nbsp;the&nbsp;app, and keeps it for offline listening.</p>
+    </header>
+
+    <section>
+      <h2>Follow people, not just shows</h2>
+      <p class="lead">Most podcast apps organize the world by show. But the person you want to hear from — a founder, a researcher, an author — turns up as a guest across dozens of different shows, and you never find those episodes. Attunex flips it around: follow a <em>person</em>, and their appearances across every podcast come to you in one feed. Interviews, not passing mentions.</p>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step"><span class="n">1</span>
+          <h3>Search a person</h3>
+          <p class="lead">Type a name — a guest, host, or public figure — and follow them.</p>
+        </div>
+        <div class="step"><span class="n">2</span>
+          <h3>Get every appearance</h3>
+          <p class="lead">Attunex gathers the episodes across shows where they actually feature, newest first.</p>
+        </div>
+        <div class="step"><span class="n">3</span>
+          <h3>Listen &amp; read</h3>
+          <p class="lead">Play in the app, save for offline, and read an on-device transcript and summary.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What makes it different</h2>
+      <ul class="features">
+        <li><strong>Cross-podcast guest feed</strong><span>One place for every show a person appears on.</span></li>
+        <li><strong>On-device transcripts &amp; summaries</strong><span>Generated on your iPhone — read or skim any episode.</span></li>
+        <li><strong>Offline listening</strong><span>Download appearances and take them anywhere.</span></li>
+        <li><strong>Private by design</strong><span>No account, no ads, no third-party tracking. Transcription runs on-device.</span></li>
+        <li><strong>CarPlay</strong><span>Your followed people, on the road.</span></li>
+        <li><strong>iCloud sync</strong><span>Your follows and history restore on a new phone.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Browse people you can follow</h2>
+      <p class="lead">Attunex tracks the podcast appearances of hundreds of people — founders, researchers, authors, and hosts. Each has a page listing every episode they feature in, across shows. <a href="/people">Browse everyone &rarr;</a></p>
+    </section>
+
+    <section>
+      <h2>Who's behind Attunex</h2>
+      <p class="lead">Attunex is an independent iOS app built and maintained by a solo developer. There's no company account behind it, no ad network, and no data resale — just an app that does one thing well. <a href="/about">More about Attunex &rarr;</a></p>
+    </section>
+
+    <footer>
+      <nav>
+        <a href="/about">About</a>
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <a href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">App Store</a>
+      </nav>
+      <p>&copy; 2026 Attunex. An independent app for iPhone.</p>
+    </footer>
   </div>
-  <p class="tagline">Follow the people you actually want to hear — Attunex finds every podcast episode featuring them, plays it in-app, and keeps it for offline listening.</p>
-  <ul>
-    <li><a href="support.html">Support</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-  </ul>
 </body>
 </html>
