@@ -31,8 +31,11 @@ shows only, >=2 appearances to publish. Coverage is stated "as of <date>" per pa
 `people/curated-people.v1.json` is an existing app data asset — leave it in place.
 
 ## Deploy
-Push to `main` — Cloudflare Workers Builds deploys automatically using `wrangler.jsonc`.
-Manual fallback: `npx wrangler deploy`.
+Run `npx wrangler deploy` from this repo (Cloudflare Workers static assets,
+config in `wrangler.jsonc`, custom domains attunex.app + www.attunex.app).
+NOTE: Cloudflare Workers Builds is NOT auto-deploying on push (verified
+2026-09-03 — pushing to main did not update the live site after 10 min);
+deploy manually with `wrangler deploy` until Builds is reconnected.
 
 ## After deploy
 Add the domain in Google Search Console and submit `sitemap.xml` + `sitemap-people.xml`.
