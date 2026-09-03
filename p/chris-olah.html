@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chris Olah — podcast appearances | Attunex</title>
-<meta name="description" content="Every podcast episode featuring Chris Olah — 5 appearances across 3 shows, found by Attunex. Listen in-app and offline with on-device transcripts.">
+<meta name="description" content="Every podcast episode featuring Chris Olah — 5 featured appearances across 3 shows, found by Attunex, each with an on-device transcript and summary.">
 <link rel="canonical" href="https://attunex.app/p/chris-olah">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Attunex">
 <meta property="og:title" content="Chris Olah — podcast appearances">
-<meta property="og:description" content="Every podcast episode featuring Chris Olah: 5 appearances across 3 shows.">
+<meta property="og:description" content="Every podcast episode featuring Chris Olah: 5 featured appearances across 3 shows.">
 <meta property="og:url" content="https://attunex.app/p/chris-olah">
 <meta name="apple-itunes-app" content="app-id=6786431074">
 <style>:root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --card:#faf9f8; }
@@ -31,6 +31,13 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
+.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
+.filters .pill input { accent-color: var(--accent); margin: 0; }
+.filters .pill .c { color: var(--muted); }
+.tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
+.tag.mention { background: #eef0f7; color: #45489a; }
+.tag.ai { background: #fdeee7; color: var(--accent); }
 footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
 footer a { margin-right: 1.1rem; }
 .hublist { columns: 2; column-gap: 2rem; padding: 0; margin: 1.5rem 0 0; list-style: none; }
@@ -51,22 +58,50 @@ footer a { margin-right: 1.1rem; }
 <p class="bio">artificial intelligence researcher</p>
 </div></div>
 
-<p class="intro">Every podcast episode featuring <strong>Chris Olah</strong> that Attunex has found — <strong>5 appearances</strong> across <strong>3 shows</strong>. Follow Chris in Attunex to get new appearances automatically, play them in the app, and read on-device transcripts and summaries.</p>
+<p class="intro">Every podcast episode featuring <strong>Chris Olah</strong> that Attunex has found — <strong>5 featured appearances</strong> across <strong>3 shows</strong>, each with an on-device transcript and summary. Follow Chris in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Chris Olah in Attunex</a>
 <p class="coverage">Coverage as of 2026-09-03. Attunex re-sweeps people over time, so this list grows.</p>
+<div class="filters"><label class="pill"><input type="checkbox" id="t-mentioned"> Mentions <span class="c">6</span></label><label class="pill"><input type="checkbox" id="t-ai"> AI-generated <span class="c">4</span></label></div>
 
-<ol class="eps">
-<li><div class="meta">80,000 Hours Podcast &middot; 2025-04-24</div><div class="eptitle">Serendipity, weird bets, &amp; cold emails that actually work: Career advice from 16 former guests</div><p class="snippet">How do you navigate a career path when the future of work is uncertain? How important is mentorship versus immediate impact? Is it better to focus on your strengths or on the world’s most pressing…</p></li>
-<li><div class="meta">Halfway to Genius &middot; 2024-12-05</div><div class="eptitle">AGI &amp; the Future of AI &amp; Humanity with Dario Amodei (Anthropic) #12</div><p class="snippet">In this episode of the Lex Fridman Podcast, three prominent figures from Anthropic delve into the challenges, opportunities, and philosophical implications of artificial intelligence. Dario Amodei,…</p></li>
-<li><div class="meta">Lex Fridman Podcast &middot; 2024-11-11</div><div class="eptitle">#452 – Dario Amodei: Anthropic CEO on Claude, AGI &amp; the Future of AI &amp; Humanity</div><p class="snippet">Dario Amodei is the CEO of Anthropic, the company that created Claude. Amanda Askell is an AI researcher working on Claude’s character and personality. Chris Olah is an AI researcher working on…</p></li>
-<li><div class="meta">80,000 Hours Podcast &middot; 2021-08-11</div><div class="eptitle">#108 – Chris Olah on working at top AI labs without an undergrad degree</div><p class="snippet">Chris Olah has had a fascinating and unconventional career path. Most people who want to pursue a research career feel they need a degree to get taken seriously. But Chris not only doesn&#x27;t have a…</p></li>
-<li><div class="meta">80,000 Hours Podcast &middot; 2021-08-04</div><div class="eptitle">#107 – Chris Olah on what the hell is going on inside neural networks</div><p class="snippet">Big machine learning models can identify plant species better than any human, write passable essays, beat you at a game of Starcraft 2, figure out how a photo of Tobey Maguire and the word &#x27;spider&#x27;…</p></li>
+<ol class="eps" id="eps">
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">System 2 &middot; 2026-06-02 <span class="tag mention">Mentioned</span></div><div class="eptitle">Was ein Augustiner und ein KI-Forscher gemeinsam haben: Leo XIV., Chris Olah und die Methode des Hinschauens</div><p class="snippet">.</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Drinking with Einstein &middot; 2026-02-09 <span class="tag mention">Mentioned</span></div><div class="eptitle">From Visualizations to Circuits: The Origins of the Glass Box (The Glass Box Pt. 2)</div><p class="snippet">Is AI just a &quot;giant math soup&quot; that happens to work, or is it a machine with parts we can understand? In Part 2 of The Glass Box series, we dig into the origin story of Mechanistic Interpretability.…</p></li>
+<li data-grade="mentioned" data-ai="1" style="display:none"><div class="meta">Variabilis &middot; 2026-01-27 <span class="tag mention">Mentioned</span> <span class="tag ai">AI</span></div><div class="eptitle">Ep. 03: Entendiendo las Redes LSTM</div><p class="snippet">Hoy vamos a profundizar en QUÉ son exactamente las LSTMs y POR QUÉ funcionan tan bien. Basado en un post de Christopher Olah publicado en el 2015. Siendo este post es uno de los más citados en la…</p></li>
+<li data-grade="mentioned" data-ai="1" style="display:none"><div class="meta">LessWrong (Curated &amp; Popular) &middot; 2025-11-27 <span class="tag mention">Mentioned</span> <span class="tag ai">AI</span></div><div class="eptitle">“Alignment remains a hard, unsolved problem” by null</div><p class="snippet">Thanks to (in alphabetical order) Joshua Batson, Roger Grosse, Jeremy Hadfield, Jared Kaplan, Jan Leike, Jack Lindsey, Monte MacDiarmid, Francesco Mosconi, Chris Olah, Ethan Perez, Sara Price, Ansh…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Thought Experiments with Kush &middot; 2025-08-31 <span class="tag mention">Mentioned</span></div><div class="eptitle">AI Interpretability</div><p class="snippet">In 1507, John Damian strapped on wings covered with chicken feathers and leapt from Scotland’s Stirling Castle. He broke his thigh upon landing and later blamed his failure on not using eagle…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">80,000 Hours Podcast &middot; 2025-04-24</div><div class="eptitle">Serendipity, weird bets, &amp; cold emails that actually work: Career advice from 16 former guests</div><p class="snippet">How do you navigate a career path when the future of work is uncertain? How important is mentorship versus immediate impact? Is it better to focus on your strengths or on the world’s most pressing…</p></li>
+<li data-grade="mentioned" data-ai="1" style="display:none"><div class="meta">LessWrong (Curated &amp; Popular) &middot; 2025-03-16 <span class="tag mention">Mentioned</span> <span class="tag ai">AI</span></div><div class="eptitle">“Auditing language models for hidden objectives” by Sam Marks, Johannes Treutlein, dmz, Sam Bowman, Hoagy, Carson Denison, Akbir Khan, Euan Ong, Christopher Olah, Fabien Roger, Meg, Drake Thomas, Adam Jermyn, Monte M, evhub</div><p class="snippet">We study alignment audits—systematic investigations into whether an AI is pursuing hidden objectives—by training a model with a hidden misaligned objective and asking teams of blinded researchers to…</p></li>
+<li data-grade="mentioned" data-ai="1" style="display:none"><div class="meta">LessWrong (30+ Karma) &middot; 2025-03-13 <span class="tag mention">Mentioned</span> <span class="tag ai">AI</span></div><div class="eptitle">“Auditing language models for hidden objectives” by Sam Marks, Johannes Treutlein, dmz, Sam Bowman, Hoagy, Carson Denison, Akbir Khan, Euan Ong, Christopher Olah, Fabien Roger, Meg, Drake Thomas, Adam Jermyn, Monte M, evhub</div><p class="snippet">We study alignment audits—systematic investigations into whether an AI is pursuing hidden objectives—by training a model with a hidden misaligned objective and asking teams of blinded researchers to…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Fluidity &middot; 2024-12-15 <span class="tag mention">Mentioned</span></div><div class="eptitle">Do AI As Engineering Instead</div><p class="snippet">Current AI practice is not engineering, even when it aims for practical applications, because it is not based on scientific understanding. Enforcing engineering norms on the field could lead to…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Machine Learning Street Talk (MLST) &middot; 2024-12-07 <span class="tag mention">Mentioned</span></div><div class="eptitle">Neel Nanda - Mechanistic Interpretability (Sparse Autoencoders)</div><p class="snippet">Neel Nanda, a senior research scientist at Google DeepMind, leads their mechanistic interpretability team. In this extensive interview, he discusses his work trying to understand how neural networks…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">Halfway to Genius &middot; 2024-12-05</div><div class="eptitle">AGI &amp; the Future of AI &amp; Humanity with Dario Amodei (Anthropic) #12</div><p class="snippet">In this episode of the Lex Fridman Podcast, three prominent figures from Anthropic delve into the challenges, opportunities, and philosophical implications of artificial intelligence. Dario Amodei,…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">Lex Fridman Podcast &middot; 2024-11-11</div><div class="eptitle">#452 – Dario Amodei: Anthropic CEO on Claude, AGI &amp; the Future of AI &amp; Humanity</div><p class="snippet">Dario Amodei is the CEO of Anthropic, the company that created Claude. Amanda Askell is an AI researcher working on Claude’s character and personality. Chris Olah is an AI researcher working on…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">The Minhaaj&#x27;s Podcast &middot; 2023-07-12 <span class="tag mention">Mentioned</span></div><div class="eptitle">Working at DeepMind with Aleksa Gordic</div><p class="snippet">Aleksa Gordic is an ex-software/ML engineer at Microsoft &amp; DeepMind with a broad background across the &quot;whole stack&quot; - maths, electronics, software engineering, algorithms, ML &amp; deep learning…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">80,000 Hours Podcast &middot; 2021-08-11</div><div class="eptitle">#108 – Chris Olah on working at top AI labs without an undergrad degree</div><p class="snippet">Chris Olah has had a fascinating and unconventional career path. Most people who want to pursue a research career feel they need a degree to get taken seriously. But Chris not only doesn&#x27;t have a…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">80,000 Hours Podcast &middot; 2021-08-04</div><div class="eptitle">#107 – Chris Olah on what the hell is going on inside neural networks</div><p class="snippet">Big machine learning models can identify plant species better than any human, write passable essays, beat you at a game of Starcraft 2, figure out how a photo of Tobey Maguire and the word &#x27;spider&#x27;…</p></li>
 </ol>
 
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Appearances are matched from public podcast feeds and Apple Podcasts. AI-generated shows are excluded.</p>
+<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Chris Olah and AI-generated shows.</p>
 </footer>
+<script>
+(function(){
+  var ol = document.getElementById('eps');
+  if (!ol) return;
+  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
+  function upd() {
+    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+    for (var i = 0; i < lis.length; i++) {
+      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
+      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+    }
+  }
+  if (m) m.addEventListener('change', upd);
+  if (a) a.addEventListener('change', upd);
+  upd();
+})();
+</script>
 </body>
 </html>

@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patrick Wendell — podcast appearances | Attunex</title>
-<meta name="description" content="Every podcast episode featuring Patrick Wendell — 3 appearances across 3 shows, found by Attunex. Listen in-app and offline with on-device transcripts.">
+<meta name="description" content="Every podcast episode featuring Patrick Wendell — 3 featured appearances across 3 shows, found by Attunex, each with an on-device transcript and summary.">
 <link rel="canonical" href="https://attunex.app/p/patrick-wendell">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Attunex">
 <meta property="og:title" content="Patrick Wendell — podcast appearances">
-<meta property="og:description" content="Every podcast episode featuring Patrick Wendell: 3 appearances across 3 shows.">
+<meta property="og:description" content="Every podcast episode featuring Patrick Wendell: 3 featured appearances across 3 shows.">
 <meta property="og:url" content="https://attunex.app/p/patrick-wendell">
 <meta name="apple-itunes-app" content="app-id=6786431074">
 <style>:root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --card:#faf9f8; }
@@ -31,6 +31,13 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
+.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
+.filters .pill input { accent-color: var(--accent); margin: 0; }
+.filters .pill .c { color: var(--muted); }
+.tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
+.tag.mention { background: #eef0f7; color: #45489a; }
+.tag.ai { background: #fdeee7; color: var(--accent); }
 footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
 footer a { margin-right: 1.1rem; }
 .hublist { columns: 2; column-gap: 2rem; padding: 0; margin: 1.5rem 0 0; list-style: none; }
@@ -51,20 +58,38 @@ footer a { margin-right: 1.1rem; }
 <p class="bio">Databricks co-founder and VP of Engineering, leading Mosaic AI; Apache Spark committer</p>
 </div></div>
 
-<p class="intro">Every podcast episode featuring <strong>Patrick Wendell</strong> that Attunex has found — <strong>3 appearances</strong> across <strong>3 shows</strong>. Follow Patrick in Attunex to get new appearances automatically, play them in the app, and read on-device transcripts and summaries.</p>
+<p class="intro">Every podcast episode featuring <strong>Patrick Wendell</strong> that Attunex has found — <strong>3 featured appearances</strong> across <strong>3 shows</strong>, each with an on-device transcript and summary. Follow Patrick in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Patrick Wendell in Attunex</a>
 <p class="coverage">Coverage as of 2026-09-03. Attunex re-sweeps people over time, so this list grows.</p>
 
-<ol class="eps">
-<li><div class="meta">TBPN &middot; 2026-08-07</div><div class="eptitle">AI Viruses, OpenAI&#x27;s First Device, WSJ Mansion Section | Samir Kaul, Patrick Wendell, Grant LaFontaine</div><p class="snippet">(01:31) - AI Viruses (08:18) - OpenAI&#x27;s Device Takes Shape (16:39) - Meta Faces Major Child Safety Case (25:25) - 𝕏 Timeline Reactions (36:10) - WSJ Mansion Section (43:41) - Samir Kaul, a general…</p></li>
-<li><div class="meta">The Morning Brief &middot; 2025-11-19</div><div class="eptitle">ET in the Valley: Databricks Co-founder Patrick Wendell</div><p class="snippet">The real future of AI’s trajectory is being shaped by players who can convert deep data, cloud-first design, and measurable gains into sustainable models.This episode breaks down how early, unpopular…</p></li>
-<li><div class="meta">O&#x27;Reilly Radar Podcast - O&#x27;Reilly Media Podcast &middot; 2015-12-23</div><div class="eptitle">Patrick Wendell on Spark&#x27;s roadmap, Spark R API, and deep learning on the horizon</div><p class="snippet">The O&#x27;Reilly Radar Podcast: A special holiday cross-over of the O&#x27;Reilly Data Show Podcast. O&#x27;Reilly&#x27;s Ben Lorica chats with Apache Spark release manager and Databricks co-founder Patrick Wendell…</p></li>
+
+<ol class="eps" id="eps">
+<li data-grade="featured" data-ai="0"><div class="meta">TBPN &middot; 2026-08-07</div><div class="eptitle">AI Viruses, OpenAI&#x27;s First Device, WSJ Mansion Section | Samir Kaul, Patrick Wendell, Grant LaFontaine</div><p class="snippet">(01:31) - AI Viruses (08:18) - OpenAI&#x27;s Device Takes Shape (16:39) - Meta Faces Major Child Safety Case (25:25) - 𝕏 Timeline Reactions (36:10) - WSJ Mansion Section (43:41) - Samir Kaul, a general…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">The Morning Brief &middot; 2025-11-19</div><div class="eptitle">ET in the Valley: Databricks Co-founder Patrick Wendell</div><p class="snippet">The real future of AI’s trajectory is being shaped by players who can convert deep data, cloud-first design, and measurable gains into sustainable models.This episode breaks down how early, unpopular…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">O&#x27;Reilly Radar Podcast - O&#x27;Reilly Media Podcast &middot; 2015-12-23</div><div class="eptitle">Patrick Wendell on Spark&#x27;s roadmap, Spark R API, and deep learning on the horizon</div><p class="snippet">The O&#x27;Reilly Radar Podcast: A special holiday cross-over of the O&#x27;Reilly Data Show Podcast. O&#x27;Reilly&#x27;s Ben Lorica chats with Apache Spark release manager and Databricks co-founder Patrick Wendell…</p></li>
 </ol>
 
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Appearances are matched from public podcast feeds and Apple Podcasts. AI-generated shows are excluded.</p>
+<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Patrick Wendell and AI-generated shows.</p>
 </footer>
+<script>
+(function(){
+  var ol = document.getElementById('eps');
+  if (!ol) return;
+  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
+  function upd() {
+    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+    for (var i = 0; i < lis.length; i++) {
+      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
+      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+    }
+  }
+  if (m) m.addEventListener('change', upd);
+  if (a) a.addEventListener('change', upd);
+  upd();
+})();
+</script>
 </body>
 </html>

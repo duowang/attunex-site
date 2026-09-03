@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jakub Pachocki — podcast appearances | Attunex</title>
-<meta name="description" content="Every podcast episode featuring Jakub Pachocki — 4 appearances across 4 shows, found by Attunex. Listen in-app and offline with on-device transcripts.">
+<meta name="description" content="Every podcast episode featuring Jakub Pachocki — 4 featured appearances across 4 shows, found by Attunex, each with an on-device transcript and summary.">
 <link rel="canonical" href="https://attunex.app/p/jakub-pachocki">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Attunex">
 <meta property="og:title" content="Jakub Pachocki — podcast appearances">
-<meta property="og:description" content="Every podcast episode featuring Jakub Pachocki: 4 appearances across 4 shows.">
+<meta property="og:description" content="Every podcast episode featuring Jakub Pachocki: 4 featured appearances across 4 shows.">
 <meta property="og:url" content="https://attunex.app/p/jakub-pachocki">
 <meta name="apple-itunes-app" content="app-id=6786431074">
 <style>:root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --card:#faf9f8; }
@@ -31,6 +31,13 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
+.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
+.filters .pill input { accent-color: var(--accent); margin: 0; }
+.filters .pill .c { color: var(--muted); }
+.tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
+.tag.mention { background: #eef0f7; color: #45489a; }
+.tag.ai { background: #fdeee7; color: var(--accent); }
 footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
 footer a { margin-right: 1.1rem; }
 .hublist { columns: 2; column-gap: 2rem; padding: 0; margin: 1.5rem 0 0; list-style: none; }
@@ -51,21 +58,42 @@ footer a { margin-right: 1.1rem; }
 <p class="bio">computer scientist</p>
 </div></div>
 
-<p class="intro">Every podcast episode featuring <strong>Jakub Pachocki</strong> that Attunex has found — <strong>4 appearances</strong> across <strong>4 shows</strong>. Follow Jakub in Attunex to get new appearances automatically, play them in the app, and read on-device transcripts and summaries.</p>
+<p class="intro">Every podcast episode featuring <strong>Jakub Pachocki</strong> that Attunex has found — <strong>4 featured appearances</strong> across <strong>4 shows</strong>, each with an on-device transcript and summary. Follow Jakub in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Jakub Pachocki in Attunex</a>
 <p class="coverage">Coverage as of 2026-09-03. Attunex re-sweeps people over time, so this list grows.</p>
+<div class="filters"><label class="pill"><input type="checkbox" id="t-mentioned"> Mentions <span class="c">3</span></label></div>
 
-<ol class="eps">
-<li><div class="meta">Unsupervised Learning with Jacob Effron &middot; 2026-04-09</div><div class="eptitle">Ep 84: OpenAI’s Chief Scientist on Continual Learning Hype, RL Beyond Code, &amp; Future Alignment Directions</div><p class="snippet">Jakub Pachocki, OpenAI&#x27;s Chief Scientist, sits down with Jacob to cover the full arc of where AI research stands today and where it&#x27;s headed. The conversation spans the explosive growth of coding…</p></li>
-<li><div class="meta">The a16z Show &middot; 2025-09-25</div><div class="eptitle">From Vibe Coding to Vibe Researching: OpenAI’s Mark Chen and Jakub Pachocki</div><p class="snippet">What comes after vibe coding? Maybe vibe researching. OpenAI’s Chief Scientist, Jakub Pachocki, and Chief Research Officer, Mark Chen, join a16z general partners Anjney Midha and Sarah Wang to go…</p></li>
-<li><div class="meta">OpenAI Podcast &middot; 2025-08-15</div><div class="eptitle">Defining AGI and the road ahead - Episode 5</div><p class="snippet">How close are we to automating scientific discovery? What do AI competition wins really tell us about progress toward AGI? OpenAI Chief Scientist Jakub Pachocki and researcher Szymon Sidor share…</p></li>
-<li><div class="meta">Before AGI &middot; 2025-07-31</div><div class="eptitle">Jakub Pachocki and Szymon Sidor: Building AI</div><p class="snippet">Artificial intelligence is rapidly transforming the world, raising urgent questions about its impact, governance, and the future of human-machine collaboration. As AI systems become more capable,…</p></li>
+<ol class="eps" id="eps">
+<li data-grade="featured" data-ai="0"><div class="meta">Unsupervised Learning with Jacob Effron &middot; 2026-04-09</div><div class="eptitle">Ep 84: OpenAI’s Chief Scientist on Continual Learning Hype, RL Beyond Code, &amp; Future Alignment Directions</div><p class="snippet">Jakub Pachocki, OpenAI&#x27;s Chief Scientist, sits down with Jacob to cover the full arc of where AI research stands today and where it&#x27;s headed. The conversation spans the explosive growth of coding…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">The Shared Sapience Substack Podcast &middot; 2026-03-20 <span class="tag mention">Mentioned</span></div><div class="eptitle">TCR 03/20/26: The Automated Researcher</div><p class="snippet">OpenAI’s chief scientist Jakub Pachocki disclosed yesterday that the company is building toward a fully autonomous AI researcher - with an “autonomous research intern” capable of independent…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">The a16z Show &middot; 2025-09-25</div><div class="eptitle">From Vibe Coding to Vibe Researching: OpenAI’s Mark Chen and Jakub Pachocki</div><p class="snippet">What comes after vibe coding? Maybe vibe researching. OpenAI’s Chief Scientist, Jakub Pachocki, and Chief Research Officer, Mark Chen, join a16z general partners Anjney Midha and Sarah Wang to go…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">xHUB.AI &middot; 2025-08-19 <span class="tag mention">Mentioned</span></div><div class="eptitle">T5.E175. INSIDE X PROGRESO DE LA AGI : Avances sorprendentes y el camino por delante</div><p class="snippet"># TEMA PROGRESO DE LA AGI : Avances sorprendentes y el camino por delante +Análisis entrevista a Jakub Pachoki (Científico Jefe de OpenAI) # PRESENTA Y DIRIGE 🧠Plácido Doménech Espí ⭐Creador de…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">OpenAI Podcast &middot; 2025-08-15</div><div class="eptitle">Defining AGI and the road ahead - Episode 5</div><p class="snippet">How close are we to automating scientific discovery? What do AI competition wins really tell us about progress toward AGI? OpenAI Chief Scientist Jakub Pachocki and researcher Szymon Sidor share…</p></li>
+<li data-grade="featured" data-ai="0"><div class="meta">Before AGI &middot; 2025-07-31</div><div class="eptitle">Jakub Pachocki and Szymon Sidor: Building AI</div><p class="snippet">Artificial intelligence is rapidly transforming the world, raising urgent questions about its impact, governance, and the future of human-machine collaboration. As AI systems become more capable,…</p></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Podcast HUMANía &middot; 2024-10-01 <span class="tag mention">Mentioned</span></div><div class="eptitle">Altman y OpenAI en Solitario: Ilya se Retira del Juego</div><p class="snippet">La partida de Ilya Sutskever, cofundador y ex-científico jefe de OpenAI, marca un punto de inflexión en la empresa que está impulsando la inteligencia artificial. En este episodio de AI IA HOY,…</p></li>
 </ol>
 
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Appearances are matched from public podcast feeds and Apple Podcasts. AI-generated shows are excluded.</p>
+<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Jakub Pachocki and AI-generated shows.</p>
 </footer>
+<script>
+(function(){
+  var ol = document.getElementById('eps');
+  if (!ol) return;
+  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
+  function upd() {
+    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+    for (var i = 0; i < lis.length; i++) {
+      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
+      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+    }
+  }
+  if (m) m.addEventListener('change', upd);
+  if (a) a.addEventListener('change', upd);
+  upd();
+})();
+</script>
 </body>
 </html>
