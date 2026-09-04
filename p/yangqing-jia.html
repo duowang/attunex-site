@@ -63,7 +63,7 @@ footer a { margin-right: 1.1rem; }
 <p class="intro">Every podcast episode featuring <strong>Yangqing Jia</strong> that Attunex has found — <strong>8 featured appearances</strong> across <strong>6 shows</strong>, each with an on-device transcript and summary. Follow Yangqing in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Yangqing Jia in Attunex</a>
 <p class="coverage">Updated 2026-08-19.</p>
-<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">8</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">2</span></button></div>
+<div class="filters"><button class="tab active" data-filter="featured" aria-pressed="true">Featured <span class="c">8</span></button><button class="tab" data-filter="mentioned" aria-pressed="false">Mentions <span class="c">2</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">BestBlogs &middot; 2026-08-08 <span class="tag mention">Mentioned</span></div><div class="eptitle">EP142 · 贾扬清再创业、淘宝主播 Agent 骨架、田渊栋谈递归自进化 · 08-08 早报</div><p class="snippet">章节时间戳00:00 开场 00:37 精讲：贾扬清在科技早知道，回溯从 Caffe 到 Lepton AI 的演变历程 02:47 精讲：大淘宝技术拆解主播 Agent 的 Harness 工程与五层纵深防御 05:41 精讲：田渊栋在晚点聊，谈 RSI 自进化是平滑曲线还是阶梯式跳跃 07:49 速览：小红书翻译评测、Cursor 重写 GPU、参数化…</p></li>
@@ -87,25 +87,24 @@ footer a { margin-right: 1.1rem; }
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var tabs = document.querySelectorAll('.filters .tab');
+  var pills = document.querySelectorAll('.filters .tab');
   var note = document.getElementById('more-note');
-  function apply(filter) {
+  function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
+  function apply() {
+    var active = {};
+    for (var i = 0; i < pills.length; i++) if (pills[i].classList.contains('active')) active[pills[i].getAttribute('data-filter')] = 1;
     var lis = ol.getElementsByTagName('li');
-    for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
-      var match = filter === 'ai' ? ai : (g === filter && !ai);
-      li.style.display = match ? '' : 'none';
-    }
-    if (note) note.style.display = filter === 'featured' ? '' : 'none';
+    for (var j = 0; j < lis.length; j++) lis[j].style.display = active[cat(lis[j])] ? '' : 'none';
+    if (note) note.style.display = active['featured'] ? '' : 'none';
   }
-  for (var i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', function() {
-      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
-      this.classList.add('active');
-      apply(this.getAttribute('data-filter'));
+  for (var k = 0; k < pills.length; k++) {
+    pills[k].addEventListener('click', function() {
+      var on = this.classList.toggle('active');
+      this.setAttribute('aria-pressed', on ? 'true' : 'false');
+      apply();
     });
   }
-  apply('featured');
+  apply();
 })();
 </script>
 </body>

@@ -63,7 +63,7 @@ footer a { margin-right: 1.1rem; }
 <p class="intro">Every podcast episode featuring <strong>Andrew Y. Ng</strong> that Attunex has found — <strong>72 featured appearances</strong> across <strong>51 shows</strong>, each with an on-device transcript and summary. Follow Andrew in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Andrew Y. Ng in Attunex</a>
 <p class="coverage">Updated 2026-09-03.</p>
-<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">27</span></button><button class="tab" data-filter="ai">AI-generated <span class="c">3</span></button></div>
+<div class="filters"><button class="tab active" data-filter="featured" aria-pressed="true">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned" aria-pressed="false">Mentions <span class="c">27</span></button><button class="tab" data-filter="ai" aria-pressed="false">AI-generated <span class="c">3</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="featured" data-ai="0"><div class="meta">Silicon Valley Girl: AI, Tech and Career Growth &middot; 2026-08-28</div><div class="eptitle">Andrew Ng: The Biggest Opportunities in AI Aren&#x27;t Where You Think</div><p class="snippet">Andrew Ng co-founded Coursera, built the founding team at Google Brain, and has taught roughly 8 million people AI. In this episode, he pushes back on the AI job panic making the rounds this year,…</p></li>
@@ -167,25 +167,24 @@ footer a { margin-right: 1.1rem; }
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var tabs = document.querySelectorAll('.filters .tab');
+  var pills = document.querySelectorAll('.filters .tab');
   var note = document.getElementById('more-note');
-  function apply(filter) {
+  function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
+  function apply() {
+    var active = {};
+    for (var i = 0; i < pills.length; i++) if (pills[i].classList.contains('active')) active[pills[i].getAttribute('data-filter')] = 1;
     var lis = ol.getElementsByTagName('li');
-    for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
-      var match = filter === 'ai' ? ai : (g === filter && !ai);
-      li.style.display = match ? '' : 'none';
-    }
-    if (note) note.style.display = filter === 'featured' ? '' : 'none';
+    for (var j = 0; j < lis.length; j++) lis[j].style.display = active[cat(lis[j])] ? '' : 'none';
+    if (note) note.style.display = active['featured'] ? '' : 'none';
   }
-  for (var i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', function() {
-      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
-      this.classList.add('active');
-      apply(this.getAttribute('data-filter'));
+  for (var k = 0; k < pills.length; k++) {
+    pills[k].addEventListener('click', function() {
+      var on = this.classList.toggle('active');
+      this.setAttribute('aria-pressed', on ? 'true' : 'false');
+      apply();
     });
   }
-  apply('featured');
+  apply();
 })();
 </script>
 </body>

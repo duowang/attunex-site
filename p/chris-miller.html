@@ -63,7 +63,7 @@ footer a { margin-right: 1.1rem; }
 <p class="intro">Every podcast episode featuring <strong>Chris Miller</strong> that Attunex has found — <strong>68 featured appearances</strong> across <strong>54 shows</strong>, each with an on-device transcript and summary. Follow Chris in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Chris Miller in Attunex</a>
 <p class="coverage">Updated 2026-09-03.</p>
-<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">2</span></button></div>
+<div class="filters"><button class="tab active" data-filter="featured" aria-pressed="true">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned" aria-pressed="false">Mentions <span class="c">2</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">書，都給我唸 I&#x27;ll read. You listen. &middot; 2026-09-01 <span class="tag mention">Mentioned</span></div><div class="eptitle">EP17 (三天免費) 晶片戰爭 by Chris Miller｜一片比指甲還小的東西，如何變成國力的開關 #半導體 #地緣政治 #AI #無人機</div><p class="snippet">Send us Fan Mail 太平洋西側，有一座島。島上，有幾間廠房。 那些廠房外觀看起來不戲劇化。沒有飛彈井，沒有戰艦，沒有高牆上架滿士兵。它們更像一座座極度安靜、極度乾淨、極度昂貴的基地。裡面的人穿著無塵衣，走在黃光之下，空氣被過濾，震動被壓到幾乎不存在，水、電、氣體、化學品，用精準到可怕的節奏流動。 而在那裡，被製造出來的東西，比人的指甲還小。 它叫晶片。…</p></li>
@@ -139,25 +139,24 @@ footer a { margin-right: 1.1rem; }
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var tabs = document.querySelectorAll('.filters .tab');
+  var pills = document.querySelectorAll('.filters .tab');
   var note = document.getElementById('more-note');
-  function apply(filter) {
+  function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
+  function apply() {
+    var active = {};
+    for (var i = 0; i < pills.length; i++) if (pills[i].classList.contains('active')) active[pills[i].getAttribute('data-filter')] = 1;
     var lis = ol.getElementsByTagName('li');
-    for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
-      var match = filter === 'ai' ? ai : (g === filter && !ai);
-      li.style.display = match ? '' : 'none';
-    }
-    if (note) note.style.display = filter === 'featured' ? '' : 'none';
+    for (var j = 0; j < lis.length; j++) lis[j].style.display = active[cat(lis[j])] ? '' : 'none';
+    if (note) note.style.display = active['featured'] ? '' : 'none';
   }
-  for (var i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', function() {
-      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
-      this.classList.add('active');
-      apply(this.getAttribute('data-filter'));
+  for (var k = 0; k < pills.length; k++) {
+    pills[k].addEventListener('click', function() {
+      var on = this.classList.toggle('active');
+      this.setAttribute('aria-pressed', on ? 'true' : 'false');
+      apply();
     });
   }
-  apply('featured');
+  apply();
 })();
 </script>
 </body>

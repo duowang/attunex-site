@@ -63,7 +63,7 @@ footer a { margin-right: 1.1rem; }
 <p class="intro">Every podcast episode featuring <strong>Fidji Simo</strong> that Attunex has found — <strong>33 featured appearances</strong> across <strong>27 shows</strong>, each with an on-device transcript and summary. Follow Fidji in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Fidji Simo in Attunex</a>
 <p class="coverage">Updated 2026-09-03.</p>
-<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">33</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">36</span></button><button class="tab" data-filter="ai">AI-generated <span class="c">2</span></button></div>
+<div class="filters"><button class="tab active" data-filter="featured" aria-pressed="true">Featured <span class="c">33</span></button><button class="tab" data-filter="mentioned" aria-pressed="false">Mentions <span class="c">36</span></button><button class="tab" data-filter="ai" aria-pressed="false">AI-generated <span class="c">2</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Yesterday in AI &middot; 2026-07-11 <span class="tag mention">Mentioned</span></div><div class="eptitle">OpenAI ChatGPT Work Launch, Fidji Simo Steps Down, and Meta Iris Production</div><p class="snippet">Yesterday in AI | 11 July 2026 OpenAI ChatGPT Work Launch, Fidji Simo Steps Down, and Meta Iris Production The enterprise AI landscape faced an unprecedented double-front realignment this week as…</p></li>
@@ -148,25 +148,24 @@ footer a { margin-right: 1.1rem; }
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var tabs = document.querySelectorAll('.filters .tab');
+  var pills = document.querySelectorAll('.filters .tab');
   var note = document.getElementById('more-note');
-  function apply(filter) {
+  function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
+  function apply() {
+    var active = {};
+    for (var i = 0; i < pills.length; i++) if (pills[i].classList.contains('active')) active[pills[i].getAttribute('data-filter')] = 1;
     var lis = ol.getElementsByTagName('li');
-    for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
-      var match = filter === 'ai' ? ai : (g === filter && !ai);
-      li.style.display = match ? '' : 'none';
-    }
-    if (note) note.style.display = filter === 'featured' ? '' : 'none';
+    for (var j = 0; j < lis.length; j++) lis[j].style.display = active[cat(lis[j])] ? '' : 'none';
+    if (note) note.style.display = active['featured'] ? '' : 'none';
   }
-  for (var i = 0; i < tabs.length; i++) {
-    tabs[i].addEventListener('click', function() {
-      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
-      this.classList.add('active');
-      apply(this.getAttribute('data-filter'));
+  for (var k = 0; k < pills.length; k++) {
+    pills[k].addEventListener('click', function() {
+      var on = this.classList.toggle('active');
+      this.setAttribute('aria-pressed', on ? 'true' : 'false');
+      apply();
     });
   }
-  apply('featured');
+  apply();
 })();
 </script>
 </body>
