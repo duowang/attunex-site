@@ -27,10 +27,14 @@ h1 { font-size: 1.9rem; margin: 0; letter-spacing: -0.02em; }
 .cta:hover { text-decoration: none; opacity: 0.92; }
 .coverage { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
 ol.eps { list-style: none; padding: 0; margin: 1.75rem 0 0; }
-ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
+ol.eps li { display: flex; gap: 0.9rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+.thumb { flex: 0 0 auto; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: var(--line); }
+.epbody { min-width: 0; }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
+.eplinks { margin-top: 0.4rem; }
+.apple { font-size: 0.82rem; font-weight: 600; }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
 .filters .tab:hover { border-color: var(--muted); }
@@ -66,9 +70,9 @@ footer a { margin-right: 1.1rem; }
 <div class="filters"><button class="tab active" data-filter="featured" aria-pressed="true">Featured <span class="c">2</span></button><button class="tab" data-filter="mentioned" aria-pressed="false">Mentions <span class="c">1</span></button></div>
 
 <ol class="eps" id="eps">
-<li data-grade="featured" data-ai="0"><div class="meta">Bloomberg Tech &middot; 2026-07-10</div><div class="eptitle">Special Edition: SK Chairman Chey Tae-won on SK Hynix&#x27;s US Debut</div><p class="snippet">SK Group Chairman Chey Tae-won joins Bloomberg&#x27;s Ed Ludlow to discuss SK Hynix&#x27;s public listing. Fresh off a landmark US stock offering for the conglomerate’s memory-chip business, Tae-won said he…</p></li>
-<li data-grade="featured" data-ai="0"><div class="meta">Bloomberg Talks &middot; 2026-07-10</div><div class="eptitle">SK Group Chairman Chey Tae-won Talks Public Listing</div><p class="snippet">SK Group Chairman Chey Tae-won joins Bloomberg&#x27;s Ed Ludlow to discuss SK Hynix&#x27;s public listing. See omnystudio.com/listener for privacy information.</p></li>
-<li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">코리아헤럴드 팟캐스트 &middot; 2023-06-28 <span class="tag mention">Mentioned</span></div><div class="eptitle">514회 프랑스, 베트남 출장 마친 이재용, “뜻깊은 일정” / ‘킬러문항’ 못버리는 수능, 난도 조절 어떻게?</div><p class="snippet">진행자: 최시영, Ali Abbot [1] Samsung chief touts ‘meaningful trip’ to France, Vietnam 기사요약: 6박7일 출장에서 부산 엑스포 유치 활동과 경제사절단 활동을 마치고 귀국한 이재용 Samsung Electronics Executive Chairman Lee Jae-yong returned home…</p></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/f5/9c/9f/f59c9f1f-cbc8-0e46-629d-2df7e6a18274/mza_3594252261487211794.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><div class="meta">Bloomberg Tech &middot; 2026-07-10</div><div class="eptitle">Special Edition: SK Chairman Chey Tae-won on SK Hynix&#x27;s US Debut</div><p class="snippet">SK Group Chairman Chey Tae-won joins Bloomberg&#x27;s Ed Ludlow to discuss SK Hynix&#x27;s public listing. Fresh off a landmark US stock offering for the conglomerate’s memory-chip business, Tae-won said he…</p><div class="eplinks"><a class="apple" href="https://podcasts.apple.com/podcast/id1611767434" target="_blank" rel="noopener">Listen on Apple Podcasts &nearr;</a></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts126/v4/94/7f/57/947f5710-6890-2c0e-4555-ab63509d6176/mza_3438809990974300563.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><div class="meta">Bloomberg Talks &middot; 2026-07-10</div><div class="eptitle">SK Group Chairman Chey Tae-won Talks Public Listing</div><p class="snippet">SK Group Chairman Chey Tae-won joins Bloomberg&#x27;s Ed Ludlow to discuss SK Hynix&#x27;s public listing. See omnystudio.com/listener for privacy information.</p><div class="eplinks"><a class="apple" href="https://podcasts.apple.com/podcast/id1690236827" target="_blank" rel="noopener">Listen on Apple Podcasts &nearr;</a></div></div></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/f2/07/a2/f207a269-b78f-7f3c-a9a5-b37652cc4012/mza_11359686694821229289.jpeg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><div class="meta">코리아헤럴드 팟캐스트 &middot; 2023-06-28 <span class="tag mention">Mentioned</span></div><div class="eptitle">514회 프랑스, 베트남 출장 마친 이재용, “뜻깊은 일정” / ‘킬러문항’ 못버리는 수능, 난도 조절 어떻게?</div><p class="snippet">진행자: 최시영, Ali Abbot [1] Samsung chief touts ‘meaningful trip’ to France, Vietnam 기사요약: 6박7일 출장에서 부산 엑스포 유치 활동과 경제사절단 활동을 마치고 귀국한 이재용 Samsung Electronics Executive Chairman Lee Jae-yong returned home…</p><div class="eplinks"><a class="apple" href="https://podcasts.apple.com/podcast/id686406253" target="_blank" rel="noopener">Listen on Apple Podcasts &nearr;</a></div></div></li>
 </ol>
 
 

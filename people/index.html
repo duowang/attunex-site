@@ -26,10 +26,14 @@ h1 { font-size: 1.9rem; margin: 0; letter-spacing: -0.02em; }
 .cta:hover { text-decoration: none; opacity: 0.92; }
 .coverage { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
 ol.eps { list-style: none; padding: 0; margin: 1.75rem 0 0; }
-ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
+ol.eps li { display: flex; gap: 0.9rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+.thumb { flex: 0 0 auto; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: var(--line); }
+.epbody { min-width: 0; }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
+.eplinks { margin-top: 0.4rem; }
+.apple { font-size: 0.82rem; font-weight: 600; }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
 .filters .tab:hover { border-color: var(--muted); }
