@@ -162,11 +162,18 @@ footer a { margin-right: 1.1rem; }
   var note = document.getElementById('more-note');
   function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
   function apply() {
-    var active = {};
-    for (var i = 0; i < pills.length; i++) if (pills[i].classList.contains('active')) active[pills[i].getAttribute('data-filter')] = 1;
+    var controlled = {}, active = {};
+    for (var i = 0; i < pills.length; i++) {
+      var key = pills[i].getAttribute('data-filter');
+      controlled[key] = 1;
+      if (pills[i].classList.contains('active')) active[key] = 1;
+    }
     var lis = ol.getElementsByTagName('li');
-    for (var j = 0; j < lis.length; j++) lis[j].style.display = active[cat(lis[j])] ? '' : 'none';
-    if (note) note.style.display = active['featured'] ? '' : 'none';
+    for (var j = 0; j < lis.length; j++) {
+      var c = cat(lis[j]);
+      lis[j].style.display = (!controlled[c] || active[c]) ? '' : 'none';
+    }
+    if (note) note.style.display = (!controlled['featured'] || active['featured']) ? '' : 'none';
   }
   for (var k = 0; k < pills.length; k++) {
     pills[k].addEventListener('click', function() {
