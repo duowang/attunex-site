@@ -30,10 +30,12 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
-.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
-.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
-.filters .pill input { accent-color: var(--accent); margin: 0; }
-.filters .pill .c { color: var(--muted); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+.filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
+.filters .tab:hover { border-color: var(--muted); }
+.filters .tab .c { color: var(--muted); margin-left: 0.3rem; }
+.filters .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filters .tab.active .c { color: rgba(255,255,255,0.8); }
 .tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
 .tag.mention { background: #eef0f7; color: #45489a; }
 .tag.ai { background: #fdeee7; color: var(--accent); }

@@ -31,10 +31,12 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
-.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
-.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
-.filters .pill input { accent-color: var(--accent); margin: 0; }
-.filters .pill .c { color: var(--muted); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+.filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
+.filters .tab:hover { border-color: var(--muted); }
+.filters .tab .c { color: var(--muted); margin-left: 0.3rem; }
+.filters .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filters .tab.active .c { color: rgba(255,255,255,0.8); }
 .tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
 .tag.mention { background: #eef0f7; color: #45489a; }
 .tag.ai { background: #fdeee7; color: var(--accent); }
@@ -60,8 +62,8 @@ footer a { margin-right: 1.1rem; }
 
 <p class="intro">Every podcast episode featuring <strong>Chris Miller</strong> that Attunex has found — <strong>68 featured appearances</strong> across <strong>54 shows</strong>, each with an on-device transcript and summary. Follow Chris in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Chris Miller in Attunex</a>
-<p class="coverage">Coverage as of 2026-09-03. Attunex re-sweeps people over time, so this list grows.</p>
-<div class="filters"><label class="pill"><input type="checkbox" id="t-mentioned"> Mentions <span class="c">2</span></label></div>
+<p class="coverage">Updated 2026-09-03.</p>
+<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">2</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">書，都給我唸 I&#x27;ll read. You listen. &middot; 2026-09-01 <span class="tag mention">Mentioned</span></div><div class="eptitle">EP17 (三天免費) 晶片戰爭 by Chris Miller｜一片比指甲還小的東西，如何變成國力的開關 #半導體 #地緣政治 #AI #無人機</div><p class="snippet">Send us Fan Mail 太平洋西側，有一座島。島上，有幾間廠房。 那些廠房外觀看起來不戲劇化。沒有飛彈井，沒有戰艦，沒有高牆上架滿士兵。它們更像一座座極度安靜、極度乾淨、極度昂貴的基地。裡面的人穿著無塵衣，走在黃光之下，空氣被過濾，震動被壓到幾乎不存在，水、電、氣體、化學品，用精準到可怕的節奏流動。 而在那裡，被製造出來的東西，比人的指甲還小。 它叫晶片。…</p></li>
@@ -127,27 +129,35 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="featured" data-ai="0"><div class="meta">What China Wants &middot; 2022-11-17</div><div class="eptitle">Episode 26: Chip War</div><p class="snippet">This week on What China Wants, Sam and Stewart are joined by Chris Miller, author of Chip War: The Fight for the World&#x27;s Most Critical Technology, which was shortlisted for the FT&#x27;s Business Book of…</p></li>
 <li data-grade="featured" data-ai="0"><div class="meta">Intelligence Squared: Business &middot; 2022-11-15</div><div class="eptitle">When the Microchips are Down, with Chris Miller</div><p class="snippet">We live in a world which is completely dependent on the technology of microchips, which are made up of millions of transistors which are so small, about one thousandth of the size of a red blood…</p></li>
 </ol>
-<p class="coverage">Showing the 60 most recent featured appearances of 68. Open Attunex to browse them all.</p>
+<p class="coverage" id="more-note">Showing the 60 most recent of 68 featured appearances. Open Attunex for the rest.</p>
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Chris Miller and AI-generated shows.</p>
+<p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
 <script>
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
-  function upd() {
-    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+  var tabs = document.querySelectorAll('.filters .tab');
+  var note = document.getElementById('more-note');
+  function apply(filter) {
+    var lis = ol.getElementsByTagName('li');
     for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
-      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
+      var match = filter === 'ai' ? ai : (g === filter && !ai);
+      li.style.display = match ? '' : 'none';
     }
+    if (note) note.style.display = filter === 'featured' ? '' : 'none';
   }
-  if (m) m.addEventListener('change', upd);
-  if (a) a.addEventListener('change', upd);
-  upd();
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function() {
+      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+      this.classList.add('active');
+      apply(this.getAttribute('data-filter'));
+    });
+  }
+  apply('featured');
 })();
 </script>
 </body>

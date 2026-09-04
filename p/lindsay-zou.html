@@ -31,10 +31,12 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
-.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
-.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
-.filters .pill input { accent-color: var(--accent); margin: 0; }
-.filters .pill .c { color: var(--muted); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+.filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
+.filters .tab:hover { border-color: var(--muted); }
+.filters .tab .c { color: var(--muted); margin-left: 0.3rem; }
+.filters .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filters .tab.active .c { color: rgba(255,255,255,0.8); }
 .tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
 .tag.mention { background: #eef0f7; color: #45489a; }
 .tag.ai { background: #fdeee7; color: var(--accent); }
@@ -60,7 +62,7 @@ footer a { margin-right: 1.1rem; }
 
 <p class="intro">Every podcast episode featuring <strong>Lindsay Zou</strong> that Attunex has found — <strong>97 featured appearances</strong> across <strong>3 shows</strong>, each with an on-device transcript and summary. Follow Lindsay in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Lindsay Zou in Attunex</a>
-<p class="coverage">Coverage as of 2026-08-19. Attunex re-sweeps people over time, so this list grows.</p>
+<p class="coverage">Updated 2026-08-19.</p>
 
 
 <ol class="eps" id="eps">
@@ -125,27 +127,35 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="featured" data-ai="0"><div class="meta">小Lin说 &middot; 2024-06-24</div><div class="eptitle">【硬核】苹果海外千亿税款如何避税 | 欧美政府税收反击战</div><p class="snippet">根据欧盟委员会的调查，2011年，苹果销售国际实现160亿欧元利润，结果却只交了不足一千万欧元的税，实际税率只有万分之五。 2014年，苹果销售国际的实际税率更是达到了夸张的万分之0.5。就是说假如你一年赚一百万，你只交了50块钱的税！那跟没交有什么区别。我们都知道，苹果公司特别能赚钱, 2022年利润差一丢丢就到了1000亿美元，是除了沙特阿美以外全球最赚钱的公司。…</p></li>
 <li data-grade="featured" data-ai="0"><div class="meta">小Lin说 &middot; 2024-06-23</div><div class="eptitle">奇葩的土耳其经济，和它怼天怼地的总统</div><p class="snippet">提到土耳其，你能想到什么？ 旅游胜地；奥斯曼帝国；火鸡；还是撒盐哥? 不过我跟你说，我觉得土耳其最奇葩的其实是他的经济！ 2022年，土耳其的通货膨胀率开始突然飙升到超过80%，土耳其里拉一年之内跌了一半。 这听着很惨吧？可是人家2022年逆势GDP增长5.6%，整个股市翻了三倍。 更奇葩旳就是，土耳其总统老先生怼天怼地怼利率，说利率就是恶魔，我们有上帝！…</p></li>
 </ol>
-<p class="coverage">Showing the 60 most recent featured appearances of 97. Open Attunex to browse them all.</p>
+<p class="coverage" id="more-note">Showing the 60 most recent of 97 featured appearances. Open Attunex for the rest.</p>
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Lindsay Zou and AI-generated shows.</p>
+<p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
 <script>
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
-  function upd() {
-    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+  var tabs = document.querySelectorAll('.filters .tab');
+  var note = document.getElementById('more-note');
+  function apply(filter) {
+    var lis = ol.getElementsByTagName('li');
     for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
-      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
+      var match = filter === 'ai' ? ai : (g === filter && !ai);
+      li.style.display = match ? '' : 'none';
     }
+    if (note) note.style.display = filter === 'featured' ? '' : 'none';
   }
-  if (m) m.addEventListener('change', upd);
-  if (a) a.addEventListener('change', upd);
-  upd();
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function() {
+      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+      this.classList.add('active');
+      apply(this.getAttribute('data-filter'));
+    });
+  }
+  apply('featured');
 })();
 </script>
 </body>

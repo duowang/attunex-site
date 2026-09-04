@@ -31,10 +31,12 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
-.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
-.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
-.filters .pill input { accent-color: var(--accent); margin: 0; }
-.filters .pill .c { color: var(--muted); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+.filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
+.filters .tab:hover { border-color: var(--muted); }
+.filters .tab .c { color: var(--muted); margin-left: 0.3rem; }
+.filters .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filters .tab.active .c { color: rgba(255,255,255,0.8); }
 .tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
 .tag.mention { background: #eef0f7; color: #45489a; }
 .tag.ai { background: #fdeee7; color: var(--accent); }
@@ -60,8 +62,8 @@ footer a { margin-right: 1.1rem; }
 
 <p class="intro">Every podcast episode featuring <strong>Andrew Weil</strong> that Attunex has found — <strong>102 featured appearances</strong> across <strong>34 shows</strong>, each with an on-device transcript and summary. Follow Andrew in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Andrew Weil in Attunex</a>
-<p class="coverage">Coverage as of 2026-09-03. Attunex re-sweeps people over time, so this list grows.</p>
-<div class="filters"><label class="pill"><input type="checkbox" id="t-mentioned"> Mentions <span class="c">8</span></label></div>
+<p class="coverage">Updated 2026-09-03.</p>
+<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">8</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Body of Wonder &middot; 2026-07-28 <span class="tag mention">Mentioned</span></div><div class="eptitle">Episode #64: Integrative Oncology: Transforming Cancer Management</div><p class="snippet">Discover how personalized approaches like adaptive therapy, fasting, and integrative medicine are transforming cancer management, especially in the event of metastatic cancer. Dr. Dawn Lemanne, a…</p></li>
@@ -133,27 +135,35 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">The Hamilton Morris Podcast &middot; 2022-01-01 <span class="tag mention">Mentioned</span></div><div class="eptitle">The origins of Kambo with Peter Gorman</div><p class="snippet">Website: https://pgorman.com/ Trip info and donation: gormanexpeditions.com/ First description of P. bicolor use in 1925: https://erowid.org/references/refs_view.php?ID=9053 Top Tree Herbs Kratom Tea…</p></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">The Health Wyze Report &middot; 2013-07-31 <span class="tag mention">Mentioned</span></div><div class="eptitle">Episode 32 - The Faithless</div><p class="snippet">In this audio report, we expose the true cause of shaken baby syndrome, and discuss the immorality of doctors who blame parents for infant deaths to avoid being held liable. We talk about efforts to…</p></li>
 </ol>
-<p class="coverage">Showing the 60 most recent featured appearances of 102. Open Attunex to browse them all.</p>
+<p class="coverage" id="more-note">Showing the 60 most recent of 102 featured appearances. Open Attunex for the rest.</p>
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Andrew Weil and AI-generated shows.</p>
+<p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
 <script>
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
-  function upd() {
-    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+  var tabs = document.querySelectorAll('.filters .tab');
+  var note = document.getElementById('more-note');
+  function apply(filter) {
+    var lis = ol.getElementsByTagName('li');
     for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
-      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
+      var match = filter === 'ai' ? ai : (g === filter && !ai);
+      li.style.display = match ? '' : 'none';
     }
+    if (note) note.style.display = filter === 'featured' ? '' : 'none';
   }
-  if (m) m.addEventListener('change', upd);
-  if (a) a.addEventListener('change', upd);
-  upd();
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function() {
+      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+      this.classList.add('active');
+      apply(this.getAttribute('data-filter'));
+    });
+  }
+  apply('featured');
 })();
 </script>
 </body>

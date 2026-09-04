@@ -31,10 +31,12 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
-.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
-.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
-.filters .pill input { accent-color: var(--accent); margin: 0; }
-.filters .pill .c { color: var(--muted); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+.filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
+.filters .tab:hover { border-color: var(--muted); }
+.filters .tab .c { color: var(--muted); margin-left: 0.3rem; }
+.filters .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filters .tab.active .c { color: rgba(255,255,255,0.8); }
 .tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
 .tag.mention { background: #eef0f7; color: #45489a; }
 .tag.ai { background: #fdeee7; color: var(--accent); }
@@ -60,8 +62,8 @@ footer a { margin-right: 1.1rem; }
 
 <p class="intro">Every podcast episode featuring <strong>Dou Wentao</strong> that Attunex has found — <strong>89 featured appearances</strong> across <strong>9 shows</strong>, each with an on-device transcript and summary. Follow Dou in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Dou Wentao in Attunex</a>
-<p class="coverage">Coverage as of 2026-08-19. Attunex re-sweeps people over time, so this list grows.</p>
-<div class="filters"><label class="pill"><input type="checkbox" id="t-mentioned"> Mentions <span class="c">11</span></label></div>
+<p class="coverage">Updated 2026-08-19.</p>
+<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">11</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="featured" data-ai="0"><div class="meta">YuanZhuoPai 圆桌派  Round table Faction，锵锵行天下 qiangqiang xing tianxia - 碎碎念 &middot; 2026-07-25</div><div class="eptitle">自然光 EP06  papi酱&amp;窦文涛：驴与跑步机（下）</div><p class="snippet">谈话的最后一部分。从前面的“名利心态剖析”，彻底落地到了他们各自最真实的日常生活向往，以及在各自职场/商业环境里那种深深的无力感与拧巴感。…</p></li>
@@ -136,27 +138,35 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="featured" data-ai="0"><div class="meta">圆桌派 &middot; 2022-09-14</div><div class="eptitle">【圆桌派 第四季】EP26亲情：我们的父母 | 窦文涛/梁文道/马家辉/周轶君 | 优酷纪实 YOUKU DOCUMENTARY</div><p class="snippet">留言告訴我你對這一集的想法： https://open.firstory.me/user/cl7zkcpvy0a0h01wi8uxbccdv/comments 《圆桌派》是由著名媒体人、文化名嘴窦文涛携手优酷“看理想”打造的全新“活色生香”聊天真人秀节目，延续不“装”的窦式主持风格，神侃包罗万象的话题，立足网络，开启全新的“谈论+互动”节目模式，场景多变，嘉宾流动。 Powered by…</p></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">不止读书 &middot; 2021-08-20 <span class="tag mention">Mentioned</span></div><div class="eptitle">23从易立竞、窦文涛、小S和许知远开始，聊聊访谈类节目</div><p class="snippet">最近大家看《披荆斩棘的哥哥》了吗？随着《哥哥》的上线，易立竞的访谈节目《定义》第二季也上线了。不过，看了之后，却大失所望。你会听到：1.为什么易立竞的新节目不好看了？2.聊聊《锵锵三人行》3.聊聊《康熙来了》4.聊聊《十三邀》 5.谈话节目最重要的是什么？</p></li>
 </ol>
-<p class="coverage">Showing the 60 most recent featured appearances of 89. Open Attunex to browse them all.</p>
+<p class="coverage" id="more-note">Showing the 60 most recent of 89 featured appearances. Open Attunex for the rest.</p>
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Dou Wentao and AI-generated shows.</p>
+<p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
 <script>
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
-  function upd() {
-    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+  var tabs = document.querySelectorAll('.filters .tab');
+  var note = document.getElementById('more-note');
+  function apply(filter) {
+    var lis = ol.getElementsByTagName('li');
     for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
-      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
+      var match = filter === 'ai' ? ai : (g === filter && !ai);
+      li.style.display = match ? '' : 'none';
     }
+    if (note) note.style.display = filter === 'featured' ? '' : 'none';
   }
-  if (m) m.addEventListener('change', upd);
-  if (a) a.addEventListener('change', upd);
-  upd();
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function() {
+      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+      this.classList.add('active');
+      apply(this.getAttribute('data-filter'));
+    });
+  }
+  apply('featured');
 })();
 </script>
 </body>

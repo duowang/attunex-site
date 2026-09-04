@@ -31,10 +31,12 @@ ol.eps li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .meta { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
 .eptitle { font-weight: 600; margin: 0.15rem 0; }
 .snippet { color: var(--muted); margin: 0.25rem 0 0; font-size: 0.95rem; }
-.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 0; }
-.filters .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.85rem; cursor: pointer; user-select: none; }
-.filters .pill input { accent-color: var(--accent); margin: 0; }
-.filters .pill .c { color: var(--muted); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
+.filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
+.filters .tab:hover { border-color: var(--muted); }
+.filters .tab .c { color: var(--muted); margin-left: 0.3rem; }
+.filters .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filters .tab.active .c { color: rgba(255,255,255,0.8); }
 .tag { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
 .tag.mention { background: #eef0f7; color: #45489a; }
 .tag.ai { background: #fdeee7; color: var(--accent); }
@@ -60,8 +62,8 @@ footer a { margin-right: 1.1rem; }
 
 <p class="intro">Every podcast episode featuring <strong>Patrick O&#x27;Shaughnessy</strong> that Attunex has found — <strong>587 featured appearances</strong> across <strong>7 shows</strong>, each with an on-device transcript and summary. Follow Patrick in Attunex to get new appearances automatically.</p>
 <a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Follow Patrick O&#x27;Shaughnessy in Attunex</a>
-<p class="coverage">Coverage as of 2026-09-03. Attunex re-sweeps people over time, so this list grows.</p>
-<div class="filters"><label class="pill"><input type="checkbox" id="t-mentioned"> Mentions <span class="c">26</span></label></div>
+<p class="coverage">Updated 2026-09-03.</p>
+<div class="filters"><button class="tab active" data-filter="featured">Featured <span class="c">60</span></button><button class="tab" data-filter="mentioned">Mentions <span class="c">26</span></button></div>
 
 <ol class="eps" id="eps">
 <li data-grade="featured" data-ai="0"><div class="meta">Invest Like the Best with Patrick O&#x27;Shaughnessy &middot; 2026-09-01</div><div class="eptitle">Sarah Guo - Funding the Frontier</div><p class="snippet">My guest today is Sarah Guo, founder and managing partner of Conviction, the venture firm she built to back AI-native companies from their earliest days. Sarah has become one of the most sought-after…</p></li>
@@ -151,27 +153,35 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Invest Like the Best with Patrick O&#x27;Shaughnessy &middot; 2021-05-18 <span class="tag mention">Mentioned</span></div><div class="eptitle">Brent Beshore - Learnings from a Year of Unexpected Events - [Invest Like the Best, EP. 226]</div><p class="snippet">My guest today is Brent Beshore. For those that don’t know Brent from his frequent appearances on this podcast, he runs Permanent Equity Fund and has been a close personal friend for the past five…</p></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><div class="meta">Invest Like the Best with Patrick O&#x27;Shaughnessy &middot; 2021-05-13 <span class="tag mention">Mentioned</span></div><div class="eptitle">Jeremy Cai - Manufacturer to Customer – [Founder’s Field Guide, EP. 33]</div><p class="snippet">My guest today is Jeremy Cai, founder, and CEO of Italic, a subscription marketplace for consumer goods that works directly with manufacturers. I was introduced to Jeremy by my friend Blake Robbins…</p></li>
 </ol>
-<p class="coverage">Showing the 60 most recent featured appearances of 587. Open Attunex to browse them all.</p>
+<p class="coverage" id="more-note">Showing the 60 most recent of 587 featured appearances. Open Attunex for the rest.</p>
 
 <footer>
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
-<p>Featured appearances on human-made shows are shown by default. Use the toggles to include episodes that only mention Patrick O&#x27;Shaughnessy and AI-generated shows.</p>
+<p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
 <script>
 (function(){
   var ol = document.getElementById('eps');
   if (!ol) return;
-  var m = document.getElementById('t-mentioned'), a = document.getElementById('t-ai');
-  function upd() {
-    var sm = m && m.checked, sa = a && a.checked, lis = ol.getElementsByTagName('li');
+  var tabs = document.querySelectorAll('.filters .tab');
+  var note = document.getElementById('more-note');
+  function apply(filter) {
+    var lis = ol.getElementsByTagName('li');
     for (var i = 0; i < lis.length; i++) {
-      var li = lis[i], f = li.getAttribute('data-grade') === 'featured', x = li.getAttribute('data-ai') === '1';
-      li.style.display = ((f || sm) && (!x || sa)) ? '' : 'none';
+      var li = lis[i], g = li.getAttribute('data-grade'), ai = li.getAttribute('data-ai') === '1';
+      var match = filter === 'ai' ? ai : (g === filter && !ai);
+      li.style.display = match ? '' : 'none';
     }
+    if (note) note.style.display = filter === 'featured' ? '' : 'none';
   }
-  if (m) m.addEventListener('change', upd);
-  if (a) a.addEventListener('change', upd);
-  upd();
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function() {
+      for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+      this.classList.add('active');
+      apply(this.getAttribute('data-filter'));
+    });
+  }
+  apply('featured');
 })();
 </script>
 </body>
