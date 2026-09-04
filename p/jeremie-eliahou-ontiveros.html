@@ -33,7 +33,29 @@ ol.eps li { display: flex; gap: 1rem; padding: 1rem 0; border-top: 1px solid var
 .eptitle { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 600; color: var(--ink); line-height: 1.35; }
 a.eptitle:hover { text-decoration: underline; }
 .show { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
-.date { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+.epfoot { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-top: 0.35rem; }
+.date { font-size: 0.8rem; color: var(--muted); }
+.durtxt { font-size: 0.8rem; color: var(--muted); }
+.playbtn { font: inherit; font-size: 0.8rem; font-weight: 600; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 0.22rem 0.7rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+.playbtn:hover { border-color: var(--accent); }
+.playbtn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.playbtn .g { font-size: 0.62em; line-height: 1; }
+.mini[hidden] { display: none; }
+.mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
+.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.6rem 24px 0.75rem; }
+.mini-top { display: flex; align-items: center; gap: 0.75rem; }
+.mini-art { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
+.mini-meta { min-width: 0; flex: 1 1 auto; }
+.mini-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-show { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-skip { font: inherit; font-size: 0.72rem; font-weight: 700; color: var(--ink); background: none; border: none; cursor: pointer; flex: 0 0 auto; letter-spacing: -0.02em; }
+.mini-play { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.mini-play svg { width: 20px; height: 20px; fill: #fff; }
+.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; }
+.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+.mini-time { font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 34px; }
+.mini-time.rem { text-align: right; }
+.mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
 .filters .tab:hover { border-color: var(--muted); }
@@ -72,15 +94,15 @@ footer a { margin-right: 1.1rem; }
 
 
 <ol class="eps" id="eps">
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="date">2026-08-09</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="date">2026-07-09</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 015 - DG Matrix Explains 800V DC vs Legacy AC Distribution (Datacenter, Energy) | Jordan Nanos, Jeremie Eliahou Ontiveros, Nicolas Bontigui, Haroon Inam</a><div class="show">SemiAnalysis Weekly</div><div class="date">2026-06-15</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 013 - AWS Margins Jump 10% While Azure and GCP Flatline (Tokenomics) | Jordan Nanos, Jeremie Eliahou Ontiveros, Joey Brookhart, Crystal Huang</a><div class="show">SemiAnalysis Weekly</div><div class="date">2026-06-01</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 004 - The Impact of AI Datacenters On Consumer Power Costs (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Jordan Nanos, Doug O&#x27;Laughlin</a><div class="show">SemiAnalysis Weekly</div><div class="date">2026-03-05</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ea/7c/4b/ea7c4b0b-2896-b3d0-c601-b375662a3630/mza_9279396183922450909.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1772360235" target="_blank" rel="noopener">a16z’s $15B Raise, Tim Cook Exit Rumors, Meta Goes Nuclear | Ben Horowitz, David George, Alex Rampell, Jen Kha, Jeremie Eliahou</a><div class="show">TBPN</div><div class="date">2026-01-09</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/59/e5/14/59e514e5-67cf-2165-de6f-f74b2325f1a6/mza_833628887940046125.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1526149547" target="_blank" rel="noopener">SemiAnalysis&#x27; Jeremie Eliahou Ontiveros on all things datacenter / power</a><div class="show">Yet Another Value Podcast</div><div class="date">2025-08-18</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ea/7c/4b/ea7c4b0b-2896-b3d0-c601-b375662a3630/mza_9279396183922450909.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1772360235" target="_blank" rel="noopener">Astronomer CEO Affair at Coldplay Concert, JUUL Approved by the FDA, Is AI Causing Historic Crashouts? | Chris Power, Jeremie Eliahou, Chris Best, Alex Mashrabov, Jesse Pollak, Billy Thalheimer, Jonathan Mortensen, Douwe Kiela &amp; More</a><div class="show">TBPN</div><div class="date">2025-07-17</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/59/e5/14/59e514e5-67cf-2165-de6f-f74b2325f1a6/mza_833628887940046125.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1526149547" target="_blank" rel="noopener">SemiAnalysis&#x27; Jeremie Eliahou Ontiveros on the supply/demand dynamics of AI and data centers</a><div class="show">Yet Another Value Podcast</div><div class="date">2025-02-11</div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-08-09</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/123973946/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-9%2F429505048-44100-2-e0c7877f71a11.mp3" data-title="Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>50:03</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-07-09</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/122578260/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-6-8%2F427616466-44100-2-f8944e9d51604.mp3" data-title="Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>50:34</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 015 - DG Matrix Explains 800V DC vs Legacy AC Distribution (Datacenter, Energy) | Jordan Nanos, Jeremie Eliahou Ontiveros, Nicolas Bontigui, Haroon Inam</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-06-15</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/121518936/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-15%2F426203085-44100-2-d4a4b1dddeb3e.mp3" data-title="Ep. 015 - DG Matrix Explains 800V DC vs Legacy AC Distribution (Datacenter, Energy) | Jordan Nanos, Jeremie Eliahou Ontiveros, Nicolas Bontigui, Haroon Inam" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>47:52</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 013 - AWS Margins Jump 10% While Azure and GCP Flatline (Tokenomics) | Jordan Nanos, Jeremie Eliahou Ontiveros, Joey Brookhart, Crystal Huang</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-06-01</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/120867183/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-1%2F425322806-44100-2-438f5a45bc012.mp3" data-title="Ep. 013 - AWS Margins Jump 10% While Azure and GCP Flatline (Tokenomics) | Jordan Nanos, Jeremie Eliahou Ontiveros, Joey Brookhart, Crystal Huang" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>43:33</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 004 - The Impact of AI Datacenters On Consumer Power Costs (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Jordan Nanos, Doug O&#x27;Laughlin</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-03-05</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/116453623/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-2-5%2F419372493-44100-2-a7feb86a82d28.mp3" data-title="Ep. 004 - The Impact of AI Datacenters On Consumer Power Costs (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Jordan Nanos, Doug O&#x27;Laughlin" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>50:40</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ea/7c/4b/ea7c4b0b-2896-b3d0-c601-b375662a3630/mza_9279396183922450909.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1772360235" target="_blank" rel="noopener">a16z’s $15B Raise, Tim Cook Exit Rumors, Meta Goes Nuclear | Ben Horowitz, David George, Alex Rampell, Jen Kha, Jeremie Eliahou</a><div class="show">TBPN</div><div class="epfoot"><span class="date">2026-01-09</span><button class="playbtn" data-audio="https://media.transistor.fm/fe30cf15/4f49e25f.mp3" data-title="a16z’s $15B Raise, Tim Cook Exit Rumors, Meta Goes Nuclear | Ben Horowitz, David George, Alex Rampell, Jen Kha, Jeremie Eliahou" data-show="TBPN" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ea/7c/4b/ea7c4b0b-2896-b3d0-c601-b375662a3630/mza_9279396183922450909.jpg/120x120bb.jpg"><span class="g">&#9654;</span>3:04:37</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/59/e5/14/59e514e5-67cf-2165-de6f-f74b2325f1a6/mza_833628887940046125.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1526149547" target="_blank" rel="noopener">SemiAnalysis&#x27; Jeremie Eliahou Ontiveros on all things datacenter / power</a><div class="show">Yet Another Value Podcast</div><div class="epfoot"><span class="date">2025-08-18</span><button class="playbtn" data-audio="https://anchor.fm/s/c628cb7c/podcast/play/106918225/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-15%2F405730475-44100-2-1165139b5609c.mp3" data-title="SemiAnalysis&#x27; Jeremie Eliahou Ontiveros on all things datacenter / power" data-show="Yet Another Value Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/59/e5/14/59e514e5-67cf-2165-de6f-f74b2325f1a6/mza_833628887940046125.jpg/120x120bb.jpg"><span class="g">&#9654;</span>1:00:18</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ea/7c/4b/ea7c4b0b-2896-b3d0-c601-b375662a3630/mza_9279396183922450909.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1772360235" target="_blank" rel="noopener">Astronomer CEO Affair at Coldplay Concert, JUUL Approved by the FDA, Is AI Causing Historic Crashouts? | Chris Power, Jeremie Eliahou, Chris Best, Alex Mashrabov, Jesse Pollak, Billy Thalheimer, Jonathan Mortensen, Douwe Kiela &amp; More</a><div class="show">TBPN</div><div class="epfoot"><span class="date">2025-07-17</span><button class="playbtn" data-audio="https://media.transistor.fm/92b70fff/d070ad62.mp3" data-title="Astronomer CEO Affair at Coldplay Concert, JUUL Approved by the FDA, Is AI Causing Historic Crashouts? | Chris Power, Jeremie Eliahou, Chris Best, Alex Mashrabov, Jesse Pollak, Billy Thalheimer, Jonathan Mortensen, Douwe Kiela &amp; More" data-show="TBPN" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/ea/7c/4b/ea7c4b0b-2896-b3d0-c601-b375662a3630/mza_9279396183922450909.jpg/120x120bb.jpg"><span class="g">&#9654;</span>3:53:42</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/59/e5/14/59e514e5-67cf-2165-de6f-f74b2325f1a6/mza_833628887940046125.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1526149547" target="_blank" rel="noopener">SemiAnalysis&#x27; Jeremie Eliahou Ontiveros on the supply/demand dynamics of AI and data centers</a><div class="show">Yet Another Value Podcast</div><div class="epfoot"><span class="date">2025-02-11</span><button class="playbtn" data-audio="https://anchor.fm/s/c628cb7c/podcast/play/98340947/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-1-11%2F3d973856-f380-ce95-c071-f3a16127e60b.mp3" data-title="SemiAnalysis&#x27; Jeremie Eliahou Ontiveros on the supply/demand dynamics of AI and data centers" data-show="Yet Another Value Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts122/v4/59/e5/14/59e514e5-67cf-2165-de6f-f74b2325f1a6/mza_833628887940046125.jpg/120x120bb.jpg"><span class="g">&#9654;</span>1:03:13</button></div></div></li>
 </ol>
 
 
@@ -117,6 +139,68 @@ footer a { margin-right: 1.1rem; }
     });
   }
   apply();
+})();
+</script>
+
+<div class="mini" id="mini" hidden>
+  <div class="inner">
+    <div class="mini-top">
+      <img class="mini-art" id="m-art" alt="">
+      <div class="mini-meta"><div class="mini-title" id="m-title"></div><div class="mini-show" id="m-show"></div></div>
+      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds">&#8634;30</button>
+      <button class="mini-play" id="m-play" aria-label="Play or pause"></button>
+      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds">90&#8635;</button>
+      <button class="mini-close" id="m-close" aria-label="Close player">&times;</button>
+    </div>
+    <div class="mini-bar">
+      <span class="mini-time" id="m-cur">0:00</span>
+      <input class="mini-seek" id="m-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+      <span class="mini-time rem" id="m-rem"></span>
+    </div>
+  </div>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+(function(){
+  var A = document.getElementById('player'), mini = document.getElementById('mini');
+  if (!A) return;
+  var mPlay = document.getElementById('m-play'), mArt = document.getElementById('m-art');
+  var mTitle = document.getElementById('m-title'), mShow = document.getElementById('m-show');
+  var mCur = document.getElementById('m-cur'), mRem = document.getElementById('m-rem'), mSeek = document.getElementById('m-seek');
+  var current = null, seeking = false;
+  var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), x = s%60; return (h ? h + ':' + (m<10?'0':'') : '') + m + ':' + (x<10?'0':'') + x; }
+  function icon() { mPlay.innerHTML = A.paused ? PLAY : PAUSE; }
+  function marks() { var b = document.querySelectorAll('.playbtn'); for (var i=0;i<b.length;i++) b[i].classList.toggle('active', b[i] === current); }
+  function load(btn) {
+    current = btn;
+    A.src = btn.getAttribute('data-audio');
+    mTitle.textContent = btn.getAttribute('data-title');
+    mShow.textContent = btn.getAttribute('data-show');
+    var art = btn.getAttribute('data-art');
+    if (art) { mArt.src = art; mArt.style.visibility = ''; } else { mArt.style.visibility = 'hidden'; }
+    mini.hidden = false; document.body.style.paddingBottom = '128px';
+    A.play(); marks();
+  }
+  document.addEventListener('click', function(e) {
+    var b = e.target.closest ? e.target.closest('.playbtn') : null;
+    if (!b) return;
+    if (b === current) { A.paused ? A.play() : A.pause(); } else { load(b); }
+  });
+  mPlay.addEventListener('click', function() { A.paused ? A.play() : A.pause(); });
+  document.getElementById('m-back').addEventListener('click', function() { A.currentTime = Math.max(0, A.currentTime - 30); });
+  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min((A.duration || 1e9), A.currentTime + 90); });
+  document.getElementById('m-close').addEventListener('click', function() { A.pause(); mini.hidden = true; document.body.style.paddingBottom = ''; current = null; marks(); });
+  A.addEventListener('play', icon); A.addEventListener('pause', icon);
+  A.addEventListener('timeupdate', function() {
+    mCur.textContent = fmt(A.currentTime);
+    mRem.textContent = A.duration ? '-' + fmt(A.duration - A.currentTime) : '';
+    if (A.duration && !seeking) mSeek.value = String(Math.round(A.currentTime / A.duration * 1000));
+  });
+  mSeek.addEventListener('input', function() { seeking = true; });
+  mSeek.addEventListener('change', function() { if (A.duration) A.currentTime = mSeek.value / 1000 * A.duration; seeking = false; });
+  icon();
 })();
 </script>
 </body>

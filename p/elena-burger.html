@@ -33,7 +33,29 @@ ol.eps li { display: flex; gap: 1rem; padding: 1rem 0; border-top: 1px solid var
 .eptitle { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 600; color: var(--ink); line-height: 1.35; }
 a.eptitle:hover { text-decoration: underline; }
 .show { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
-.date { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+.epfoot { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-top: 0.35rem; }
+.date { font-size: 0.8rem; color: var(--muted); }
+.durtxt { font-size: 0.8rem; color: var(--muted); }
+.playbtn { font: inherit; font-size: 0.8rem; font-weight: 600; color: var(--accent); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 0.22rem 0.7rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+.playbtn:hover { border-color: var(--accent); }
+.playbtn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.playbtn .g { font-size: 0.62em; line-height: 1; }
+.mini[hidden] { display: none; }
+.mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
+.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.6rem 24px 0.75rem; }
+.mini-top { display: flex; align-items: center; gap: 0.75rem; }
+.mini-art { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
+.mini-meta { min-width: 0; flex: 1 1 auto; }
+.mini-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-show { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-skip { font: inherit; font-size: 0.72rem; font-weight: 700; color: var(--ink); background: none; border: none; cursor: pointer; flex: 0 0 auto; letter-spacing: -0.02em; }
+.mini-play { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.mini-play svg { width: 20px; height: 20px; fill: #fff; }
+.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; }
+.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+.mini-time { font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 34px; }
+.mini-time.rem { text-align: right; }
+.mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
 .filters .tab:hover { border-color: var(--muted); }
@@ -72,14 +94,14 @@ footer a { margin-right: 1.1rem; }
 
 
 <ol class="eps" id="eps">
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">How Global Networks Are Reshaping Startup Success</a><div class="show">The a16z Show</div><div class="date">2026-08-20</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">The Two Ways to Sell AI: Lighthouse or Landgrab?</a><div class="show">The a16z Show</div><div class="date">2026-08-13</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">The Engine Powering Open-Source AI</a><div class="show">The a16z Show</div><div class="date">2026-08-06</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/96/9a/de/969ade01-b527-6ce7-c0c6-7a2e1ef24dab/mza_2451383717579494952.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1740178076" target="_blank" rel="noopener">Inside vLLM: The Engine Powering Open-Source AI</a><div class="show">AI + a16z</div><div class="date">2026-08-06</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">Is Software Losing Its Head?</a><div class="show">The a16z Show</div><div class="date">2026-07-07</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">Workday’s Last Workday? AI and the Future of Enterprise Software</a><div class="show">The a16z Show</div><div class="date">2026-04-30</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/96/9a/de/969ade01-b527-6ce7-c0c6-7a2e1ef24dab/mza_2451383717579494952.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1740178076" target="_blank" rel="noopener">Why We Need Continual Learning</a><div class="show">AI + a16z</div><div class="date">2026-04-28</div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9b/9a/e8/9b9ae8bb-739b-e2a1-3e53-2ff60589f8d4/mza_3192380371801794798.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1622312549" target="_blank" rel="noopener">The Metaverse, Crypto, Virtual Society</a><div class="show">a16z crypto show</div><div class="date">2022-10-21</div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">How Global Networks Are Reshaping Startup Success</a><div class="show">The a16z Show</div><div class="epfoot"><span class="date">2026-08-20</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/00806283-934c-4cfa-9593-090db70ce483/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&amp;awEpisodeId=00806283-934c-4cfa-9593-090db70ce483&amp;feed=JGE3yC0V" data-title="How Global Networks Are Reshaping Startup Success" data-show="The a16z Show" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg"><span class="g">&#9654;</span>45:44</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">The Two Ways to Sell AI: Lighthouse or Landgrab?</a><div class="show">The a16z Show</div><div class="epfoot"><span class="date">2026-08-13</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/27b5d98e-8e97-4611-b829-685b32382349/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&amp;awEpisodeId=27b5d98e-8e97-4611-b829-685b32382349&amp;feed=JGE3yC0V" data-title="The Two Ways to Sell AI: Lighthouse or Landgrab?" data-show="The a16z Show" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg"><span class="g">&#9654;</span>44:37</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">The Engine Powering Open-Source AI</a><div class="show">The a16z Show</div><div class="epfoot"><span class="date">2026-08-06</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/40ae9846-5fcf-49d2-95de-fa631a615ad4/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&amp;awEpisodeId=40ae9846-5fcf-49d2-95de-fa631a615ad4&amp;feed=JGE3yC0V" data-title="The Engine Powering Open-Source AI" data-show="The a16z Show" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg"><span class="g">&#9654;</span>46:49</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/96/9a/de/969ade01-b527-6ce7-c0c6-7a2e1ef24dab/mza_2451383717579494952.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1740178076" target="_blank" rel="noopener">Inside vLLM: The Engine Powering Open-Source AI</a><div class="show">AI + a16z</div><div class="epfoot"><span class="date">2026-08-06</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/112866f3-1a50-4a8d-b12e-850b73e71b33/episodes/bd288922-f2a9-44c6-9363-8971c973706f/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=112866f3-1a50-4a8d-b12e-850b73e71b33&amp;awEpisodeId=bd288922-f2a9-44c6-9363-8971c973706f&amp;feed=Hb_IuXOo" data-title="Inside vLLM: The Engine Powering Open-Source AI" data-show="AI + a16z" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/96/9a/de/969ade01-b527-6ce7-c0c6-7a2e1ef24dab/mza_2451383717579494952.jpg/120x120bb.jpg"><span class="g">&#9654;</span>46:49</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">Is Software Losing Its Head?</a><div class="show">The a16z Show</div><div class="epfoot"><span class="date">2026-07-07</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/fc912d16-715f-4956-bf42-2d0389333812/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&amp;awEpisodeId=fc912d16-715f-4956-bf42-2d0389333812&amp;feed=JGE3yC0V" data-title="Is Software Losing Its Head?" data-show="The a16z Show" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg"><span class="g">&#9654;</span>1:01:24</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id842818711" target="_blank" rel="noopener">Workday’s Last Workday? AI and the Future of Enterprise Software</a><div class="show">The a16z Show</div><div class="epfoot"><span class="date">2026-04-30</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/3f86df7b-51c6-4101-88a2-550dba782de8/episodes/fb2d2c68-4c48-447a-99da-a36675154f3e/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=3f86df7b-51c6-4101-88a2-550dba782de8&amp;awEpisodeId=fb2d2c68-4c48-447a-99da-a36675154f3e&amp;feed=JGE3yC0V" data-title="Workday’s Last Workday? AI and the Future of Enterprise Software" data-show="The a16z Show" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/3e/04/91/3e049169-5b95-784c-2197-01cfff9f41eb/mza_10026788811025472218.jpg/120x120bb.jpg"><span class="g">&#9654;</span>29:13</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/96/9a/de/969ade01-b527-6ce7-c0c6-7a2e1ef24dab/mza_2451383717579494952.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1740178076" target="_blank" rel="noopener">Why We Need Continual Learning</a><div class="show">AI + a16z</div><div class="epfoot"><span class="date">2026-04-28</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/112866f3-1a50-4a8d-b12e-850b73e71b33/episodes/153ddfe2-39ec-4e30-bd0d-e1fb8030dd19/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=112866f3-1a50-4a8d-b12e-850b73e71b33&amp;awEpisodeId=153ddfe2-39ec-4e30-bd0d-e1fb8030dd19&amp;feed=Hb_IuXOo" data-title="Why We Need Continual Learning" data-show="AI + a16z" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/96/9a/de/969ade01-b527-6ce7-c0c6-7a2e1ef24dab/mza_2451383717579494952.jpg/120x120bb.jpg"><span class="g">&#9654;</span>18:38</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9b/9a/e8/9b9ae8bb-739b-e2a1-3e53-2ff60589f8d4/mza_3192380371801794798.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1622312549" target="_blank" rel="noopener">The Metaverse, Crypto, Virtual Society</a><div class="show">a16z crypto show</div><div class="epfoot"><span class="date">2022-10-21</span><button class="playbtn" data-audio="https://mgln.ai/e/1344/afp-848985-injected.calisto.simplecastaudio.com/bf52be5a-9faf-45fb-9bc3-bb4270ec53d9/episodes/8d152905-3ff2-4913-8caf-336bc26bfdf5/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=bf52be5a-9faf-45fb-9bc3-bb4270ec53d9&amp;awEpisodeId=8d152905-3ff2-4913-8caf-336bc26bfdf5&amp;feed=XPOpH7r4" data-title="The Metaverse, Crypto, Virtual Society" data-show="a16z crypto show" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9b/9a/e8/9b9ae8bb-739b-e2a1-3e53-2ff60589f8d4/mza_3192380371801794798.jpg/120x120bb.jpg"><span class="g">&#9654;</span>1:21:55</button></div></div></li>
 </ol>
 
 
@@ -116,6 +138,68 @@ footer a { margin-right: 1.1rem; }
     });
   }
   apply();
+})();
+</script>
+
+<div class="mini" id="mini" hidden>
+  <div class="inner">
+    <div class="mini-top">
+      <img class="mini-art" id="m-art" alt="">
+      <div class="mini-meta"><div class="mini-title" id="m-title"></div><div class="mini-show" id="m-show"></div></div>
+      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds">&#8634;30</button>
+      <button class="mini-play" id="m-play" aria-label="Play or pause"></button>
+      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds">90&#8635;</button>
+      <button class="mini-close" id="m-close" aria-label="Close player">&times;</button>
+    </div>
+    <div class="mini-bar">
+      <span class="mini-time" id="m-cur">0:00</span>
+      <input class="mini-seek" id="m-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+      <span class="mini-time rem" id="m-rem"></span>
+    </div>
+  </div>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+(function(){
+  var A = document.getElementById('player'), mini = document.getElementById('mini');
+  if (!A) return;
+  var mPlay = document.getElementById('m-play'), mArt = document.getElementById('m-art');
+  var mTitle = document.getElementById('m-title'), mShow = document.getElementById('m-show');
+  var mCur = document.getElementById('m-cur'), mRem = document.getElementById('m-rem'), mSeek = document.getElementById('m-seek');
+  var current = null, seeking = false;
+  var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), x = s%60; return (h ? h + ':' + (m<10?'0':'') : '') + m + ':' + (x<10?'0':'') + x; }
+  function icon() { mPlay.innerHTML = A.paused ? PLAY : PAUSE; }
+  function marks() { var b = document.querySelectorAll('.playbtn'); for (var i=0;i<b.length;i++) b[i].classList.toggle('active', b[i] === current); }
+  function load(btn) {
+    current = btn;
+    A.src = btn.getAttribute('data-audio');
+    mTitle.textContent = btn.getAttribute('data-title');
+    mShow.textContent = btn.getAttribute('data-show');
+    var art = btn.getAttribute('data-art');
+    if (art) { mArt.src = art; mArt.style.visibility = ''; } else { mArt.style.visibility = 'hidden'; }
+    mini.hidden = false; document.body.style.paddingBottom = '128px';
+    A.play(); marks();
+  }
+  document.addEventListener('click', function(e) {
+    var b = e.target.closest ? e.target.closest('.playbtn') : null;
+    if (!b) return;
+    if (b === current) { A.paused ? A.play() : A.pause(); } else { load(b); }
+  });
+  mPlay.addEventListener('click', function() { A.paused ? A.play() : A.pause(); });
+  document.getElementById('m-back').addEventListener('click', function() { A.currentTime = Math.max(0, A.currentTime - 30); });
+  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min((A.duration || 1e9), A.currentTime + 90); });
+  document.getElementById('m-close').addEventListener('click', function() { A.pause(); mini.hidden = true; document.body.style.paddingBottom = ''; current = null; marks(); });
+  A.addEventListener('play', icon); A.addEventListener('pause', icon);
+  A.addEventListener('timeupdate', function() {
+    mCur.textContent = fmt(A.currentTime);
+    mRem.textContent = A.duration ? '-' + fmt(A.duration - A.currentTime) : '';
+    if (A.duration && !seeking) mSeek.value = String(Math.round(A.currentTime / A.duration * 1000));
+  });
+  mSeek.addEventListener('input', function() { seeking = true; });
+  mSeek.addEventListener('change', function() { if (A.duration) A.currentTime = mSeek.value / 1000 * A.duration; seeking = false; });
+  icon();
 })();
 </script>
 </body>
