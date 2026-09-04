@@ -11,6 +11,7 @@
 <meta property="og:title" content="People you can follow on Attunex">
 <meta property="og:url" content="https://attunex.app/people">
 <meta name="apple-itunes-app" content="app-id=6786431074">
+<script src="/app.js?v=1" defer></script>
 <style>:root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --card:#faf9f8; }
 * { box-sizing: border-box; }
 body { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; max-width: 720px; margin: 0 auto; padding: 56px 24px 72px; color: var(--ink); line-height: 1.6; }
@@ -39,23 +40,6 @@ a.eptitle:hover { text-decoration: underline; }
 .playbtn:hover { border-color: var(--accent); }
 .playbtn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 .playbtn .g { font-size: 0.62em; line-height: 1; }
-.mini[hidden] { display: none; }
-.mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
-.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.95rem 24px 1.15rem; }
-.mini-top { display: flex; align-items: center; gap: 0.8rem; }
-.mini-art { width: 54px; height: 54px; border-radius: 10px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
-.mini-meta { min-width: 0; flex: 1 1 auto; }
-.mini-title { font-weight: 600; font-size: 0.98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-show { font-size: 0.82rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.05rem; }
-.mini-skip { background: none; border: none; cursor: pointer; color: var(--ink); flex: 0 0 auto; padding: 4px; display: flex; align-items: center; }
-.mini-skip svg { width: 30px; height: 30px; }
-.mini-play { flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.mini-play svg { width: 24px; height: 24px; fill: #fff; }
-.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.35rem; line-height: 1; cursor: pointer; padding: 0 0.15rem; }
-.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; }
-.mini-time { font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 38px; }
-.mini-time.rem { text-align: right; }
-.mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
 ol.eps li.playing { background: rgba(226,86,43,0.07); border-radius: 10px; box-shadow: 0 0 0 8px rgba(226,86,43,0.07); }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
@@ -502,22 +486,6 @@ footer a { margin-right: 1.1rem; }
 <li data-name="盛颖"><a href="/p/person-b57549">盛颖</a></li>
 <li data-name="黄东旭"><a href="/p/person-d43324">黄东旭</a></li>
 </ul>
-<script>
-(function(){
-  var q = document.getElementById('psearch');
-  if (!q) return;
-  var items = document.querySelectorAll('.hublist li'), nr = document.getElementById('noresults');
-  q.addEventListener('input', function() {
-    var t = this.value.trim().toLowerCase(), shown = 0;
-    for (var i = 0; i < items.length; i++) {
-      var m = !t || items[i].getAttribute('data-name').indexOf(t) !== -1;
-      items[i].style.display = m ? '' : 'none';
-      if (m) shown++;
-    }
-    if (nr) nr.style.display = shown ? 'none' : '';
-  });
-})();
-</script>
 <footer>
 <nav><a href="/">Home</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
 </footer>

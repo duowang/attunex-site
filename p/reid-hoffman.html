@@ -12,6 +12,7 @@
 <meta property="og:description" content="Every podcast episode featuring Reid Hoffman: 90 featured appearances across 33 shows.">
 <meta property="og:url" content="https://attunex.app/p/reid-hoffman">
 <meta name="apple-itunes-app" content="app-id=6786431074">
+<script src="/app.js?v=1" defer></script>
 <style>:root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --card:#faf9f8; }
 * { box-sizing: border-box; }
 body { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; max-width: 720px; margin: 0 auto; padding: 56px 24px 72px; color: var(--ink); line-height: 1.6; }
@@ -40,23 +41,6 @@ a.eptitle:hover { text-decoration: underline; }
 .playbtn:hover { border-color: var(--accent); }
 .playbtn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 .playbtn .g { font-size: 0.62em; line-height: 1; }
-.mini[hidden] { display: none; }
-.mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
-.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.95rem 24px 1.15rem; }
-.mini-top { display: flex; align-items: center; gap: 0.8rem; }
-.mini-art { width: 54px; height: 54px; border-radius: 10px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
-.mini-meta { min-width: 0; flex: 1 1 auto; }
-.mini-title { font-weight: 600; font-size: 0.98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-show { font-size: 0.82rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.05rem; }
-.mini-skip { background: none; border: none; cursor: pointer; color: var(--ink); flex: 0 0 auto; padding: 4px; display: flex; align-items: center; }
-.mini-skip svg { width: 30px; height: 30px; }
-.mini-play { flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.mini-play svg { width: 24px; height: 24px; fill: #fff; }
-.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.35rem; line-height: 1; cursor: pointer; padding: 0 0.15rem; }
-.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; }
-.mini-time { font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 38px; }
-.mini-time.rem { text-align: right; }
-.mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
 ol.eps li.playing { background: rgba(226,86,43,0.07); border-radius: 10px; box-shadow: 0 0 0 8px rgba(226,86,43,0.07); }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
@@ -161,7 +145,7 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/8f/46/88/8f4688ec-087f-28a1-7f6d-0d401d2e8a00/mza_14043856542292072583.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1668002688" target="_blank" rel="noopener">A No Priors clip show: the best of 2023</a><div class="show">No Priors: Artificial Intelligence | Technology | Startups</div><div class="epfoot"><span class="date">2024-01-11</span><button class="playbtn" data-audio="https://traffic.megaphone.fm/PDP4266021555.mp3?updated=1704943514" data-title="A No Priors clip show: the best of 2023" data-show="No Priors: Artificial Intelligence | Technology | Startups" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/8f/46/88/8f4688ec-087f-28a1-7f6d-0d401d2e8a00/mza_14043856542292072583.jpg/120x120bb.jpg" data-dur="1161"><span class="g">&#9654;</span><span class="t">19:21</span></button></div></div></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/aa/59/40/aa594082-6fbc-63c6-1cd4-ea0bb729e4d1/mza_13381804916870131738.png/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1542480882" target="_blank" rel="noopener">War stories from early days of engineering at LinkedIn | David Henke (LinkedIn, Yahoo)</a><div class="show">Software Misadventures <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2024-01-04</span><button class="playbtn" data-audio="https://traffic.libsyn.com/secure/softwaremisadventures/henke_v2_audio_final.mp3?dest-id=2497004" data-title="War stories from early days of engineering at LinkedIn | David Henke (LinkedIn, Yahoo)" data-show="Software Misadventures" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/aa/59/40/aa594082-6fbc-63c6-1cd4-ea0bb729e4d1/mza_13381804916870131738.png/120x120bb.jpg" data-dur="3440"><span class="g">&#9654;</span><span class="t">57:20</span></button></div></div></li>
 <li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/f5/74/7a/f5747af4-b547-5f13-86cf-096b9d0ea903/mza_4734455435556032651.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id266391367" target="_blank" rel="noopener">Live on Stage: Reid Hoffman and Fei-Fei Li</a><div class="show">Uncanny Valley | WIRED</div><div class="epfoot"><span class="date">2023-12-28</span><button class="playbtn" data-audio="https://www.podtrac.com/pts/redirect.mp3/tracking.swap.fm/track/uJwtcKQUPuqBQPfusm59/traffic.megaphone.fm/CNE4259074837.mp3" data-title="Live on Stage: Reid Hoffman and Fei-Fei Li" data-show="Uncanny Valley | WIRED" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/f5/74/7a/f5747af4-b547-5f13-86cf-096b9d0ea903/mza_4734455435556032651.jpg/120x120bb.jpg" data-dur="1950"><span class="g">&#9654;</span><span class="t">32:30</span></button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1711256210" target="_blank" rel="noopener">Two Titans on the Future of AI (with Reid Hoffman &amp; Vinod Khosla)</a><div class="show">Newcomer Pod</div><div class="epfoot"><span class="date">2023-11-30</span><button class="playbtn" data-audio="https://anchor.fm/s/ffef15f0/podcast/play/97011450/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-13%2F393025301-44100-2-2aa0ee0fd52b7083.mp3" data-title="Two Titans on the Future of AI (with Reid Hoffman &amp; Vinod Khosla)" data-show="Newcomer Pod" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" data-dur="2668"><span class="g">&#9654;</span><span class="t">44:28</span></button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1582647825" target="_blank" rel="noopener">Two Titans on the Future of AI (with Reid Hoffman &amp; Vinod Khosla)</a><div class="show">Newcomer Pod</div><div class="epfoot"><span class="date">2023-11-30</span><button class="playbtn" data-audio="https://anchor.fm/s/ffef15f0/podcast/play/97011450/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-13%2F393025301-44100-2-2aa0ee0fd52b7083.mp3" data-title="Two Titans on the Future of AI (with Reid Hoffman &amp; Vinod Khosla)" data-show="Newcomer Pod" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" data-dur="2668"><span class="g">&#9654;</span><span class="t">44:28</span></button></div></div></li>
 <li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/13/4b/81/134b8173-d713-cbb2-2d3b-4a8692bd87c0/mza_996010941061703843.jpeg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1227971746" target="_blank" rel="noopener">AI + You | 4 ways to scale your personal growth</a><div class="show">Masters of Scale</div><div class="epfoot"><span class="date">2023-10-17</span><button class="playbtn" data-audio="https://dts.podtrac.com/redirect.mp3/prfx.byspotify.com/e/pscrb.fm/rss/p/tracking.swap.fm/track/7G0M4p2bOLP0mP50O3CD/rss.art19.com/episodes/bbabc930-950d-447d-8dc1-c7fafec8eb76.mp3?rss_browser=BAhJIglpVE1TBjoGRVQ%3D--4577cbcc3cc5282be318e551563630a2c5c2f06f" data-title="AI + You | 4 ways to scale your personal growth" data-show="Masters of Scale" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/13/4b/81/134b8173-d713-cbb2-2d3b-4a8692bd87c0/mza_996010941061703843.jpeg/120x120bb.jpg" data-dur="2020"><span class="g">&#9654;</span><span class="t">33:40</span></button></div></div></li>
 <li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/13/4b/81/134b8173-d713-cbb2-2d3b-4a8692bd87c0/mza_996010941061703843.jpeg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1227971746" target="_blank" rel="noopener">AI + You | 5 steps for impactful experimentation</a><div class="show">Masters of Scale</div><div class="epfoot"><span class="date">2023-10-10</span><button class="playbtn" data-audio="https://dts.podtrac.com/redirect.mp3/prfx.byspotify.com/e/pscrb.fm/rss/p/tracking.swap.fm/track/7G0M4p2bOLP0mP50O3CD/rss.art19.com/episodes/79ac7085-b5dc-4992-bfc6-6eb24f717641.mp3?rss_browser=BAhJIglpVE1TBjoGRVQ%3D--4577cbcc3cc5282be318e551563630a2c5c2f06f" data-title="AI + You | 5 steps for impactful experimentation" data-show="Masters of Scale" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/13/4b/81/134b8173-d713-cbb2-2d3b-4a8692bd87c0/mza_996010941061703843.jpeg/120x120bb.jpg" data-dur="2469"><span class="g">&#9654;</span><span class="t">41:09</span></button></div></div></li>
 <li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0a/c6/53/0ac65311-3ff7-44f7-fd5e-652e84d34cf1/mza_10791381164333289979.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id150892556" target="_blank" rel="noopener">Reid Hoffman — AI, and What It Means to Be (More) Human</a><div class="show">On Being with Krista Tippett</div><div class="epfoot"><span class="date">2023-10-05</span><button class="playbtn" data-audio="https://dts.podtrac.com/redirect.mp3/afp-901179-injected.calisto.simplecastaudio.com/85760130-020c-4d30-8e15-26c5c451394f/episodes/bbd72f51-cf78-46e7-83fc-e70b12959f29/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=85760130-020c-4d30-8e15-26c5c451394f&amp;awEpisodeId=bbd72f51-cf78-46e7-83fc-e70b12959f29&amp;feed=AuAxH_Bf" data-title="Reid Hoffman — AI, and What It Means to Be (More) Human" data-show="On Being with Krista Tippett" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0a/c6/53/0ac65311-3ff7-44f7-fd5e-652e84d34cf1/mza_10791381164333289979.jpg/120x120bb.jpg" data-dur="5000"><span class="g">&#9654;</span><span class="t">1:23:20</span></button></div></div></li>
@@ -186,120 +170,5 @@ footer a { margin-right: 1.1rem; }
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
 <p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
-<script>
-(function(){
-  var ol = document.getElementById('eps');
-  if (!ol) return;
-  var pills = document.querySelectorAll('.filters .tab');
-  var note = document.getElementById('more-note');
-  function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
-  function apply() {
-    var controlled = {}, active = {};
-    for (var i = 0; i < pills.length; i++) {
-      var key = pills[i].getAttribute('data-filter');
-      controlled[key] = 1;
-      if (pills[i].classList.contains('active')) active[key] = 1;
-    }
-    var lis = ol.getElementsByTagName('li');
-    for (var j = 0; j < lis.length; j++) {
-      var c = cat(lis[j]);
-      lis[j].style.display = (!controlled[c] || active[c]) ? '' : 'none';
-    }
-    if (note) note.style.display = (!controlled['featured'] || active['featured']) ? '' : 'none';
-  }
-  for (var k = 0; k < pills.length; k++) {
-    pills[k].addEventListener('click', function() {
-      var on = this.classList.toggle('active');
-      this.setAttribute('aria-pressed', on ? 'true' : 'false');
-      apply();
-    });
-  }
-  apply();
-})();
-</script>
-
-<div class="mini" id="mini" hidden>
-  <div class="inner">
-    <div class="mini-top">
-      <img class="mini-art" id="m-art" alt="">
-      <div class="mini-meta"><div class="mini-title" id="m-title"></div><div class="mini-show" id="m-show"></div></div>
-      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12a7 7 0 1 0 2.05-4.95" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.5 4.5 5 8 8.4 6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor">30</text></svg></button>
-      <button class="mini-play" id="m-play" aria-label="Play or pause"></button>
-      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M19 12a7 7 0 1 1-2.05-4.95" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20.5 4.5 19 8 15.6 6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor">90</text></svg></button>
-      <button class="mini-close" id="m-close" aria-label="Close player">&times;</button>
-    </div>
-    <div class="mini-bar">
-      <span class="mini-time" id="m-cur">0:00</span>
-      <input class="mini-seek" id="m-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
-      <span class="mini-time rem" id="m-rem"></span>
-    </div>
-  </div>
-</div>
-<audio id="player" preload="none"></audio>
-<script>
-(function(){
-  var A = document.getElementById('player'), mini = document.getElementById('mini');
-  if (!A) return;
-  var mPlay = document.getElementById('m-play'), mArt = document.getElementById('m-art');
-  var mTitle = document.getElementById('m-title'), mShow = document.getElementById('m-show');
-  var mCur = document.getElementById('m-cur'), mRem = document.getElementById('m-rem'), mSeek = document.getElementById('m-seek');
-  var current = null, seeking = false;
-  var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-  var PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
-  var RPAUSE = '<svg viewBox="0 0 24 24" width="9" height="9" style="vertical-align:middle"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>';
-  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), x = s%60; return (h ? h + ':' + (m<10?'0':'') : '') + m + ':' + (x<10?'0':'') + x; }
-  function icon() { mPlay.innerHTML = A.paused ? PLAY : PAUSE; }
-  function total() { var d = A.duration; return (d && isFinite(d) && d > 0) ? d : (A._dur || 0); }
-  function rowIcon() { if (current) current.querySelector('.g').innerHTML = A.paused ? '&#9654;' : RPAUSE; }
-  function restore(btn) {
-    if (!btn) return;
-    btn.querySelector('.g').innerHTML = '&#9654;';
-    var t = btn.querySelector('.t'); if (t) { var d = parseFloat(btn.getAttribute('data-dur')) || 0; t.textContent = d ? fmt(d) : 'Play'; }
-  }
-  function marks() {
-    var b = document.querySelectorAll('.playbtn');
-    for (var i = 0; i < b.length; i++) {
-      var on = b[i] === current;
-      b[i].classList.toggle('active', on);
-      var li = b[i].closest('li'); if (li) li.classList.toggle('playing', on);
-    }
-  }
-  function load(btn) {
-    if (current && current !== btn) restore(current);
-    current = btn;
-    A.src = btn.getAttribute('data-audio');
-    A._dur = parseFloat(btn.getAttribute('data-dur')) || 0;
-    mTitle.textContent = btn.getAttribute('data-title');
-    mShow.textContent = btn.getAttribute('data-show');
-    var art = btn.getAttribute('data-art');
-    if (art) { mArt.src = art; mArt.style.visibility = ''; } else { mArt.style.visibility = 'hidden'; }
-    mini.hidden = false; document.body.style.paddingBottom = '150px';
-    mCur.textContent = '0:00'; mRem.textContent = A._dur ? '-' + fmt(A._dur) : ''; mSeek.value = '0';
-    A.play(); marks();
-  }
-  document.addEventListener('click', function(e) {
-    var b = e.target.closest ? e.target.closest('.playbtn') : null;
-    if (!b) return;
-    if (b === current) { A.paused ? A.play() : A.pause(); } else { load(b); }
-  });
-  mPlay.addEventListener('click', function() { A.paused ? A.play() : A.pause(); });
-  document.getElementById('m-back').addEventListener('click', function() { A.currentTime = Math.max(0, A.currentTime - 30); });
-  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min(total() || 1e9, A.currentTime + 90); });
-  document.getElementById('m-close').addEventListener('click', function() { A.pause(); restore(current); mini.hidden = true; document.body.style.paddingBottom = ''; current = null; marks(); });
-  A.addEventListener('play', function() { icon(); rowIcon(); });
-  A.addEventListener('pause', function() { icon(); rowIcon(); });
-  A.addEventListener('ended', function() { restore(current); });
-  A.addEventListener('timeupdate', function() {
-    var T = total();
-    mCur.textContent = fmt(A.currentTime);
-    mRem.textContent = T ? '-' + fmt(Math.max(0, T - A.currentTime)) : '';
-    if (T && !seeking) mSeek.value = String(Math.round(A.currentTime / T * 1000));
-    if (current && T) { var rt = current.querySelector('.t'); if (rt) rt.textContent = fmt(Math.max(0, T - A.currentTime)); }
-  });
-  mSeek.addEventListener('input', function() { seeking = true; });
-  mSeek.addEventListener('change', function() { var T = total(); if (T) A.currentTime = mSeek.value / 1000 * T; seeking = false; });
-  icon();
-})();
-</script>
 </body>
 </html>

@@ -12,6 +12,7 @@
 <meta property="og:description" content="Every podcast episode featuring Jack Clark: 26 featured appearances across 24 shows.">
 <meta property="og:url" content="https://attunex.app/p/jack-clark">
 <meta name="apple-itunes-app" content="app-id=6786431074">
+<script src="/app.js?v=1" defer></script>
 <style>:root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --card:#faf9f8; }
 * { box-sizing: border-box; }
 body { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; max-width: 720px; margin: 0 auto; padding: 56px 24px 72px; color: var(--ink); line-height: 1.6; }
@@ -40,23 +41,6 @@ a.eptitle:hover { text-decoration: underline; }
 .playbtn:hover { border-color: var(--accent); }
 .playbtn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 .playbtn .g { font-size: 0.62em; line-height: 1; }
-.mini[hidden] { display: none; }
-.mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
-.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.95rem 24px 1.15rem; }
-.mini-top { display: flex; align-items: center; gap: 0.8rem; }
-.mini-art { width: 54px; height: 54px; border-radius: 10px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
-.mini-meta { min-width: 0; flex: 1 1 auto; }
-.mini-title { font-weight: 600; font-size: 0.98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-show { font-size: 0.82rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.05rem; }
-.mini-skip { background: none; border: none; cursor: pointer; color: var(--ink); flex: 0 0 auto; padding: 4px; display: flex; align-items: center; }
-.mini-skip svg { width: 30px; height: 30px; }
-.mini-play { flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.mini-play svg { width: 24px; height: 24px; fill: #fff; }
-.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.35rem; line-height: 1; cursor: pointer; padding: 0 0.15rem; }
-.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; }
-.mini-time { font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 38px; }
-.mini-time.rem { text-align: right; }
-.mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
 ol.eps li.playing { background: rgba(226,86,43,0.07); border-radius: 10px; box-shadow: 0 0 0 8px rgba(226,86,43,0.07); }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
@@ -111,7 +95,7 @@ footer a { margin-right: 1.1rem; }
 <li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/3d/7b/62/3d7b6206-83fb-453c-5143-6159be4a2ba7/mza_7900682598316426126.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1594471023" target="_blank" rel="noopener">Anthropic Thinks AI Might Destroy the Economy. It&#x27;s Building It Anyway.</a><div class="show">Plain English with Derek Thompson</div><div class="epfoot"><span class="date">2026-03-27</span><button class="playbtn" data-audio="https://traffic.megaphone.fm/GLT2265364145.mp3?updated=1774584057" data-title="Anthropic Thinks AI Might Destroy the Economy. It&#x27;s Building It Anyway." data-show="Plain English with Derek Thompson" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/3d/7b/62/3d7b6206-83fb-453c-5143-6159be4a2ba7/mza_7900682598316426126.jpg/120x120bb.jpg" data-dur="3754"><span class="g">&#9654;</span><span class="t">1:02:34</span></button></div></div></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/3a/af/ad/3aafadad-d3b4-fc0a-4cd1-1c60ac2fdcd5/mza_4908114398175837380.png/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1866997458" target="_blank" rel="noopener">Stanford’s AI Expert Reveals Why You’re Wrong About AI’s Future</a><div class="show">AI to Go Podcast I Real Talk on Enterprise AI <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2026-01-25</span><button class="playbtn" data-audio="https://api.riverside.com/hosting-analytics/media/ae04eeaff3df7a9ab7efd8eb868cf83e00a0cbbf839e188420747bd22f27c1af/eyJlcGlzb2RlSWQiOiI4ODM1MGRjNC05ODZlLTRkZDQtOTQyNy02ZDViNjNmZTQ4OTEiLCJwb2RjYXN0SWQiOiJjODY0YjQ1Yy1iODAyLTRiYjMtYTg3OS01NTNhOTdkMzE4ODIiLCJhY2NvdW50SWQiOiI2OTFhMWQyMjcyODQxMTU2YjIwNmE2NTMiLCJwYXRoIjoibWVkaWEvY2xpcHMvNjk2ZWQ5MTUyM2JhMDViZTg1N2E5YjM3L2FpLXRvLWdvcy1zdHVkaW8tY29tcG9zZXItMjAyNi0xLTIwX18yLTIzLTMzLm1wMyJ9.mp3" data-title="Stanford’s AI Expert Reveals Why You’re Wrong About AI’s Future" data-show="AI to Go Podcast I Real Talk on Enterprise AI" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/3a/af/ad/3aafadad-d3b4-fc0a-4cd1-1c60ac2fdcd5/mza_4908114398175837380.png/120x120bb.jpg" data-dur="2780"><span class="g">&#9654;</span><span class="t">46:20</span></button></div></div></li>
 <li data-grade="mentioned" data-ai="1" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/86/97/0c/86970c37-ecd8-3714-adf9-8b3b40ba05f4/mza_9210023856127645996.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1737037853" target="_blank" rel="noopener">The AI revolution is here. Will the economy survive the transition? - By Michael Burry, Dwarkesh Patel, Patrick McKenzie, and Jack Clark</a><div class="show">AI Article Readings <span class="tag mention">Mentioned</span> <span class="tag ai">AI</span></div><div class="epfoot"><span class="date">2026-01-10</span><button class="playbtn" data-audio="https://api.substack.com/feed/podcast/184155336/7c34a0a3715bfa058de8c3cedfbea9c0.mp3" data-title="The AI revolution is here. Will the economy survive the transition? - By Michael Burry, Dwarkesh Patel, Patrick McKenzie, and Jack Clark" data-show="AI Article Readings" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/86/97/0c/86970c37-ecd8-3714-adf9-8b3b40ba05f4/mza_9210023856127645996.jpg/120x120bb.jpg" data-dur="2573"><span class="g">&#9654;</span><span class="t">42:53</span></button></div></div></li>
-<li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1711256210" target="_blank" rel="noopener">The Tech Quotes That Defined 2025</a><div class="show">Newcomer Pod <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2025-12-31</span><button class="playbtn" data-audio="https://anchor.fm/s/ffef15f0/podcast/play/113310561/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-11-31%2F415249047-44100-2-7c9d0f3e6d304.mp3" data-title="The Tech Quotes That Defined 2025" data-show="Newcomer Pod" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" data-dur="4323"><span class="g">&#9654;</span><span class="t">1:12:03</span></button></div></div></li>
+<li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1582647825" target="_blank" rel="noopener">The Tech Quotes That Defined 2025</a><div class="show">Newcomer Pod <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2025-12-31</span><button class="playbtn" data-audio="https://anchor.fm/s/ffef15f0/podcast/play/113310561/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-11-31%2F415249047-44100-2-7c9d0f3e6d304.mp3" data-title="The Tech Quotes That Defined 2025" data-show="Newcomer Pod" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/5c/90/da/5c90da16-d4fd-aa94-ad4d-0d48f0a9793f/mza_6152591804942457964.jpg/120x120bb.jpg" data-dur="4323"><span class="g">&#9654;</span><span class="t">1:12:03</span></button></div></div></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0c/44/60/0c446078-b00d-0c20-cb92-e9ecdd40fbae/mza_399216115355399766.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1576725819" target="_blank" rel="noopener">T5.E221. INSIDE X LA AI ES UNA CRIATURA REAL Y MISTERIOSA</a><div class="show">xHUB.AI <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2025-10-24</span><button class="playbtn" data-audio="https://www.buzzsprout.com/1806055/episodes/18067709-t5-e221-inside-x-la-ai-es-una-criatura-real-y-misteriosa.mp3" data-title="T5.E221. INSIDE X LA AI ES UNA CRIATURA REAL Y MISTERIOSA" data-show="xHUB.AI" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/0c/44/60/0c446078-b00d-0c20-cb92-e9ecdd40fbae/mza_399216115355399766.jpg/120x120bb.jpg" data-dur="7758"><span class="g">&#9654;</span><span class="t">2:09:18</span></button></div></div></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/c3/30/67/c330676b-2402-432b-0505-12490dc3ccc1/mza_4262545472677654397.jpeg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1522960417" target="_blank" rel="noopener">Erotic ChatGPT, Zuck’s Apple Assault, AI’s Sameness Problem</a><div class="show">Big Technology Podcast <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2025-10-17</span><button class="playbtn" data-audio="https://pdst.fm/e/tracking.swap.fm/track/t7yC0rGPUqahTF4et8YD/pscrb.fm/rss/p/traffic.megaphone.fm/AMPP7442298949.mp3?updated=1760718575" data-title="Erotic ChatGPT, Zuck’s Apple Assault, AI’s Sameness Problem" data-show="Big Technology Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/c3/30/67/c330676b-2402-432b-0505-12490dc3ccc1/mza_4262545472677654397.jpeg/120x120bb.jpg" data-dur="3445"><span class="g">&#9654;</span><span class="t">57:25</span></button></div></div></li>
 <li data-grade="mentioned" data-ai="0" style="display:none"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/f7/b5/04/f7b504e5-acaa-034d-c0dd-6eba70f85628/mza_17518755403545677687.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1807697505" target="_blank" rel="noopener">The Day Small AIs Turned Dangerous (and Meta’s Secret Superintelligence)</a><div class="show">Dylan Curious <span class="tag mention">Mentioned</span></div><div class="epfoot"><span class="date">2025-10-16</span><button class="playbtn" data-audio="https://anchor.fm/s/10364eb60/podcast/play/109713957/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-9-15%2F409316524-44100-2-e680512f7edc5.mp3" data-title="The Day Small AIs Turned Dangerous (and Meta’s Secret Superintelligence)" data-show="Dylan Curious" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/f7/b5/04/f7b504e5-acaa-034d-c0dd-6eba70f85628/mza_17518755403545677687.jpg/120x120bb.jpg" data-dur="1388"><span class="g">&#9654;</span><span class="t">23:08</span></button></div></div></li>
@@ -163,120 +147,5 @@ footer a { margin-right: 1.1rem; }
 <nav><a href="/people">All people</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a></nav>
 <p>Episodes are matched from public podcast feeds and Apple Podcasts.</p>
 </footer>
-<script>
-(function(){
-  var ol = document.getElementById('eps');
-  if (!ol) return;
-  var pills = document.querySelectorAll('.filters .tab');
-  var note = document.getElementById('more-note');
-  function cat(li) { return li.getAttribute('data-ai') === '1' ? 'ai' : li.getAttribute('data-grade'); }
-  function apply() {
-    var controlled = {}, active = {};
-    for (var i = 0; i < pills.length; i++) {
-      var key = pills[i].getAttribute('data-filter');
-      controlled[key] = 1;
-      if (pills[i].classList.contains('active')) active[key] = 1;
-    }
-    var lis = ol.getElementsByTagName('li');
-    for (var j = 0; j < lis.length; j++) {
-      var c = cat(lis[j]);
-      lis[j].style.display = (!controlled[c] || active[c]) ? '' : 'none';
-    }
-    if (note) note.style.display = (!controlled['featured'] || active['featured']) ? '' : 'none';
-  }
-  for (var k = 0; k < pills.length; k++) {
-    pills[k].addEventListener('click', function() {
-      var on = this.classList.toggle('active');
-      this.setAttribute('aria-pressed', on ? 'true' : 'false');
-      apply();
-    });
-  }
-  apply();
-})();
-</script>
-
-<div class="mini" id="mini" hidden>
-  <div class="inner">
-    <div class="mini-top">
-      <img class="mini-art" id="m-art" alt="">
-      <div class="mini-meta"><div class="mini-title" id="m-title"></div><div class="mini-show" id="m-show"></div></div>
-      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12a7 7 0 1 0 2.05-4.95" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.5 4.5 5 8 8.4 6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor">30</text></svg></button>
-      <button class="mini-play" id="m-play" aria-label="Play or pause"></button>
-      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M19 12a7 7 0 1 1-2.05-4.95" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20.5 4.5 19 8 15.6 6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15.5" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor">90</text></svg></button>
-      <button class="mini-close" id="m-close" aria-label="Close player">&times;</button>
-    </div>
-    <div class="mini-bar">
-      <span class="mini-time" id="m-cur">0:00</span>
-      <input class="mini-seek" id="m-seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
-      <span class="mini-time rem" id="m-rem"></span>
-    </div>
-  </div>
-</div>
-<audio id="player" preload="none"></audio>
-<script>
-(function(){
-  var A = document.getElementById('player'), mini = document.getElementById('mini');
-  if (!A) return;
-  var mPlay = document.getElementById('m-play'), mArt = document.getElementById('m-art');
-  var mTitle = document.getElementById('m-title'), mShow = document.getElementById('m-show');
-  var mCur = document.getElementById('m-cur'), mRem = document.getElementById('m-rem'), mSeek = document.getElementById('m-seek');
-  var current = null, seeking = false;
-  var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-  var PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
-  var RPAUSE = '<svg viewBox="0 0 24 24" width="9" height="9" style="vertical-align:middle"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></svg>';
-  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), x = s%60; return (h ? h + ':' + (m<10?'0':'') : '') + m + ':' + (x<10?'0':'') + x; }
-  function icon() { mPlay.innerHTML = A.paused ? PLAY : PAUSE; }
-  function total() { var d = A.duration; return (d && isFinite(d) && d > 0) ? d : (A._dur || 0); }
-  function rowIcon() { if (current) current.querySelector('.g').innerHTML = A.paused ? '&#9654;' : RPAUSE; }
-  function restore(btn) {
-    if (!btn) return;
-    btn.querySelector('.g').innerHTML = '&#9654;';
-    var t = btn.querySelector('.t'); if (t) { var d = parseFloat(btn.getAttribute('data-dur')) || 0; t.textContent = d ? fmt(d) : 'Play'; }
-  }
-  function marks() {
-    var b = document.querySelectorAll('.playbtn');
-    for (var i = 0; i < b.length; i++) {
-      var on = b[i] === current;
-      b[i].classList.toggle('active', on);
-      var li = b[i].closest('li'); if (li) li.classList.toggle('playing', on);
-    }
-  }
-  function load(btn) {
-    if (current && current !== btn) restore(current);
-    current = btn;
-    A.src = btn.getAttribute('data-audio');
-    A._dur = parseFloat(btn.getAttribute('data-dur')) || 0;
-    mTitle.textContent = btn.getAttribute('data-title');
-    mShow.textContent = btn.getAttribute('data-show');
-    var art = btn.getAttribute('data-art');
-    if (art) { mArt.src = art; mArt.style.visibility = ''; } else { mArt.style.visibility = 'hidden'; }
-    mini.hidden = false; document.body.style.paddingBottom = '150px';
-    mCur.textContent = '0:00'; mRem.textContent = A._dur ? '-' + fmt(A._dur) : ''; mSeek.value = '0';
-    A.play(); marks();
-  }
-  document.addEventListener('click', function(e) {
-    var b = e.target.closest ? e.target.closest('.playbtn') : null;
-    if (!b) return;
-    if (b === current) { A.paused ? A.play() : A.pause(); } else { load(b); }
-  });
-  mPlay.addEventListener('click', function() { A.paused ? A.play() : A.pause(); });
-  document.getElementById('m-back').addEventListener('click', function() { A.currentTime = Math.max(0, A.currentTime - 30); });
-  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min(total() || 1e9, A.currentTime + 90); });
-  document.getElementById('m-close').addEventListener('click', function() { A.pause(); restore(current); mini.hidden = true; document.body.style.paddingBottom = ''; current = null; marks(); });
-  A.addEventListener('play', function() { icon(); rowIcon(); });
-  A.addEventListener('pause', function() { icon(); rowIcon(); });
-  A.addEventListener('ended', function() { restore(current); });
-  A.addEventListener('timeupdate', function() {
-    var T = total();
-    mCur.textContent = fmt(A.currentTime);
-    mRem.textContent = T ? '-' + fmt(Math.max(0, T - A.currentTime)) : '';
-    if (T && !seeking) mSeek.value = String(Math.round(A.currentTime / T * 1000));
-    if (current && T) { var rt = current.querySelector('.t'); if (rt) rt.textContent = fmt(Math.max(0, T - A.currentTime)); }
-  });
-  mSeek.addEventListener('input', function() { seeking = true; });
-  mSeek.addEventListener('change', function() { var T = total(); if (T) A.currentTime = mSeek.value / 1000 * T; seeking = false; });
-  icon();
-})();
-</script>
 </body>
 </html>
