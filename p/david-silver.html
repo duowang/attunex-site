@@ -42,20 +42,22 @@ a.eptitle:hover { text-decoration: underline; }
 .playbtn .g { font-size: 0.62em; line-height: 1; }
 .mini[hidden] { display: none; }
 .mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
-.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.6rem 24px 0.75rem; }
-.mini-top { display: flex; align-items: center; gap: 0.75rem; }
-.mini-art { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
+.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.95rem 24px 1.15rem; }
+.mini-top { display: flex; align-items: center; gap: 0.8rem; }
+.mini-art { width: 54px; height: 54px; border-radius: 10px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
 .mini-meta { min-width: 0; flex: 1 1 auto; }
-.mini-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-show { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-skip { font: inherit; font-size: 0.72rem; font-weight: 700; color: var(--ink); background: none; border: none; cursor: pointer; flex: 0 0 auto; letter-spacing: -0.02em; }
-.mini-play { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.mini-play svg { width: 20px; height: 20px; fill: #fff; }
-.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; }
-.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
-.mini-time { font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 34px; }
+.mini-title { font-weight: 600; font-size: 0.98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-show { font-size: 0.82rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.05rem; }
+.mini-skip { background: none; border: none; cursor: pointer; color: var(--ink); flex: 0 0 auto; padding: 4px; display: flex; align-items: center; }
+.mini-skip svg { width: 30px; height: 30px; }
+.mini-play { flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.mini-play svg { width: 24px; height: 24px; fill: #fff; }
+.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.35rem; line-height: 1; cursor: pointer; padding: 0 0.15rem; }
+.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; }
+.mini-time { font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 38px; }
 .mini-time.rem { text-align: right; }
 .mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
+ol.eps li.playing { background: rgba(226,86,43,0.07); border-radius: 10px; box-shadow: 0 0 0 8px rgba(226,86,43,0.07); }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
 .filters .tab:hover { border-color: var(--muted); }
@@ -94,12 +96,12 @@ footer a { margin-right: 1.1rem; }
 
 
 <ol class="eps" id="eps">
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1476316441" target="_blank" rel="noopener">Is Human Data Enough? With David Silver</a><div class="show">Google DeepMind: The Podcast</div><div class="epfoot"><span class="date">2025-04-10</span><button class="playbtn" data-audio="https://afp-920373-injected.calisto.simplecastaudio.com/36cf10bf-f6dd-4a98-96a9-8eda9f59db4f/episodes/40291762-5ab8-40a6-aef5-878876721220/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=36cf10bf-f6dd-4a98-96a9-8eda9f59db4f&amp;awEpisodeId=40291762-5ab8-40a6-aef5-878876721220&amp;feed=JT6pbPkg" data-title="Is Human Data Enough? With David Silver" data-show="Google DeepMind: The Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg"><span class="g">&#9654;</span>49:38</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1478198107" target="_blank" rel="noopener">David Silver 2 - Discussion after Keynote @ RCL 2024</a><div class="show">TalkRL: The Reinforcement Learning Podcast</div><div class="epfoot"><span class="date">2024-08-28</span><button class="playbtn" data-audio="https://media.transistor.fm/28980ea4/8fc4c0b3.mp3" data-title="David Silver 2 - Discussion after Keynote @ RCL 2024" data-show="TalkRL: The Reinforcement Learning Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg"><span class="g">&#9654;</span>16:17</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1478198107" target="_blank" rel="noopener">David Silver @ RCL 2024</a><div class="show">TalkRL: The Reinforcement Learning Podcast</div><div class="epfoot"><span class="date">2024-08-26</span><button class="playbtn" data-audio="https://media.transistor.fm/2453a9a3/5ff4ce24.mp3" data-title="David Silver @ RCL 2024" data-show="TalkRL: The Reinforcement Learning Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg"><span class="g">&#9654;</span>11:27</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/3e/e3/9c/3ee39c89-de08-47a6-7f3d-3849cef6d255/mza_16657851278549137484.png/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1434243584" target="_blank" rel="noopener">#86 – David Silver: AlphaGo, AlphaZero, and Deep Reinforcement Learning</a><div class="show">Lex Fridman Podcast</div><div class="epfoot"><span class="date">2020-04-03</span><button class="playbtn" data-audio="https://media.blubrry.com/takeituneasy/content.blubrry.com/takeituneasy/lex_ai_david_silver.mp3" data-title="#86 – David Silver: AlphaGo, AlphaZero, and Deep Reinforcement Learning" data-show="Lex Fridman Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/3e/e3/9c/3ee39c89-de08-47a6-7f3d-3849cef6d255/mza_16657851278549137484.png/120x120bb.jpg"><span class="g">&#9654;</span>1:48:28</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1476316441" target="_blank" rel="noopener">Life is like a game</a><div class="show">Google DeepMind: The Podcast</div><div class="epfoot"><span class="date">2019-08-20</span><button class="playbtn" data-audio="https://afp-920373-injected.calisto.simplecastaudio.com/36cf10bf-f6dd-4a98-96a9-8eda9f59db4f/episodes/c5e9fca5-7e9e-49ea-9e56-5c03ed4a8e1e/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=36cf10bf-f6dd-4a98-96a9-8eda9f59db4f&amp;awEpisodeId=c5e9fca5-7e9e-49ea-9e56-5c03ed4a8e1e&amp;feed=JT6pbPkg" data-title="Life is like a game" data-show="Google DeepMind: The Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg"><span class="g">&#9654;</span>26:52</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1476316441" target="_blank" rel="noopener">Go to Zero</a><div class="show">Google DeepMind: The Podcast</div><div class="epfoot"><span class="date">2019-08-20</span><button class="playbtn" data-audio="https://afp-920373-injected.calisto.simplecastaudio.com/36cf10bf-f6dd-4a98-96a9-8eda9f59db4f/episodes/ba2bf797-1a75-4240-84f6-1c42c3a5ba6e/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=36cf10bf-f6dd-4a98-96a9-8eda9f59db4f&amp;awEpisodeId=ba2bf797-1a75-4240-84f6-1c42c3a5ba6e&amp;feed=JT6pbPkg" data-title="Go to Zero" data-show="Google DeepMind: The Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg"><span class="g">&#9654;</span>25:40</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1476316441" target="_blank" rel="noopener">Is Human Data Enough? With David Silver</a><div class="show">Google DeepMind: The Podcast</div><div class="epfoot"><span class="date">2025-04-10</span><button class="playbtn" data-audio="https://afp-920373-injected.calisto.simplecastaudio.com/36cf10bf-f6dd-4a98-96a9-8eda9f59db4f/episodes/40291762-5ab8-40a6-aef5-878876721220/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=36cf10bf-f6dd-4a98-96a9-8eda9f59db4f&amp;awEpisodeId=40291762-5ab8-40a6-aef5-878876721220&amp;feed=JT6pbPkg" data-title="Is Human Data Enough? With David Silver" data-show="Google DeepMind: The Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" data-dur="2978"><span class="g">&#9654;</span>49:38</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1478198107" target="_blank" rel="noopener">David Silver 2 - Discussion after Keynote @ RCL 2024</a><div class="show">TalkRL: The Reinforcement Learning Podcast</div><div class="epfoot"><span class="date">2024-08-28</span><button class="playbtn" data-audio="https://media.transistor.fm/28980ea4/8fc4c0b3.mp3" data-title="David Silver 2 - Discussion after Keynote @ RCL 2024" data-show="TalkRL: The Reinforcement Learning Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg" data-dur="977"><span class="g">&#9654;</span>16:17</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1478198107" target="_blank" rel="noopener">David Silver @ RCL 2024</a><div class="show">TalkRL: The Reinforcement Learning Podcast</div><div class="epfoot"><span class="date">2024-08-26</span><button class="playbtn" data-audio="https://media.transistor.fm/2453a9a3/5ff4ce24.mp3" data-title="David Silver @ RCL 2024" data-show="TalkRL: The Reinforcement Learning Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9e/1d/83/9e1d8392-fad9-ed9f-e5c4-b9298a984ca7/mza_14788877948767378709.jpg/120x120bb.jpg" data-dur="687"><span class="g">&#9654;</span>11:27</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/3e/e3/9c/3ee39c89-de08-47a6-7f3d-3849cef6d255/mza_16657851278549137484.png/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1434243584" target="_blank" rel="noopener">#86 – David Silver: AlphaGo, AlphaZero, and Deep Reinforcement Learning</a><div class="show">Lex Fridman Podcast</div><div class="epfoot"><span class="date">2020-04-03</span><button class="playbtn" data-audio="https://media.blubrry.com/takeituneasy/content.blubrry.com/takeituneasy/lex_ai_david_silver.mp3" data-title="#86 – David Silver: AlphaGo, AlphaZero, and Deep Reinforcement Learning" data-show="Lex Fridman Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts115/v4/3e/e3/9c/3ee39c89-de08-47a6-7f3d-3849cef6d255/mza_16657851278549137484.png/120x120bb.jpg" data-dur="6508"><span class="g">&#9654;</span>1:48:28</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1476316441" target="_blank" rel="noopener">Life is like a game</a><div class="show">Google DeepMind: The Podcast</div><div class="epfoot"><span class="date">2019-08-20</span><button class="playbtn" data-audio="https://afp-920373-injected.calisto.simplecastaudio.com/36cf10bf-f6dd-4a98-96a9-8eda9f59db4f/episodes/c5e9fca5-7e9e-49ea-9e56-5c03ed4a8e1e/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=36cf10bf-f6dd-4a98-96a9-8eda9f59db4f&amp;awEpisodeId=c5e9fca5-7e9e-49ea-9e56-5c03ed4a8e1e&amp;feed=JT6pbPkg" data-title="Life is like a game" data-show="Google DeepMind: The Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" data-dur="1612"><span class="g">&#9654;</span>26:52</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1476316441" target="_blank" rel="noopener">Go to Zero</a><div class="show">Google DeepMind: The Podcast</div><div class="epfoot"><span class="date">2019-08-20</span><button class="playbtn" data-audio="https://afp-920373-injected.calisto.simplecastaudio.com/36cf10bf-f6dd-4a98-96a9-8eda9f59db4f/episodes/ba2bf797-1a75-4240-84f6-1c42c3a5ba6e/audio/128/default.mp3?aid=rss_feed&amp;awCollectionId=36cf10bf-f6dd-4a98-96a9-8eda9f59db4f&amp;awEpisodeId=ba2bf797-1a75-4240-84f6-1c42c3a5ba6e&amp;feed=JT6pbPkg" data-title="Go to Zero" data-show="Google DeepMind: The Podcast" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/ba/f3/63/baf363d0-598a-cc22-34a9-52ba955cb1c3/mza_14017418948880786929.jpg/120x120bb.jpg" data-dur="1540"><span class="g">&#9654;</span>25:40</button></div></div></li>
 </ol>
 
 
@@ -144,9 +146,9 @@ footer a { margin-right: 1.1rem; }
     <div class="mini-top">
       <img class="mini-art" id="m-art" alt="">
       <div class="mini-meta"><div class="mini-title" id="m-title"></div><div class="mini-show" id="m-show"></div></div>
-      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds">&#8634;30</button>
+      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8a6 6 0 1 0 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 5.4 9.4 8 12 10.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="16.2" text-anchor="middle" font-size="7" font-weight="700" fill="currentColor">30</text></svg></button>
       <button class="mini-play" id="m-play" aria-label="Play or pause"></button>
-      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds">90&#8635;</button>
+      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8a6 6 0 1 1-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 5.4 14.6 8 12 10.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="16.2" text-anchor="middle" font-size="7" font-weight="700" fill="currentColor">90</text></svg></button>
       <button class="mini-close" id="m-close" aria-label="Close player">&times;</button>
     </div>
     <div class="mini-bar">
@@ -169,15 +171,25 @@ footer a { margin-right: 1.1rem; }
   var PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
   function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), x = s%60; return (h ? h + ':' + (m<10?'0':'') : '') + m + ':' + (x<10?'0':'') + x; }
   function icon() { mPlay.innerHTML = A.paused ? PLAY : PAUSE; }
-  function marks() { var b = document.querySelectorAll('.playbtn'); for (var i=0;i<b.length;i++) b[i].classList.toggle('active', b[i] === current); }
+  function total() { var d = A.duration; return (d && isFinite(d) && d > 0) ? d : (A._dur || 0); }
+  function marks() {
+    var b = document.querySelectorAll('.playbtn');
+    for (var i = 0; i < b.length; i++) {
+      var on = b[i] === current;
+      b[i].classList.toggle('active', on);
+      var li = b[i].closest('li'); if (li) li.classList.toggle('playing', on);
+    }
+  }
   function load(btn) {
     current = btn;
     A.src = btn.getAttribute('data-audio');
+    A._dur = parseFloat(btn.getAttribute('data-dur')) || 0;
     mTitle.textContent = btn.getAttribute('data-title');
     mShow.textContent = btn.getAttribute('data-show');
     var art = btn.getAttribute('data-art');
     if (art) { mArt.src = art; mArt.style.visibility = ''; } else { mArt.style.visibility = 'hidden'; }
-    mini.hidden = false; document.body.style.paddingBottom = '128px';
+    mini.hidden = false; document.body.style.paddingBottom = '150px';
+    mCur.textContent = '0:00'; mRem.textContent = A._dur ? '-' + fmt(A._dur) : ''; mSeek.value = '0';
     A.play(); marks();
   }
   document.addEventListener('click', function(e) {
@@ -187,16 +199,17 @@ footer a { margin-right: 1.1rem; }
   });
   mPlay.addEventListener('click', function() { A.paused ? A.play() : A.pause(); });
   document.getElementById('m-back').addEventListener('click', function() { A.currentTime = Math.max(0, A.currentTime - 30); });
-  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min((A.duration || 1e9), A.currentTime + 90); });
+  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min(total() || 1e9, A.currentTime + 90); });
   document.getElementById('m-close').addEventListener('click', function() { A.pause(); mini.hidden = true; document.body.style.paddingBottom = ''; current = null; marks(); });
   A.addEventListener('play', icon); A.addEventListener('pause', icon);
   A.addEventListener('timeupdate', function() {
+    var T = total();
     mCur.textContent = fmt(A.currentTime);
-    mRem.textContent = A.duration ? '-' + fmt(A.duration - A.currentTime) : '';
-    if (A.duration && !seeking) mSeek.value = String(Math.round(A.currentTime / A.duration * 1000));
+    mRem.textContent = T ? '-' + fmt(Math.max(0, T - A.currentTime)) : '';
+    if (T && !seeking) mSeek.value = String(Math.round(A.currentTime / T * 1000));
   });
   mSeek.addEventListener('input', function() { seeking = true; });
-  mSeek.addEventListener('change', function() { if (A.duration) A.currentTime = mSeek.value / 1000 * A.duration; seeking = false; });
+  mSeek.addEventListener('change', function() { var T = total(); if (T) A.currentTime = mSeek.value / 1000 * T; seeking = false; });
   icon();
 })();
 </script>

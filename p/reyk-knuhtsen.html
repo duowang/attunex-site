@@ -42,20 +42,22 @@ a.eptitle:hover { text-decoration: underline; }
 .playbtn .g { font-size: 0.62em; line-height: 1; }
 .mini[hidden] { display: none; }
 .mini { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(250,249,248,0.98); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -4px 24px rgba(0,0,0,0.08); z-index: 50; }
-.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.6rem 24px 0.75rem; }
-.mini-top { display: flex; align-items: center; gap: 0.75rem; }
-.mini-art { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
+.mini .inner { max-width: 720px; margin: 0 auto; padding: 0.95rem 24px 1.15rem; }
+.mini-top { display: flex; align-items: center; gap: 0.8rem; }
+.mini-art { width: 54px; height: 54px; border-radius: 10px; object-fit: cover; background: var(--line); flex: 0 0 auto; }
 .mini-meta { min-width: 0; flex: 1 1 auto; }
-.mini-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-show { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mini-skip { font: inherit; font-size: 0.72rem; font-weight: 700; color: var(--ink); background: none; border: none; cursor: pointer; flex: 0 0 auto; letter-spacing: -0.02em; }
-.mini-play { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.mini-play svg { width: 20px; height: 20px; fill: #fff; }
-.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; padding: 0 0.2rem; }
-.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
-.mini-time { font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 34px; }
+.mini-title { font-weight: 600; font-size: 0.98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-show { font-size: 0.82rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0.05rem; }
+.mini-skip { background: none; border: none; cursor: pointer; color: var(--ink); flex: 0 0 auto; padding: 4px; display: flex; align-items: center; }
+.mini-skip svg { width: 30px; height: 30px; }
+.mini-play { flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.mini-play svg { width: 24px; height: 24px; fill: #fff; }
+.mini-close { flex: 0 0 auto; background: none; border: none; color: var(--muted); font-size: 1.35rem; line-height: 1; cursor: pointer; padding: 0 0.15rem; }
+.mini-bar { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; }
+.mini-time { font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; flex: 0 0 auto; min-width: 38px; }
 .mini-time.rem { text-align: right; }
 .mini-seek { flex: 1 1 auto; accent-color: var(--accent); height: 4px; }
+ol.eps li.playing { background: rgba(226,86,43,0.07); border-radius: 10px; box-shadow: 0 0 0 8px rgba(226,86,43,0.07); }
 .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.75rem 0 0; }
 .filters .tab { font: inherit; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.85rem; cursor: pointer; }
 .filters .tab:hover { border-color: var(--muted); }
@@ -94,10 +96,10 @@ footer a { margin-right: 1.1rem; }
 
 
 <ol class="eps" id="eps">
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-08-09</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/123973946/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-9%2F429505048-44100-2-e0c7877f71a11.mp3" data-title="Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>50:03</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-07-09</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/122578260/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-6-8%2F427616466-44100-2-f8944e9d51604.mp3" data-title="Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>50:34</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9e/89/a3/9e89a3c2-4919-e0a3-8f16-e248d96b4717/mza_3735143648537162413.jpeg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1289062927" target="_blank" rel="noopener">Unitree and the Humanoid Robot Revolution</a><div class="show">ChinaTalk</div><div class="epfoot"><span class="date">2026-07-04</span><button class="playbtn" data-audio="https://pscrb.fm/rss/p/traffic.megaphone.fm/CHTAL8038415845.mp3" data-title="Unitree and the Humanoid Robot Revolution" data-show="ChinaTalk" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9e/89/a3/9e89a3c2-4919-e0a3-8f16-e248d96b4717/mza_3735143648537162413.jpeg/120x120bb.jpg"><span class="g">&#9654;</span>52:27</button></div></div></li>
-<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 016 - What Unitree&#x27;s Evolution Means For Robotics (Robotics) | Jordan Nanos, Reyk Knuhtsen, Niko Ciminelli</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-06-23</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/121906938/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-23%2F426712960-44100-2-a2f39b4cba0e7.mp3" data-title="Ep. 016 - What Unitree&#x27;s Evolution Means For Robotics (Robotics) | Jordan Nanos, Reyk Knuhtsen, Niko Ciminelli" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg"><span class="g">&#9654;</span>48:43</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-08-09</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/123973946/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-9%2F429505048-44100-2-e0c7877f71a11.mp3" data-title="Ep. 024 - SpaceX&#x27;s 10GW Plan Drives $300B ARR by 2027 (Datacenter, Energy) | Reyk Knuhtsen, Jeremie Eliahou Ontiveros, Jordan Nanos" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" data-dur="3003"><span class="g">&#9654;</span>50:03</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-07-09</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/122578260/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-6-8%2F427616466-44100-2-f8944e9d51604.mp3" data-title="Ep. 018 - Stop Saying Half of 2026 US Datacenter Capacity Is Canceled (Datacenter, Energy) | Jeremie Eliahou Ontiveros, Reyk Knuhtsen, Ellie Holbrook, Jordan Nanos" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" data-dur="3034"><span class="g">&#9654;</span>50:34</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9e/89/a3/9e89a3c2-4919-e0a3-8f16-e248d96b4717/mza_3735143648537162413.jpeg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1289062927" target="_blank" rel="noopener">Unitree and the Humanoid Robot Revolution</a><div class="show">ChinaTalk</div><div class="epfoot"><span class="date">2026-07-04</span><button class="playbtn" data-audio="https://pscrb.fm/rss/p/traffic.megaphone.fm/CHTAL8038415845.mp3" data-title="Unitree and the Humanoid Robot Revolution" data-show="ChinaTalk" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9e/89/a3/9e89a3c2-4919-e0a3-8f16-e248d96b4717/mza_3735143648537162413.jpeg/120x120bb.jpg" data-dur="3147"><span class="g">&#9654;</span>52:27</button></div></div></li>
+<li data-grade="featured" data-ai="0"><img class="thumb" src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><div class="epbody"><a class="eptitle" href="https://podcasts.apple.com/podcast/id1877544643" target="_blank" rel="noopener">Ep. 016 - What Unitree&#x27;s Evolution Means For Robotics (Robotics) | Jordan Nanos, Reyk Knuhtsen, Niko Ciminelli</a><div class="show">SemiAnalysis Weekly</div><div class="epfoot"><span class="date">2026-06-23</span><button class="playbtn" data-audio="https://anchor.fm/s/10fbee758/podcast/play/121906938/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-23%2F426712960-44100-2-a2f39b4cba0e7.mp3" data-title="Ep. 016 - What Unitree&#x27;s Evolution Means For Robotics (Robotics) | Jordan Nanos, Reyk Knuhtsen, Niko Ciminelli" data-show="SemiAnalysis Weekly" data-art="https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0b/7a/1e/0b7a1e5b-3a7c-5057-66f1-6b6013ece335/mza_17790734022043604680.jpg/120x120bb.jpg" data-dur="2923"><span class="g">&#9654;</span>48:43</button></div></div></li>
 </ol>
 
 
@@ -142,9 +144,9 @@ footer a { margin-right: 1.1rem; }
     <div class="mini-top">
       <img class="mini-art" id="m-art" alt="">
       <div class="mini-meta"><div class="mini-title" id="m-title"></div><div class="mini-show" id="m-show"></div></div>
-      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds">&#8634;30</button>
+      <button class="mini-skip" id="m-back" aria-label="Back 30 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8a6 6 0 1 0 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 5.4 9.4 8 12 10.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="16.2" text-anchor="middle" font-size="7" font-weight="700" fill="currentColor">30</text></svg></button>
       <button class="mini-play" id="m-play" aria-label="Play or pause"></button>
-      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds">90&#8635;</button>
+      <button class="mini-skip" id="m-fwd" aria-label="Forward 90 seconds"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8a6 6 0 1 1-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 5.4 14.6 8 12 10.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="16.2" text-anchor="middle" font-size="7" font-weight="700" fill="currentColor">90</text></svg></button>
       <button class="mini-close" id="m-close" aria-label="Close player">&times;</button>
     </div>
     <div class="mini-bar">
@@ -167,15 +169,25 @@ footer a { margin-right: 1.1rem; }
   var PAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
   function fmt(s) { s = Math.max(0, Math.floor(s || 0)); var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), x = s%60; return (h ? h + ':' + (m<10?'0':'') : '') + m + ':' + (x<10?'0':'') + x; }
   function icon() { mPlay.innerHTML = A.paused ? PLAY : PAUSE; }
-  function marks() { var b = document.querySelectorAll('.playbtn'); for (var i=0;i<b.length;i++) b[i].classList.toggle('active', b[i] === current); }
+  function total() { var d = A.duration; return (d && isFinite(d) && d > 0) ? d : (A._dur || 0); }
+  function marks() {
+    var b = document.querySelectorAll('.playbtn');
+    for (var i = 0; i < b.length; i++) {
+      var on = b[i] === current;
+      b[i].classList.toggle('active', on);
+      var li = b[i].closest('li'); if (li) li.classList.toggle('playing', on);
+    }
+  }
   function load(btn) {
     current = btn;
     A.src = btn.getAttribute('data-audio');
+    A._dur = parseFloat(btn.getAttribute('data-dur')) || 0;
     mTitle.textContent = btn.getAttribute('data-title');
     mShow.textContent = btn.getAttribute('data-show');
     var art = btn.getAttribute('data-art');
     if (art) { mArt.src = art; mArt.style.visibility = ''; } else { mArt.style.visibility = 'hidden'; }
-    mini.hidden = false; document.body.style.paddingBottom = '128px';
+    mini.hidden = false; document.body.style.paddingBottom = '150px';
+    mCur.textContent = '0:00'; mRem.textContent = A._dur ? '-' + fmt(A._dur) : ''; mSeek.value = '0';
     A.play(); marks();
   }
   document.addEventListener('click', function(e) {
@@ -185,16 +197,17 @@ footer a { margin-right: 1.1rem; }
   });
   mPlay.addEventListener('click', function() { A.paused ? A.play() : A.pause(); });
   document.getElementById('m-back').addEventListener('click', function() { A.currentTime = Math.max(0, A.currentTime - 30); });
-  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min((A.duration || 1e9), A.currentTime + 90); });
+  document.getElementById('m-fwd').addEventListener('click', function() { A.currentTime = Math.min(total() || 1e9, A.currentTime + 90); });
   document.getElementById('m-close').addEventListener('click', function() { A.pause(); mini.hidden = true; document.body.style.paddingBottom = ''; current = null; marks(); });
   A.addEventListener('play', icon); A.addEventListener('pause', icon);
   A.addEventListener('timeupdate', function() {
+    var T = total();
     mCur.textContent = fmt(A.currentTime);
-    mRem.textContent = A.duration ? '-' + fmt(A.duration - A.currentTime) : '';
-    if (A.duration && !seeking) mSeek.value = String(Math.round(A.currentTime / A.duration * 1000));
+    mRem.textContent = T ? '-' + fmt(Math.max(0, T - A.currentTime)) : '';
+    if (T && !seeking) mSeek.value = String(Math.round(A.currentTime / T * 1000));
   });
   mSeek.addEventListener('input', function() { seeking = true; });
-  mSeek.addEventListener('change', function() { if (A.duration) A.currentTime = mSeek.value / 1000 * A.duration; seeking = false; });
+  mSeek.addEventListener('change', function() { var T = total(); if (T) A.currentTime = mSeek.value / 1000 * T; seeking = false; });
   icon();
 })();
 </script>
