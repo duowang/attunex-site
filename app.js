@@ -194,20 +194,42 @@
     });
   }
 
+  var carouselKey = null;
   function initCarousel() {
+    if (carouselKey) { document.removeEventListener("keydown", carouselKey); carouselKey = null; }
     var track = document.getElementById("track"); if (!track) return;
-    var imgs = track.getElementsByTagName("img"), i = 0;
+    var imgs = track.getElementsByTagName("img"), i = 0, timer = null, playing = false;
+    var prev = document.getElementById("c-prev"), next = document.getElementById("c-next"), pp = document.getElementById("c-pp");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var CPLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    var CPAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
     function center() {
       if (!document.body.contains(track)) return;
       for (var k = 0; k < imgs.length; k++) imgs[k].classList.toggle("active", k === i);
       var img = imgs[i], carW = track.parentElement.clientWidth;
       track.style.transform = "translateX(" + -(img.offsetLeft + img.offsetWidth / 2 - carW / 2) + "px)";
     }
+    function go(d) { i = (i + d + imgs.length) % imgs.length; center(); }
+    function setPP() { if (pp) { pp.innerHTML = playing ? CPAUSE : CPLAY; pp.setAttribute("aria-label", playing ? "Pause" : "Play"); } }
+    function start() { if (timer || reduce) { setPP(); return; } timer = setInterval(function () { go(1); }, 2600); timers.push(timer); playing = true; setPP(); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } playing = false; setPP(); }
+    function toggle() { playing ? stop() : start(); }
+    if (prev) prev.addEventListener("click", function () { go(-1); });
+    if (next) next.addEventListener("click", function () { go(1); });
+    if (pp) pp.addEventListener("click", toggle);
+    carouselKey = function (e) {
+      if (e.key === "ArrowLeft") { go(-1); }
+      else if (e.key === "ArrowRight") { go(1); }
+      else if (e.key === " " || e.code === "Space") {
+        var t = e.target;
+        if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+        e.preventDefault(); toggle();
+      }
+    };
+    document.addEventListener("keydown", carouselKey);
     window.addEventListener("resize", center);
-    window.addEventListener("load", center);
     center();
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduce) timers.push(setInterval(function () { i = (i + 1) % imgs.length; center(); }, 2600));
+    start();
   }
 
   function initPage() {
