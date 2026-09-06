@@ -39,3 +39,19 @@ deploy manually with `wrangler deploy` until Builds is reconnected.
 
 ## After deploy
 Add the domain in Google Search Console and submit `sitemap.xml` + `sitemap-people.xml`.
+
+## Website search and handoff
+
+The homepage loads `people/directory.v1.json`, generated alongside the person pages from the local graph. Names, bios, images, and counts are not maintained in website code. Search matches names and bio keywords, including accent-insensitive queries. The native form falls back to `/people?q=…`.
+
+`site.css` carries the shared visual/accessibility rules. The homepage uses three static screenshots (no carousel or autoplay). QR handoffs are generated locally on request using vendored `qrcode-generator` 2.0.4 (`vendor/qrcode.js`, MIT license in its header), with no third-party QR service. Guest QR codes preserve the web page, not an app follow; the released app does not handle person links yet.
+
+Pricing copy currently identifies the **1.5** free limit (three active people), checked against its release tag. Development builds have a five-person limit; update the FAQ in both `index.html` and `support.html` when that version is public. Keep the support FAQ JSON-LD synchronized.
+
+## Web preview (`/demo`)
+
+`demo/` is a small HTML/CSS/JS clone of the app's core flow (Listen feed, Search, person and podcast pages, follow with the free limit, Now Playing, the Read queue, Settings), embedded in the homepage hero as a phone frame and linkable on its own at `/demo/` (`/demo/?p=<slug>` opens a person). It runs on static JSON only:
+
+- `demo/data/p/<slug>.json` (per person), `demo/data/s/<show-id>.json` (per show, shows with 8+ graph episodes), `demo/data/shows.json` (show index). The people index is `people/directory.v1.json`.
+- Regenerate with the person pages: `python3 ~/code/attunex/graph-pipeline/generate_demo_data.py` (reads `people.db`, writes here). Same slugs and publish gate as `/p`.
+- Follows, playback positions, and theme live in the visitor's `localStorage`; the free limit (5 active people) and the Pro copy mirror the app. Audio streams from the publishers' enclosure URLs. Transcripts and summaries are not generated on the web; the Read tab shows one real summary from the App Store screenshot plus the publisher's notes.

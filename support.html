@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="/app.js?v=2" defer></script>
+  <script src="/app.js?v=3" defer></script>
   <title>Attunex Support</title>
   <meta name="description" content="Support for Attunex, the iOS podcast player that follows podcast guests across shows. Contact, common questions, and how to report a bug or request a person.">
   <link rel="canonical" href="https://attunex.app/support">
@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://attunex.app/support">
   <meta name="apple-itunes-app" content="app-id=6786431074">
   <style>
-    :root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; }
+    :root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#ad3e20; --line:#ececee; }
     body { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; max-width: 640px; margin: 0 auto; padding: 72px 24px 64px; color: var(--ink); line-height: 1.6; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -23,34 +23,8 @@
     .muted { color: var(--muted); }
     .back { display: inline-block; margin-top: 2.5rem; font-size: 0.9rem; }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I follow a person in Attunex?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Search for the person's name in the app and tap Follow. Attunex then gathers the podcast episodes they appear in, newest first, in one feed." }
-      },
-      {
-        "@type": "Question",
-        "name": "The person I want isn't found. Can you add them?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The people catalog grows over time, and searches for missing people are used to decide who to add next. You can also email njuiverson@gmail.com to request someone." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Attunex work offline?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Downloaded episodes play offline. Transcripts and summaries are generated on your device, so they are available without a connection once processed." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there an account or subscription?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No account is required and there are no ads. Your follows and listening history can sync through your private iCloud so they restore on a new phone." }
-      }
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I follow a person?", "acceptedAnswer": {"@type": "Answer", "text": "Search for the person's name and tap Follow. Attunex gathers the episodes they appear in across shows, newest first, in one feed."}}, {"@type": "Question", "name": "The person I want isn't there", "acceptedAnswer": {"@type": "Answer", "text": "The catalog grows over time, and searches for people who aren't found yet help decide who to add next. To request someone directly, email njuiverson@gmail.com."}}, {"@type": "Question", "name": "Does it work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 download an episode and it plays offline. Saved transcripts and summaries stay readable once downloaded or generated on a supported device."}}, {"@type": "Question", "name": "What\u2019s free, and what does Pro add?", "acceptedAnswer": {"@type": "Answer", "text": "Listening, downloads, unlimited podcast follows, one profile, and a limited number of active people are free. Version 1.5 includes three active people. An optional Pro subscription unlocks unlimited active people and additional profiles. Transcripts and summaries are free on supported devices. The app shows local monthly and annual prices and any trial terms before you subscribe. No Attunex account is required. See the Privacy Policy for details."}}, {"@type": "Question", "name": "Which features work on my iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Attunex requires iOS 17 or later. Listening, downloads, and guest discovery do not require Apple Intelligence. Generating transcripts requires iOS 26 and supported speech recognition for your device and language. Summaries require iOS 26 with Apple Intelligence enabled and its model available. Where generation is unavailable, you can still listen and read show notes or publisher-provided transcripts when available."}}, {"@type": "Question", "name": "How do I follow someone from the website?", "acceptedAnswer": {"@type": "Answer", "text": "Download Attunex from the App Store, then search for the person\u2019s name and tap Follow. A website link or QR code does not follow the person automatically. The QR code on a guest page opens that same page on your iPhone so you can keep their name handy."}}]}</script>
+<link rel="stylesheet" href="/site.css?v=3">
 </head>
 <body>
   <h1>Support</h1>
@@ -64,11 +38,15 @@
   <p>The catalog grows over time, and searches for people who aren't found yet help decide who to add next. To request someone directly, email <a href="mailto:njuiverson@gmail.com">njuiverson@gmail.com</a>.</p>
 
   <h2>Does it work offline?</h2>
-  <p>Yes — download an appearance and it plays offline. Transcripts and summaries are generated on your device and stay available once processed.</p>
+  <p>Yes — download an episode and it plays offline. Saved transcripts and summaries stay readable once downloaded or generated on a supported device.</p>
 
-  <h2>Is there an account or subscription?</h2>
-  <p>No account and no ads. Your follows and history can sync through your private iCloud so they restore on a new phone. See the <a href="/privacy">Privacy Policy</a> for details.</p>
+  <h2>What’s free, and what does Pro add?</h2>
+  <p>Listening, downloads, unlimited podcast follows, one profile, and a limited number of active people are free. Version 1.5 includes three active people. An optional Pro subscription unlocks unlimited active people and additional profiles. Transcripts and summaries are free on supported devices. The app shows local monthly and annual prices and any trial terms before you subscribe. No Attunex account is required. See the <a href="/privacy">Privacy Policy</a> for details.</p>
 
+  <h2>Which features work on my iPhone?</h2>
+  <p>Attunex requires iOS 17 or later. Listening, downloads, and guest discovery do not require Apple Intelligence. Generating transcripts requires iOS 26 and supported speech recognition for your device and language. Summaries require iOS 26 with Apple Intelligence enabled and its model available. Where generation is unavailable, you can still listen and read show notes or publisher-provided transcripts when available.</p>
+  <h2>How do I follow someone from the website?</h2>
+  <p>Download Attunex from the App Store, then search for the person’s name and tap Follow. A website link or QR code does not follow the person automatically. The QR code on a guest page opens that same page on your iPhone so you can keep their name handy.</p>
   <a class="back" href="/">&larr; Attunex</a>
 </body>
 </html>

@@ -4,80 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attunex — Follow podcast guests, not just shows</title>
-  <meta name="description" content="Attunex is an iOS podcast player that follows the people you actually want to hear. Search a person and get every episode they appear in across every show they guest on — each with an on-device transcript and summary generated on your iPhone.">
+  <meta name="description" content="Attunex is an iOS podcast player that follows the people you actually want to hear. Find podcast appearances across shows. Listen offline, follow guests, and read transcripts and summaries on supported iPhones.">
   <link rel="canonical" href="https://attunex.app/">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Attunex">
   <meta property="og:title" content="Attunex — Follow podcast guests, not just shows">
-  <meta property="og:description" content="Search a person and get every podcast episode they appear in — across every show, each with an on-device transcript and summary.">
+  <meta property="og:description" content="Find the people you want to hear. Their podcast appearances, across shows, together in one feed.">
   <meta property="og:url" content="https://attunex.app/">
   <meta property="og:image" content="https://attunex.app/og-cover.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Attunex — Follow podcast guests, not just shows">
-  <meta name="twitter:description" content="Search a person and get every podcast episode they appear in — across every show, each with an on-device transcript and summary.">
+  <meta name="twitter:description" content="Find the people you want to hear. Their podcast appearances, across shows, together in one feed.">
   <meta name="twitter:image" content="https://attunex.app/og-cover.png">
 
   <!-- Apple Smart App Banner -->
   <meta name="apple-itunes-app" content="app-id=6786431074">
-  <script src="/app.js?v=2" defer></script>
+  <script src="/app.js?v=3" defer></script>
 
   <link rel="icon" type="image/png" href="/img/icon-512.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
 
-  <style>
-    :root { --ink:#1c1c1e; --muted:#6b6b70; --accent:#e2562b; --line:#ececee; --bg:#ffffff; }
-    * { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
-    body { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; margin: 0; color: var(--ink); line-height: 1.6; background: var(--bg); }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header.hero { padding: 72px 0 24px; }
-    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    h1 { font-size: 2.25rem; margin: 0; letter-spacing: -0.02em; }
-    p.tagline { font-size: 1.2rem; color: var(--ink); margin: 1rem 0 1.5rem; }
-    .appstore img { height: 48px; display: block; }
-
-    section { padding: 28px 0; border-top: 1px solid var(--line); }
-    h2 { font-size: 1.35rem; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
-    h3 { font-size: 1.05rem; margin: 0 0 0.25rem; }
-    .lead { color: var(--muted); }
-
-    .steps { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1rem; }
-    .step { padding-left: 2.4rem; position: relative; }
-    .step .n { position: absolute; left: 0; top: 0; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
-
-    ul.features { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
-    ul.features li { padding-left: 1.4rem; position: relative; }
-    ul.features li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-    ul.features strong { display: block; }
-    ul.features span { color: var(--muted); }
-
-    @media (min-width: 620px) {
-      .steps { grid-template-columns: repeat(3, 1fr); }
-      ul.features { grid-template-columns: 1fr 1fr; }
-    }
-
-    footer { padding: 36px 0 64px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
-    footer nav a { margin-right: 1.25rem; }
-
-    .showcase { padding: 32px 0; border-top: 1px solid var(--line); text-align: center; }
-    .showcase .lead { max-width: 520px; margin-left: auto; margin-right: auto; }
-    .carousel { overflow: hidden; margin-top: 1.75rem; }
-    .carousel .track { display: flex; gap: 16px; transition: transform 0.6s cubic-bezier(.22,.61,.36,1); }
-    .carousel img { flex: 0 0 auto; width: 224px; height: 486px; object-fit: cover; border-radius: 22px; opacity: 0.4; transform: scale(0.84); transition: transform 0.6s, opacity 0.6s; box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
-    .carousel img.active { opacity: 1; transform: scale(1); }
-    @media (prefers-reduced-motion: reduce) { .carousel .track { transition: none; } }
-    .carousel-ctl { display: flex; justify-content: center; align-items: center; gap: 0.9rem; margin-top: 1.25rem; }
-    .cbtn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
-    .cbtn:hover { border-color: var(--muted); }
-    .cbtn svg { width: 20px; height: 20px; }
-    .cbtn.pp { background: var(--accent); border-color: var(--accent); color: #fff; width: 46px; height: 46px; }
-    .cbtn.pp svg { width: 18px; height: 18px; fill: #fff; }
-  </style>
+  <link rel="stylesheet" href="/site.css?v=4">
 
   <!-- Structured data: helps Google understand the entity. No aggregateRating until real App Store ratings exist. -->
   <script type="application/ld+json">
@@ -89,7 +38,7 @@
     "applicationSubCategory": "Podcast Player",
     "operatingSystem": "iOS",
     "url": "https://attunex.app/",
-    "description": "An iOS podcast player that follows the people you want to hear. Search a person and get every episode they appear in across every show they guest on, each with an on-device transcript and summary.",
+    "description": "An iOS podcast player that follows the people you want to hear. Find their podcast appearances across shows, listen offline, and read transcripts and summaries on supported devices.",
     "installUrl": "https://apps.apple.com/us/app/attunex-podcast-player/id6786431074",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
@@ -103,100 +52,48 @@
   }
   </script>
 </head>
-<body>
-  <div class="wrap">
-    <header class="hero">
-      <div class="masthead">
-        <h1>Attunex</h1>
-        <a class="appstore" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">
-          <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download Attunex on the App Store">
-        </a>
-      </div>
-      <p class="tagline">Follow the people you actually want to hear — <a href="/p/jensen-huang">Jensen Huang</a>, <a href="/p/sam-altman">Sam Altman</a>, <a href="/p/gavin-baker">Gavin Baker</a>. Attunex surfaces every podcast episode featuring them — across every show, not just the ones you subscribe to — with an on-device transcript and summary for each one.</p>
-    </header>
-
-    <section class="showcase">
-      <div class="carousel"><div class="track" id="track">
-        <img src="/img/shots/follow-anyone.png" alt="Following a person and seeing every appearance">
-        <img src="/img/shots/featured-mentioned.png" alt="Featured and mentioned appearances">
-        <img src="/img/shots/read-summaries.png" alt="On-device transcript and summary">
-        <img src="/img/shots/search.png" alt="Searching for a person">
-        <img src="/img/shots/listen-offline.png" alt="Listening offline">
-        <img src="/img/shots/daily-feed.png" alt="A daily feed of new appearances">
-        <img src="/img/shots/reading-queue.png" alt="Reading queue">
-        <img src="/img/shots/profiles.png" alt="Multiple profiles">
-      </div></div>
-      <div class="carousel-ctl">
-        <button id="c-prev" class="cbtn" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button id="c-pp" class="cbtn pp" aria-label="Pause"></button>
-        <button id="c-next" class="cbtn" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-    </section>
-
-    <section>
-      <h2>Follow people, not just shows</h2>
-      <p class="lead">Most podcast apps organize the world by show. But the person you want to hear from — a founder, a researcher, an author — turns up as a guest across dozens of different shows, and you never find those episodes. Attunex flips it around: follow a <em>person</em>, and their appearances across every podcast come to you in one feed. Interviews, not passing mentions.</p>
-    </section>
-
-    <section>
-      <h2>Also a full podcast player</h2>
-      <p class="lead">Don't want to leave your shows behind? You don't have to. Attunex is a complete podcast player — follow any show or bring your whole library over with <strong>OPML import</strong>. Following people is an addition, not a replacement.</p>
-    </section>
-
-    <section>
-      <h2>A profile for every listener</h2>
-      <p class="lead">Play the kids' shows in the car without touching your own feed. Attunex supports multiple <strong>profiles</strong> — each with its own follows, history, and settings — so one listener's podcasts never bleed into another's. Switch between them anytime.</p>
-    </section>
-
-    <section>
-      <h2>How it works</h2>
-      <div class="steps">
-        <div class="step"><span class="n">1</span>
-          <h3>Search a person</h3>
-          <p class="lead">Type a name — a guest, host, or public figure — and follow them.</p>
-        </div>
-        <div class="step"><span class="n">2</span>
-          <h3>Get every appearance</h3>
-          <p class="lead">Attunex gathers the episodes across shows where they actually feature, newest first.</p>
-        </div>
-        <div class="step"><span class="n">3</span>
-          <h3>Listen &amp; read</h3>
-          <p class="lead">Play in the app, save for offline, and read an on-device transcript and summary.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>What makes it different</h2>
-      <ul class="features">
-        <li><strong>Cross-podcast guest feed</strong><span>One place for every show a person appears on.</span></li>
-        <li><strong>On-device transcripts &amp; summaries</strong><span>Generated on your iPhone — read or skim any episode.</span></li>
-        <li><strong>Offline listening</strong><span>Download appearances and take them anywhere.</span></li>
-        <li><strong>Private by design</strong><span>No account, no ads, no third-party tracking. Transcription runs on-device.</span></li>
-        <li><strong>CarPlay</strong><span>Your followed people, on the road.</span></li>
-        <li><strong>iCloud sync</strong><span>Your follows and history restore on a new phone.</span></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Browse people you can follow</h2>
-      <p class="lead">Attunex tracks the podcast appearances of hundreds of people — founders, researchers, authors, and hosts. Each has a page listing every episode they feature in, across shows. <a href="/people">Browse everyone &rarr;</a></p>
-    </section>
-
-    <section>
-      <h2>Who's behind Attunex</h2>
-      <p class="lead">Attunex is an independent iOS app built and maintained by a solo developer. There's no company account behind it, no ad network, and no data resale — just an app that does one thing well. <a href="/about">More about Attunex &rarr;</a></p>
-    </section>
-
-    <footer>
-      <nav>
-        <a href="/about">About</a>
-        <a href="/support">Support</a>
-        <a href="/privacy">Privacy</a>
-        <a href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">App Store</a>
-      </nav>
-      <p>&copy; 2026 Attunex. An independent app for iPhone.</p>
-    </footer>
-  </div>
-</body>
-</html>
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="brand" href="/">Attunex</a><nav aria-label="Main"><a href="/people">Find people</a><a href="#faq">Questions</a><a href="/support">Support</a></nav></header>
+<main id="main" tabindex="-1">
+<section class="hero" aria-labelledby="headline">
+<div><p class="eyebrow">A podcast player built around people</p>
+<h1 id="headline">Follow people.<br>Find their podcast appearances.</h1>
+<p class="tagline">Interviews from across shows, together in one feed. Listen, save, and read in Attunex.</p>
+<div class="actions"><a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Download for iPhone</a><a class="secondary" href="#home-search">Find someone you follow</a></div>
+<p class="small">Free to start · No account · iOS 17+<br>Optional Pro subscription. <a href="#faq">See features and requirements</a></p>
+<form action="/people" method="get" role="search" class="search-form"><label class="sr-only" for="home-search">Search people</label><input id="home-search" name="q" type="search" placeholder="Find a person or interest" autocomplete="off"><button class="cta" type="submit">Search</button></form>
+<p id="home-status" class="small" role="status"></p><ul id="home-results" class="people-grid"></ul>
+<div class="phone-handoff" data-qr-url="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074"></div>
+</div>
+<figure class="hero-shot hero-live"><div class="phone" id="hero-phone"><iframe src="/demo/?embed=1" title="Attunex web preview: try the app in your browser"></iframe></div><figcaption>A live preview on real data. Tap around, or <a href="/demo/">open it full screen</a>.</figcaption></figure>
+</section>
+<section id="find" aria-labelledby="find-title">
+<div class="section-heading"><div><p class="eyebrow">Try it here</p><h2 id="find-title">Who do you want to hear from?</h2></div><a href="/people">Browse all people</a></div>
+<p class="lead">Explore real podcast appearances before you download. Search a name, profession, or interest.</p>
+<ul id="home-examples" class="people-grid"></ul>
+<noscript><p><a href="/people">Browse the people directory</a> to explore available appearances.</p></noscript>
+</section>
+<section aria-labelledby="how"><p class="eyebrow">From a name to your next listen</p><h2 id="how">Three steps. A whole new feed.</h2><ol class="steps">
+<li><h3>Find your person</h3><p>Search a guest, expert, or creator in Attunex and tap Follow.</p></li>
+<li><h3>Discover their appearances</h3><p>Find conversations across podcasts, with featured appearances first.</p></li>
+<li><h3>Listen your way</h3><p>Stream now, download for later, or read when your iPhone supports it.</p></li></ol></section>
+<section aria-labelledby="experience"><h2 id="experience">More ways to spend time with an idea.</h2><div class="showcase-grid">
+<figure><img src="/img/shots/read-summaries.png" width="1320" height="2868" loading="lazy" alt="Attunex reader displaying an episode summary"><figcaption><h3>Read when you can’t listen</h3><p>Skim a summary or explore a transcript. Generated privately on supported iPhones. <a href="#faq">Check availability</a>.</p></figcaption></figure>
+<figure><img src="/img/shots/listen-offline.png" width="1320" height="2868" loading="lazy" alt="Attunex audio player with offline listening controls"><figcaption><h3>Take the conversation with you</h3><p>Download episodes for offline listening, set your playback speed, and keep listening with CarPlay.</p></figcaption></figure>
+</div></section>
+<section><h2>Your usual podcasts belong here, too.</h2><div class="features-grid"><div><h3>Bring your library</h3><p>Follow shows alongside people. Import subscriptions with OPML and keep everything in one player.</p></div><div><h3>Keep listeners separate</h3><p>Pro adds separate profiles, each with its own follows, history, and settings.</p></div><div><h3>Pick up where you left off</h3><p>Sync follows and listening history through your private iCloud.</p></div><div><h3>Enjoy a quieter app</h3><p>No account required, no ads from Attunex, and no third-party tracking. Podcasts may contain their own ads.</p></div></div></section>
+<section id="faq"><p class="eyebrow">Before you download</p><h2>A few useful answers.</h2>
+<details><summary>What’s free, and what does Pro add?</summary><p>Listening, downloads, unlimited podcast follows, one profile, and following a limited number of people are free. Version 1.5 includes three active people. Pro unlocks unlimited active people and the ability to create additional profiles.</p><p>Transcripts and summaries are also free on supported devices. Pro is an optional monthly or annual subscription; current local prices and any trial terms appear in the app before you subscribe.</p></details>
+<details><summary>Which iPhones can run Attunex?</summary><p>Attunex requires iOS 17 or later. Core listening, downloads, and guest discovery do not require Apple Intelligence.</p></details>
+<details><summary>Will my iPhone make transcripts and summaries?</summary><p>Generating transcripts requires iOS 26 and supported speech recognition for the device and language. Summaries require iOS 26 with Apple Intelligence enabled and its model available.</p><p>Where generation isn’t available, you can still listen and read show notes or publisher-provided transcripts when available. A transcript or summary isn’t guaranteed for every episode.</p></details>
+<details><summary>Does Attunex find every interview?</summary><p>Attunex gathers appearances from public podcast feeds and Apple Podcasts, and its catalog grows with each refresh. Coverage can be incomplete. Each guest page shows when its catalog was last updated.</p></details>
+<details><summary>Can I listen and read offline?</summary><p>Yes. Download audio before going offline. Saved transcripts and summaries remain readable once downloaded or generated.</p></details>
+<details><summary>Do I need an account?</summary><p>No Attunex account is required. iCloud sync uses your Apple account. See our <a href="/privacy">privacy policy</a> for details about search requests and how data is handled.</p></details>
+</section>
+<section class="closing"><h2>Start with someone you’re curious about.</h2><p>Find a familiar voice in a conversation you haven’t heard.</p><div class="actions"><a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Download for iPhone</a><a href="/people">Explore people first</a></div></section>
+<section class="maker"><h2>Made by an independent developer.</h2><p>Attunex is built and maintained by Duo Wang. Questions and feedback go directly to the person making the app. <a href="/about">More about Attunex</a>.</p></section>
+</main>
+<footer><nav aria-label="Footer"><a href="/people">People</a><a href="/about">About</a><a href="/support">Support</a><a href="/privacy">Privacy</a><a href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">App Store</a></nav><p>© 2026 Attunex. An independent app for iPhone.</p></footer>
+</div></body></html>

@@ -48,7 +48,6 @@
 
   var A, mini, mPlay, mArt, mTitle, mShow, mCur, mRem, mSeek;
   var curUrl = null, seeking = false;
-  var timers = [];
 
   function fmt(s) {
     s = Math.max(0, Math.floor(s || 0));
@@ -59,13 +58,14 @@
     var d = A.duration;
     return d && isFinite(d) && d > 0 ? d : A._dur || 0;
   }
-  function miniIcon() { mPlay.innerHTML = A.paused ? PLAY_SVG : PAUSE_SVG; }
+  function miniIcon() { mPlay.innerHTML = A.paused ? PLAY_SVG : PAUSE_SVG; mPlay.setAttribute("aria-label", (A.paused ? "Play " : "Pause ") + (mTitle.textContent || "episode")); }
 
   function refreshPills() {
     var pills = document.querySelectorAll(".playbtn");
     for (var i = 0; i < pills.length; i++) {
       var b = pills[i], on = curUrl && b.getAttribute("data-audio") === curUrl;
       b.classList.toggle("active", !!on);
+      b.setAttribute("aria-label", (on && !A.paused ? "Pause " : "Play ") + b.getAttribute("data-title") + " — " + b.getAttribute("data-show"));
       var li = b.closest("li"); if (li) li.classList.toggle("playing", !!on);
       var g = b.querySelector(".g"), t = b.querySelector(".t");
       if (on) {
@@ -163,11 +163,13 @@
         controlled[key] = 1;
         if (pills[i].classList.contains("active")) active[key] = 1;
       }
-      var lis = ol.getElementsByTagName("li");
+      var lis = ol.getElementsByTagName("li"), visible = 0;
       for (var j = 0; j < lis.length; j++) {
         var c = lis[j].getAttribute("data-ai") === "1" ? "ai" : lis[j].getAttribute("data-grade");
-        lis[j].style.display = !controlled[c] || active[c] ? "" : "none";
+        var show = !controlled[c] || active[c];
+        lis[j].style.display = show ? "" : "none"; if (show) visible++;
       }
+      var status = document.getElementById("episode-status"); if (status) status.textContent = visible ? visible + " episodes shown" : "No episodes selected. Turn on a filter to see episodes.";
       if (note) note.style.display = !controlled["featured"] || active["featured"] ? "" : "none";
     }
     for (var k = 0; k < pills.length; k++) {
@@ -180,65 +182,79 @@
     apply();
   }
 
+  function normalize(s) { return (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); }
+  function matches(text, query) { return normalize(query).trim().split(/\s+/).every(function (part) { return normalize(text).indexOf(part) !== -1; }); }
   function initHubSearch() {
     var q = document.getElementById("psearch"); if (!q) return;
-    var items = document.querySelectorAll(".hublist li"), nr = document.getElementById("noresults");
-    q.addEventListener("input", function () {
-      var t = this.value.trim().toLowerCase(), shown = 0;
+    var items = document.querySelectorAll(".hublist li"), nr = document.getElementById("noresults"), count = document.getElementById("results-count");
+    q.value = new URLSearchParams(location.search).get("q") || "";
+    function filter() {
+      var shown = 0;
       for (var i = 0; i < items.length; i++) {
-        var m = !t || items[i].getAttribute("data-name").indexOf(t) !== -1;
-        items[i].style.display = m ? "" : "none";
+        var m = matches(items[i].getAttribute("data-search") || items[i].getAttribute("data-name"), q.value);
+        items[i].hidden = !m;
         if (m) shown++;
       }
-      if (nr) nr.style.display = shown ? "none" : "";
+      if (nr) nr.hidden = !!shown;
+      if (count) count.textContent = shown + (shown === 1 ? " person" : " people");
+      var url = new URL(location.href);
+      if (q.value.trim()) url.searchParams.set("q", q.value.trim()); else url.searchParams.delete("q");
+      history.replaceState({}, "", url);
+    }
+    q.addEventListener("input", filter); filter();
+  }
+
+  var directoryRequest;
+  function initHomeSearch() {
+    var q = document.getElementById("home-search"); if (!q) return;
+    var results = document.getElementById("home-results"), examples = document.getElementById("home-examples"), status = document.getElementById("home-status");
+    var people = null;
+    function render() {
+      if (!document.body.contains(q) || !people) return;
+      var found = people.filter(function (p) { return matches(p.name + " " + p.bio, q.value); });
+      var searching = !!q.value.trim(), list = searching ? results : examples;
+      results.replaceChildren(); if (!searching) examples.replaceChildren();
+      status.textContent = q.value.trim() ? (found.length ? found.length + (found.length === 1 ? " match · showing " : " matches · showing ") + Math.min(found.length, 3) : "No matches here. Try another name, or search in the app.") : "";
+      found.slice(0, 3).forEach(function (p) {
+        var li = document.createElement("li"), a = document.createElement("a"); a.className = "person-card"; a.href = p.url;
+        if (p.image && /^https:\/\//.test(p.image)) {
+          var img = document.createElement("img"); img.src = p.image; img.alt = ""; img.width = 48; img.height = 48; img.loading = "lazy"; img.referrerPolicy = "no-referrer"; img.onerror = function () { this.remove(); }; a.appendChild(img);
+        }
+        var name = document.createElement("strong"); name.textContent = p.name; a.appendChild(name);
+        var bio = document.createElement("span"); bio.className = "bio"; bio.textContent = p.bio; a.appendChild(bio);
+        var count = document.createElement("span"); count.className = "count"; count.textContent = p.appearances + " appearances · " + p.shows + " shows"; a.appendChild(count);
+        li.appendChild(a); list.appendChild(li);
+      });
+    }
+    q.addEventListener("input", render);
+    if (!directoryRequest) directoryRequest = fetch("/people/directory.v1.json").then(function (r) { if (!r.ok) throw new Error("directory"); return r.json(); }).catch(function (e) { directoryRequest = null; throw e; });
+    directoryRequest.then(function (data) { people = data; render(); }).catch(function () { if (document.body.contains(status)) status.textContent = "The preview couldn’t load. You can still search the full directory using the Search button."; });
+  }
+
+  var qrRequest;
+  function initPhoneHandoff() {
+    document.querySelectorAll(".phone-handoff").forEach(function (host) {
+      var details = document.createElement("details"), summary = document.createElement("summary"), body = document.createElement("div");
+      summary.textContent = "Continue on your iPhone"; details.append(summary, body); host.appendChild(details);
+      details.addEventListener("toggle", function () {
+        if (!details.open || body.childNodes.length) return;
+        var note = document.createElement("p"); note.textContent = "Preparing QR code…"; body.appendChild(note);
+        if (!qrRequest) qrRequest = new Promise(function (resolve, reject) {
+          if (window.qrcode) { resolve(); return; }
+          var script = document.createElement("script"); script.src = "/vendor/qrcode.js"; script.setAttribute("data-keep", ""); script.onload = resolve; script.onerror = function () { qrRequest = null; script.remove(); reject(new Error("QR unavailable")); }; document.head.appendChild(script);
+        });
+        qrRequest.then(function () {
+          var url = host.getAttribute("data-qr-url"), qr = window.qrcode(0, "M"); qr.addData(url); qr.make();
+          var img = document.createElement("img"); img.src = qr.createDataURL(4, 16); img.alt = "Scan with your iPhone camera to open " + url; img.width = 164; img.height = 164;
+          note.textContent = url.indexOf("/p/") !== -1 ? "Scan with your iPhone camera to open this guest page. Download Attunex, then search for the guest in the app. This does not follow them automatically." : "Scan with your iPhone camera to open Attunex in the App Store.";
+          body.prepend(img);
+        }).catch(function () { note.textContent = "QR code unavailable. Open attunex.app on your iPhone to continue."; });
+      });
     });
   }
 
-  var carouselKey = null;
-  function initCarousel() {
-    if (carouselKey) { document.removeEventListener("keydown", carouselKey); carouselKey = null; }
-    var track = document.getElementById("track"); if (!track) return;
-    var imgs = track.getElementsByTagName("img"), i = 0, timer = null, playing = false;
-    var prev = document.getElementById("c-prev"), next = document.getElementById("c-next"), pp = document.getElementById("c-pp");
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var CPLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-    var CPAUSE = '<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
-    function center() {
-      if (!document.body.contains(track)) return;
-      for (var k = 0; k < imgs.length; k++) imgs[k].classList.toggle("active", k === i);
-      var img = imgs[i], carW = track.parentElement.clientWidth;
-      track.style.transform = "translateX(" + -(img.offsetLeft + img.offsetWidth / 2 - carW / 2) + "px)";
-    }
-    function go(d) { i = (i + d + imgs.length) % imgs.length; center(); }
-    function setPP() { if (pp) { pp.innerHTML = playing ? CPAUSE : CPLAY; pp.setAttribute("aria-label", playing ? "Pause" : "Play"); } }
-    function start() { if (timer || reduce) { setPP(); return; } timer = setInterval(function () { go(1); }, 2600); timers.push(timer); playing = true; setPP(); }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } playing = false; setPP(); }
-    function toggle() { playing ? stop() : start(); }
-    if (prev) prev.addEventListener("click", function () { go(-1); });
-    if (next) next.addEventListener("click", function () { go(1); });
-    if (pp) pp.addEventListener("click", toggle);
-    carouselKey = function (e) {
-      if (e.key === "ArrowLeft") { go(-1); }
-      else if (e.key === "ArrowRight") { go(1); }
-      else if (e.key === " " || e.code === "Space") {
-        var t = e.target;
-        if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
-        e.preventDefault(); toggle();
-      }
-    };
-    document.addEventListener("keydown", carouselKey);
-    window.addEventListener("resize", center);
-    center();
-    start();
-  }
-
   function initPage() {
-    for (var i = 0; i < timers.length; i++) clearInterval(timers[i]);
-    timers = [];
-    initFilters();
-    initHubSearch();
-    initCarousel();
-    refreshPills();
+    initFilters(); initHubSearch(); initHomeSearch(); initPhoneHandoff(); refreshPills();
   }
 
   /* ---- soft navigation ---- */
@@ -264,6 +280,7 @@
   }
 
   function swapBody(doc) {
+    document.body.className = doc.body.className;
     var kids = Array.prototype.slice.call(document.body.children);
     var ref = null;
     for (var i = 0; i < kids.length; i++) {
@@ -290,8 +307,11 @@
         swapHead(doc);
         swapBody(doc);
         if (push) history.pushState({}, "", url);
-        window.scrollTo(0, 0);
         initPage();
+        var hash = new URL(url, location.href).hash;
+        var target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : document.querySelector("main, h1");
+        if (target) { target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); }
+        if (hash && target) target.scrollIntoView(); else window.scrollTo(0, 0);
         busy = false;
       })
       .catch(function () { location.href = url; });
@@ -304,6 +324,12 @@
     if (a && isInternal(a)) { e.preventDefault(); navigate(a.href, true); return; }
     var b = t.closest ? t.closest(".playbtn") : null;
     if (b) onPill(b);
+  });
+
+  document.addEventListener("submit", function (e) {
+    if (!e.target.matches(".search-form")) return;
+    e.preventDefault();
+    var url = new URL(e.target.action); url.search = new URLSearchParams(new FormData(e.target)).toString(); navigate(url.href, true);
   });
 
   window.addEventListener("popstate", function () { navigate(location.href, false); });

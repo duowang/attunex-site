@@ -1,10 +1,9 @@
-**/.git
+**/.git/**
 **/.DS_Store
-**/node_modules
-**/.wrangler
+**/node_modules/**
+**/.wrangler/**
 .gitignore
 .assetsignore
 README.md
 CNAME
 wrangler.jsonc
-people/directory.v1.json
