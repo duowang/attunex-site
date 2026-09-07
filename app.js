@@ -259,9 +259,16 @@
 
   /* ---- soft navigation ---- */
 
+  // Explore and the app demo own their scripts, styles, and playback lifecycle.
+  // They must load as documents rather than entering the marketing site's shell.
+  function isStandalonePage(url) {
+    return /^\/(?:explore|demo)(?:\/|$)/.test(new URL(url, location.href).pathname);
+  }
+
   function isInternal(a) {
     if (!a || !a.href) return false;
     if (a.origin !== location.origin) return false;
+    if (isStandalonePage(a.href)) return false;
     if (a.hasAttribute("target") || a.hasAttribute("download")) return false;
     var href = a.getAttribute("href") || "";
     if (href.charAt(0) === "#" || href.indexOf("mailto:") === 0 || href.indexOf("tel:") === 0) return false;
@@ -297,6 +304,7 @@
 
   var busy = false;
   function navigate(url, push) {
+    if (isStandalonePage(url)) { location.href = url; return; }
     if (busy) return;
     busy = true;
     fetch(url, { credentials: "same-origin" })

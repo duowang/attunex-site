@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Explore the podcast universe — Attunex</title>
+<meta name="description" content="Start with a person. Discover the podcasts they appear on, the people connected through those shows, and the episodes that bring them together.">
+<link rel="canonical" href="https://attunex.app/explore">
+<meta property="og:title" content="Explore the podcast universe — Attunex">
+<meta property="og:description" content="One person opens a world of conversations. Explore real connections between people, podcasts, and episodes.">
+<meta property="og:url" content="https://attunex.app/explore">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://attunex.app/og-cover.png">
+<meta name="apple-itunes-app" content="app-id=6786431074">
+<meta name="theme-color" content="#faf8f5">
+<link rel="icon" href="/img/icon-512.png">
+<link rel="stylesheet" href="/site.css?v=5">
+<link rel="stylesheet" href="/explore/explore.css?v=1">
+<script type="module" src="/explore/explore.js?v=1"></script>
+</head>
+<body class="explore-page">
+<a class="skip" href="#world">Skip to graph</a>
+<header class="explore-masthead"><a class="brand" href="/">Attunex<span class="brand-dot">.</span></a><nav aria-label="Main"><a href="/explore" aria-current="page">Explore</a><a href="/people">Find people</a></nav><a class="app-link" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Get the iPhone app <span aria-hidden="true">↗</span></a></header>
+<main>
+<div class="explore-intro"><div><p class="eyebrow">THE PODCAST UNIVERSE</p><h1>Follow your curiosity.</h1></div><p>Start with a person. See where the conversations lead.</p></div>
+<div class="explore-layout">
+<aside class="people-panel" aria-label="Choose a person">
+<form class="explore-search" role="search"><label for="person-search" class="sr-only">Find a person or interest</label><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="person-search" type="search" placeholder="Find a person or interest" autocomplete="off"></form>
+<div id="people-list"><p class="quiet loading">Finding starting points…</p></div>
+<p class="local-note">Follows stay in this browser.<br>They don’t sync to the iPhone app.</p>
+</aside>
+<section class="world" id="world" tabindex="-1" aria-label="Podcast connections">
+<div id="world-heading"></div>
+<div id="graph-area"><div class="graph-placeholder"><span class="loading-orbit" aria-hidden="true"></span><p>Opening the podcast universe…</p></div></div>
+<div class="graph-footer"><span><i class="legend-person"></i> People</span><span><i class="legend-show"></i> Podcasts</span><span class="legend-edge"><i></i> Shared show</span><span class="legend-edge exact"><i></i> Same episode</span></div>
+</section>
+<aside class="connection-panel" id="connection-panel" aria-label="Connection and episodes" tabindex="-1"><p class="quiet">Choose a connection to hear the story.</p></aside>
+</div>
+<p class="coverage-note" id="coverage-note">Connections are drawn from identified podcast appearances. The map grows as more episodes are indexed.</p>
+</main>
+<div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+<div id="toast" class="toast" role="status" hidden></div>
+<section id="player" class="web-player" aria-label="Audio player" hidden><div class="playing-info"><span class="eyebrow">NOW PLAYING</span><strong id="playing-title"></strong><span id="playing-show"></span></div><audio id="audio" controls preload="none"></audio><button type="button" id="close-player" aria-label="Close player">×</button><p id="audio-error" hidden></p></section>
+<noscript><p class="noscript-note">Enable JavaScript to explore connections, or <a href="/people">browse podcast appearances by person</a>.</p></noscript>
+</body>
+</html>

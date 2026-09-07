@@ -21,12 +21,12 @@
 
   <!-- Apple Smart App Banner -->
   <meta name="apple-itunes-app" content="app-id=6786431074">
-  <script src="/app.js?v=3" defer></script>
+  <script src="/app.js?v=4" defer></script>
 
   <link rel="icon" type="image/png" href="/img/icon-512.png">
   <link rel="apple-touch-icon" href="/img/icon-180.png">
 
-  <link rel="stylesheet" href="/site.css?v=4">
+  <link rel="stylesheet" href="/site.css?v=5">
 
   <!-- Structured data: helps Google understand the entity. No aggregateRating until real App Store ratings exist. -->
   <script type="application/ld+json">
@@ -55,19 +55,23 @@
 <body class="home">
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
-<header class="masthead"><a class="brand" href="/">Attunex</a><nav aria-label="Main"><a href="/people">Find people</a><a href="#faq">Questions</a><a href="/support">Support</a></nav></header>
+<header class="masthead"><a class="brand" href="/">Attunex</a><nav aria-label="Main"><a href="/explore" target="_self">Explore</a><a href="/people">Find people</a><a href="#faq">Questions</a><a href="/support">Support</a></nav></header>
 <main id="main" tabindex="-1">
 <section class="hero" aria-labelledby="headline">
 <div><p class="eyebrow">A podcast player built around people</p>
 <h1 id="headline">Follow people.<br>Find their podcast appearances.</h1>
 <p class="tagline">Interviews from across shows, together in one feed. Listen, save, and read in Attunex.</p>
-<div class="actions"><a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Download for iPhone</a><a class="secondary" href="#home-search">Find someone you follow</a></div>
+<div class="actions"><a class="cta" href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">Download for iPhone</a><a class="secondary" href="/explore" target="_self">Explore the podcast universe →</a></div>
 <p class="small">Free to start · No account · iOS 17+<br>Optional Pro subscription. <a href="#faq">See features and requirements</a></p>
 <form action="/people" method="get" role="search" class="search-form"><label class="sr-only" for="home-search">Search people</label><input id="home-search" name="q" type="search" placeholder="Find a person or interest" autocomplete="off"><button class="cta" type="submit">Search</button></form>
 <p id="home-status" class="small" role="status"></p><ul id="home-results" class="people-grid"></ul>
 <div class="phone-handoff" data-qr-url="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074"></div>
 </div>
-<figure class="hero-shot hero-live"><div class="phone" id="hero-phone"><iframe src="/demo?embed=1" title="Attunex web preview: try the app in your browser"></iframe></div><figcaption>A live preview on real data. Tap around, or <a href="/demo">open it full screen</a>.</figcaption></figure>
+<figure class="hero-shot hero-live"><div class="phone" id="hero-phone"><iframe src="/demo?embed=1" title="Attunex web preview: try the app in your browser"></iframe></div><figcaption>A live preview on real data. Tap around, or <a href="/demo" target="_self">open it full screen</a>.</figcaption></figure>
+</section>
+<section class="explore-invitation" aria-labelledby="explore-title">
+<div><p class="eyebrow">A new way to discover</p><h2 id="explore-title">One person opens a world<br>of conversations.</h2><p class="lead">Follow a person through the podcasts they appear on. Meet another voice along the way. Hear the episode that connects them.</p><a class="cta" href="/explore" target="_self">Explore the connections <span aria-hidden="true">→</span></a></div>
+<div class="explore-window"><iframe src="/explore?embed=1" title="Interactive map of people and podcast connections" loading="lazy"></iframe><a class="explore-window-link" href="/explore" target="_self">Open the full map ↗</a></div>
 </section>
 <section id="find" aria-labelledby="find-title">
 <div class="section-heading"><div><p class="eyebrow">Try it here</p><h2 id="find-title">Who do you want to hear from?</h2></div><a href="/people">Browse all people</a></div>

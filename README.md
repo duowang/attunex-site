@@ -55,3 +55,41 @@ Pricing copy currently identifies the **1.5** free limit (three active people), 
 - `demo/data/p/<slug>.json` (per person), `demo/data/s/<show-id>.json` (per show, shows with 8+ graph episodes), `demo/data/shows.json` (show index). The people index is `people/directory.v1.json`.
 - Regenerate with the person pages: `python3 ~/code/attunex/graph-pipeline/generate_demo_data.py` (reads `people.db`, writes here). Same slugs and publish gate as `/p`.
 - Follows, playback positions, and theme live in the visitor's `localStorage`; the free limit (5 active people) and the Pro copy mirror the app. Audio streams from the publishers' enclosure URLs. Transcripts and summaries are not generated on the web; the Read tab shows one real summary from the App Store screenshot plus the publisher's notes.
+
+## Explore the podcast graph
+
+`/explore` is a responsive, full-size graph experience. The homepage links to it and
+embeds a compact, real-data path. Start with a person, select a podcast or neighbor,
+listen to the supporting episodes, and recenter on another person. Solid lines
+mean a shared show; dotted lines mean a shared episode (including compilations).
+Follows use `attunex-explore-follows-v1` in localStorage, separate from the older
+`/demo` preview and the iPhone app; there is no account synchronization.
+
+Data comes from the same `db.connection_payloads` projection as the native app.
+The site ships static public JSON, with no graph API credential and no requests
+to production D1. It loads one neighborhood at a time and keeps a bounded cache.
+Refresh from the local graph after pipeline updates:
+
+```bash
+cd ~/code/attunex
+python3 graph-pipeline/generate_explore_data.py
+```
+
+This writes `explore/data/index.json` and `explore/data/p/<graph-id>.json`, including
+empty neighborhoods so every linked person has a valid destination. Existing SEO
+slugs are retained only when present in `people/directory.v1.json`. It does not
+regenerate SEO or demo assets. Data updates require the usual manual site deploy.
+
+Verify the graph evidence, geometry, and search helpers before deployment:
+
+```bash
+node --test tests/explore-model.test.mjs
+node --check explore/explore.js
+npx wrangler deploy --dry-run
+```
+
+Explore and `/demo` require full document navigation: each owns its scripts,
+styles, and audio player. The shared `app.js` soft-navigation handler excludes
+these routes (including history navigation). Keep homepage entry links marked
+`target="_self"` so older cached copies of the shared script also leave them alone.
+Regression check: `node --test tests/navigation.test.mjs`.
