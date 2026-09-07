@@ -13,6 +13,7 @@
     }
   ],
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "html_handling": "drop-trailing-slash"
   }
 }
