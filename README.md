@@ -68,6 +68,19 @@ Follows use `attunex-explore-follows-v1` in localStorage, separate from the olde
 Data comes from the same `db.connection_payloads` projection as the native app.
 The site ships static public JSON, with no graph API credential and no requests
 to production D1. It loads one neighborhood at a time and keeps a bounded cache.
+
+**The web map is a sample, not a copy of the graph.** `--hops` (default 2) seeds the
+shipped roster from the people who already have a `/p` page and grows it two steps
+along real connections: 1,397 of 11,899 people as of 2026-09-08, keeping 95% of walks
+expandable for 12% of the files. Three things depend on that being a sample and saying
+so: the 20,000-file Workers asset ceiling is a hard deploy failure and the graph keeps
+growing; the full graph is what the app is for, and `api.attunex.app` gates it behind
+App Attest, so publishing a complete downloadable copy here would undo that; and the
+page has to be honest about it. `index.json` carries a `coverage` block, `explore.js`
+states the numbers in the coverage note, and connections leaving the sample carry
+`expandable: false` so the client offers the App Store instead of a recenter that
+would 404. Those numbers are never hardcoded in site code — they come from the export.
+
 Refresh from the local graph after pipeline updates:
 
 ```bash
@@ -75,10 +88,12 @@ cd ~/code/attunex
 python3 graph-pipeline/generate_explore_data.py
 ```
 
-This writes `explore/data/index.json` and `explore/data/p/<graph-id>.json`, including
-empty neighborhoods so every linked person has a valid destination. Existing SEO
-slugs are retained only when present in `people/directory.v1.json`. It does not
-regenerate SEO or demo assets. Data updates require the usual manual site deploy.
+This writes `explore/data/index.json` and `explore/data/p/<graph-id>.json` for the
+rostered people only, deleting files for anyone who has dropped out of the roster.
+Existing SEO slugs are retained only when present in `people/directory.v1.json` — that
+file is also the roster seed, so regenerate the person pages first when the set of
+`/p` pages changes. It does not regenerate SEO or demo assets. Data updates require
+the usual manual site deploy.
 
 Verify the graph evidence, geometry, and search helpers before deployment:
 

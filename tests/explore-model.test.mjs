@@ -24,6 +24,24 @@ test('every published connection is drawable and retains its own playable eviden
     for (const n of layout.nodes) assert(n.y >= 60 && n.y <= layout.height - 60);
   }
 });
+test('the shipped sample flags exactly the neighbors it does not publish', () => {
+  // The client swaps the recenter button for the App Store on `expandable: false`. If the
+  // flag and the shipped set ever disagree, one direction 404s and the other hides a
+  // neighborhood that is right there, so assert they are the same set both ways.
+  const shipped = new Set(index.people.map(p => p.id));
+  assert.equal(shipped.size, index.coverage.shippedPeople);
+  assert(index.coverage.graphPeople > shipped.size, 'a sample must be smaller than the graph');
+  let terminal = 0;
+  for (const p of index.people) {
+    const payload = JSON.parse(readFileSync(new URL(`p/${p.id}.json`, dataDir)));
+    for (const c of payload.connections) {
+      const publishes = shipped.has(c.person.id);
+      assert.equal(c.expandable === false, !publishes, `${p.id} -> ${c.person.id}`);
+      if (!publishes) terminal++;
+    }
+  }
+  assert(terminal > 0, 'a sample should have edges that leave it');
+});
 test('shared episode evidence is an intersection, never unrelated appearances', () => {
   const a = {audioURL:'https://example.com/a.mp3'}, b = {audioURL:'https://example.com/b.mp3'};
   const c = {kind:'shared_episode', sourceAppearances:[a,b], appearances:[b,b]};

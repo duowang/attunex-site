@@ -1,8 +1,12 @@
-/* Public, static graph projections; browser-local follows; publisher-hosted audio. */
+/* Public, static graph projections; browser-local follows; publisher-hosted audio.
+   The shipped map is a SAMPLE of the graph (generate_explore_data.py --hops), so a
+   connection can name someone whose own neighborhood is not published. Those carry
+   `expandable: false`; every path that would recenter has to offer the app instead. */
 import { graphLayout, evidenceGroups, searchPeople, safeURL } from './graph-model.js?v=1';
 const $ = (id) => document.getElementById(id);
 const escape = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const KEY = 'attunex-explore-follows-v1';
+const APP_URL = 'https://apps.apple.com/us/app/attunex-podcast-player/id6786431074';
 const EMBED = new URLSearchParams(location.search).has('embed');
 document.body.classList.toggle('embedded', EMBED);
 let followed = new Map();
@@ -56,6 +60,7 @@ function resolveID(value) { return byID.has(value) ? value : people.find(p => p.
 async function openPerson(id, {historyMode = 'push', resetTrail = false, focus = true} = {}) {
   id = resolveID(id);
   if (!id || !/^[\w-]+$/.test(id)) { renderError('This person couldn’t be found.', false); return; }
+  if (people.length && !byID.has(id)) { renderBeyondSample(); return; }
   const requestedShow = new URLSearchParams(location.search).get('s');
   const version = ++request;
   if (resetTrail) trail = [];
@@ -82,6 +87,12 @@ async function openPerson(id, {historyMode = 'push', resetTrail = false, focus =
   } finally {
     if (version === request) { loading = false; $('world').removeAttribute('aria-busy'); }
   }
+}
+function renderBeyondSample() {
+  $('world-heading').innerHTML = '';
+  $('graph-area').innerHTML = `<div class="graph-placeholder"><h3>This person is beyond the web sample.</h3><p>attunex.app publishes part of the graph so you can try it in a browser. The iPhone app carries all of it.</p><a class="explore-button" href="${APP_URL}">Get Attunex for iPhone <span aria-hidden="true">↗</span></a><a href="/people">Browse people on the web</a></div>`;
+  $('connection-panel').innerHTML = '<p class="quiet">Every path begins with a person.</p>';
+  announce('This person is beyond the web sample. The iPhone app has the full graph.');
 }
 function renderError(message, retry, id = '') {
   $('world-heading').innerHTML = '';
@@ -123,8 +134,16 @@ function profileLink(person) {
   const slug = byID.get(person.id)?.slug;
   return slug ? `<a class="profile-link" href="/p/${encodeURIComponent(slug)}">See all appearances <span aria-hidden="true">↗</span></a>` : '';
 }
-function personIdentity(person, explore = false) {
-  return `<div class="detail-person">${avatar(person, false, true)}<div><h2>${escape(person.name)}</h2>${followButton(person)}</div></div><p class="detail-bio">${escape(person.description || '')}</p>${explore ? `<button class="explore-button" type="button" data-open="${escape(person.id)}">Explore ${escape(person.name.split(' ')[0])}’s world <span aria-hidden="true">→</span></button>` : ''}`;
+function personIdentity(person, action = 'none') {
+  const first = escape(person.name.split(' ')[0]);
+  // 'app' is not a failure: this person is real and their connection is real, the web
+  // sample just stops here. Say that plainly rather than hiding the person or the edge.
+  const cta = action === 'explore'
+    ? `<button class="explore-button" type="button" data-open="${escape(person.id)}">Explore ${first}’s world <span aria-hidden="true">→</span></button>`
+    : action === 'app'
+      ? `<a class="explore-button" href="${APP_URL}">Open ${first}’s world in the app <span aria-hidden="true">↗</span></a><p class="sample-note">This map is a sample of the Attunex graph. ${first}’s own connections are in the iPhone app.</p>`
+      : '';
+  return `<div class="detail-person">${avatar(person, false, true)}<div><h2>${escape(person.name)}</h2>${followButton(person)}</div></div><p class="detail-bio">${escape(person.description || '')}</p>${cta}`;
 }
 function renderDetail() {
   episodeRows = [];
@@ -134,7 +153,7 @@ function renderDetail() {
   const panel = $('connection-panel');
   if (c && show) {
     const groups = evidenceGroups(c, p);
-    panel.innerHTML = `<div class="detail-identity"><p class="eyebrow">${followed.has(c.person.id) ? 'IN YOUR FOLLOWING' : 'BEYOND YOUR FOLLOWING'}</p>${personIdentity(c.person, true)}<div class="connection-story"><p class="relationship">${c.kind === 'shared_episode' ? 'In the same episode' : 'Through a shared podcast'}</p><p><strong>${escape(p.name)}</strong> ${c.kind === 'shared_episode' ? 'and' : '→'} <strong>${escape(c.person.name)}</strong>${c.kind === 'shared_episode' ? ' are featured in the same episode of ' : ' both appear on '}<strong>${escape(show.title)}</strong>.</p></div>${profileLink(c.person)}</div><div class="detail-evidence">${groups.map(g => episodeGroup(g.title, g.episodes)).join('')}<p class="quiet" style="font-size:12px">${c.kind === 'shared_episode' ? 'Shared episodes may include compilations or clips.' : 'A shared show doesn’t necessarily mean a shared conversation.'}</p></div>`;
+    panel.innerHTML = `<div class="detail-identity"><p class="eyebrow">${followed.has(c.person.id) ? 'IN YOUR FOLLOWING' : 'BEYOND YOUR FOLLOWING'}</p>${personIdentity(c.person, c.expandable === false ? 'app' : 'explore')}<div class="connection-story"><p class="relationship">${c.kind === 'shared_episode' ? 'In the same episode' : 'Through a shared podcast'}</p><p><strong>${escape(p.name)}</strong> ${c.kind === 'shared_episode' ? 'and' : '→'} <strong>${escape(c.person.name)}</strong>${c.kind === 'shared_episode' ? ' are featured in the same episode of ' : ' both appear on '}<strong>${escape(show.title)}</strong>.</p></div>${profileLink(c.person)}</div><div class="detail-evidence">${groups.map(g => episodeGroup(g.title, g.episodes)).join('')}<p class="quiet" style="font-size:12px">${c.kind === 'shared_episode' ? 'Shared episodes may include compilations or clips.' : 'A shared show doesn’t necessarily mean a shared conversation.'}</p></div>`;
   } else if (selected?.kind === 'show' && show) {
     const connections = payload.connections.filter(c => c.showID === show.id);
     const source = [...new Map(connections.flatMap(c => c.sourceAppearances).map(e => [e.audioURL, e])).values()];
@@ -214,7 +233,12 @@ async function boot() {
     const first = new URLSearchParams(location.search).get('p') || [...followed.keys()].find(id => byID.has(id)) || starters[0]?.id;
     if (!first) { renderError('The map is being prepared. Come back soon.',false); return; }
     const date = fmtDate(data.generatedAt);
-    $('coverage-note').textContent = `Connections are drawn from identified podcast appearances${date ? ` · Updated ${date}` : ''}. The map grows as more episodes are indexed.`;
+    const coverage = data.coverage || {};
+    const count = value => Number(value).toLocaleString();
+    const updated = date ? ` · Updated ${escape(date)}` : '';
+    $('coverage-note').innerHTML = coverage.shippedPeople && coverage.graphPeople
+      ? `This map is a sample of the Attunex graph — <strong>${count(coverage.shippedPeople)}</strong> of <strong>${count(coverage.graphPeople)}</strong> people, drawn from identified podcast appearances${updated}. <a href="${APP_URL}">The iPhone app explores all of them <span aria-hidden="true">↗</span></a>`
+      : `Connections are drawn from identified podcast appearances${updated}. The map grows as more episodes are indexed.`;
     await openPerson(first, {historyMode:'replace',focus:false});
   } catch {
     $('people-list').innerHTML = '<p class="quiet">Starting points couldn’t load. <button class="more-people" data-reload>Try again</button> or <a href="/people">browse people</a>.</p>';
