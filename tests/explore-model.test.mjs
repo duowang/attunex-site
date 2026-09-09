@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {graphLayout, evidenceGroups, searchPeople, safeURL} from '../explore/graph-model.js';
+import {graphLayout, evidenceGroups, searchPeople, safeURL, NODE_PITCH} from '../explore/graph-model.js';
 const dataDir = new URL('../explore/data/', import.meta.url);
 const index = JSON.parse(readFileSync(new URL('index.json', dataDir)));
 
@@ -10,7 +10,9 @@ test('every published connection is drawable and retains its own playable eviden
   for (const p of index.people) {
     const payload = JSON.parse(readFileSync(new URL(`p/${p.id}.json`, dataDir)));
     const layout = graphLayout(payload);
-    assert.equal(layout.nodes.length, 1 + payload.shows.length + payload.connections.length);
+    assert.equal(layout.nodes.length, 1 + layout.shownShows.length + payload.connections.length);
+    assert.equal(layout.shownShows.length + layout.hiddenShows, payload.shows.length,
+      `${p.id}: every show is either drawn or counted as hidden`);
     for (const c of payload.connections) {
       assert(layout.edges.some(e => e.personID === c.person.id && e.showID === c.showID));
       const groups = evidenceGroups(c, payload.person);
@@ -22,6 +24,16 @@ test('every published connection is drawable and retains its own playable eviden
       }
     }
     for (const n of layout.nodes) assert(n.y >= 60 && n.y <= layout.height - 60);
+    // Staying inside the box is not the same as being readable. Nodes render
+    // ~120px tall, and the show column once stacked 100 of them 4px apart
+    // inside a 654px graph because the height was sized on the people column
+    // alone. Assert the pitch per column, which is the thing that broke.
+    for (const kind of ['show', 'person']) {
+      const ys = layout.nodes.filter(n => n.kind === kind).map(n => n.y).sort((a, b) => a - b);
+      for (let i = 1; i < ys.length; i++)
+        assert(ys[i] - ys[i - 1] >= NODE_PITCH - 1,
+          `${p.id}: ${kind} nodes ${(ys[i] - ys[i - 1]).toFixed(1)}px apart, need ${NODE_PITCH}`);
+    }
   }
 });
 test('the shipped sample flags exactly the neighbors it does not publish', () => {

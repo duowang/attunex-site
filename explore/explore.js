@@ -74,12 +74,16 @@ async function openPerson(id, {historyMode = 'push', resetTrail = false, focus =
     if (version !== request) return;
     if (previous && previous.id !== id && !resetTrail) trail = [...trail.filter(p => p.id !== previous.id && p.id !== id), previous].slice(-4);
     payload = data;
-    selected = data.connections.length ? {kind:'person', id:(data.connections.find(c => !followed.has(c.person.id)) || data.connections[0]).person.id} : data.shows.length ? {kind:'show', id:data.shows[0].id} : {kind:'root', id};
+    // Only shows on the map are selectable, and a show is on the map only when
+    // someone is reached through it — so with no connections there is nothing
+    // to select but the root.
+    const mapped = new Set(data.connections.map(c => c.showID));
+    selected = data.connections.length ? {kind:'person', id:(data.connections.find(c => !followed.has(c.person.id)) || data.connections[0]).person.id} : {kind:'root', id};
     if (historyMode !== 'none') setURL(id, historyMode === 'replace');
     document.title = `${data.person.name}’s podcast world — Attunex`;
-    if (requestedShow && data.shows.some(s => s.id === requestedShow)) selected = {kind:'show', id:requestedShow};
+    if (requestedShow && mapped.has(requestedShow)) selected = {kind:'show', id:requestedShow};
     renderAll();
-    announce(`Exploring ${data.person.name}. ${data.shows.length} podcasts and ${data.connections.length} connected people.`);
+    announce(`Exploring ${data.person.name}. ${mapped.size} podcasts lead somewhere new, out of ${data.shows.length}, and ${data.connections.length} connected people.`);
     if (focus) $('world').focus({preventScroll:true});
   } catch {
     if (version !== request) return;
@@ -106,11 +110,21 @@ function renderHeading() {
 }
 function renderGraph() {
   const p = payload.person;
-  if (!payload.shows.length) {
+  if (!payload.connections.length) {
+    $('graph-hidden').hidden = true;
     $('graph-area').innerHTML = `<div class="graph-placeholder">${avatar(p)}<h3>More of ${escape(p.name)}’s world is still being mapped.</h3><p>Keep this person in your following, or choose another starting point.</p>${followButton(p)}</div>`;
     return;
   }
   const layout = graphLayout(EMBED ? {...payload, connections:payload.connections.slice(0, 1)} : payload);
+  // The podcasts that lead nowhere new are left off the map, not out of the
+  // story: a well-covered person is on ~100 shows and reached through a few.
+  // Not in the embed: it draws a single teaser path, so its hidden count would
+  // include connections the slice dropped, which do lead somewhere.
+  const hidden = $('graph-hidden');
+  hidden.hidden = EMBED || !layout.hiddenShows;
+  hidden.textContent = hidden.hidden
+    ? ''
+    : `${layout.hiddenShows} more ${layout.hiddenShows === 1 ? 'podcast' : 'podcasts'} with no onward connection yet`;
   const activeShow = selected?.kind === 'show' ? selected.id : payload.connections.find(c => c.person.id === selected?.id)?.showID;
   const nodes = layout.nodes.map(node => {
     const isRoot = node.kind === 'root', isShow = node.kind === 'show', obj = node.data;
