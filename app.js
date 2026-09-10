@@ -196,6 +196,9 @@
         if (m) shown++;
       }
       if (nr) nr.hidden = !!shown;
+      var secs = document.querySelectorAll(".hubsec");
+      for (var s = 0; s < secs.length; s++) secs[s].hidden = !secs[s].querySelector("li:not([hidden])");
+      var jump = document.querySelector(".jump"); if (jump) jump.hidden = !!q.value.trim();
       if (count) count.textContent = shown + (shown === 1 ? " person" : " people");
       var url = new URL(location.href);
       if (q.value.trim()) url.searchParams.set("q", q.value.trim()); else url.searchParams.delete("q");

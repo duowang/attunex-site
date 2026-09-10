@@ -15,18 +15,29 @@ static assets** at [attunex.app](https://attunex.app/) (`wrangler.jsonc`, `asset
 These URLs are referenced from App Store Connect (Support URL, Marketing URL, Privacy Policy URL).
 
 ## Generated person pages (SEO — "every podcast episode featuring X")
-- `p/<slug>.html` — one page per swept person (`/p/<slug>`).
-- `people/index.html` — browse hub (`/people`).
+- `p/<slug>.html` — one page per person (`/p/<slug>`): featured, human-made
+  episodes only, each with a show-notes snippet, under a generated intro
+  (years active, most frequent shows, recurring hosts cross-linked to their
+  own pages).
+- `people/index.html` — browse hub (`/people`), "Most interviewed" plus
+  sections by field.
+- `people/directory.v1.json` — the same people, read by the homepage search
+  and the explore map.
 - `sitemap-people.xml` — sitemap for the above.
+- `index.html` — the block between `<!-- top-people:start -->` and
+  `<!-- top-people:end -->` is rewritten with links to the most interviewed
+  people; everything else on the homepage is hand-authored.
 
 These are **generated** from the people graph and should be regenerated before
 deploy (the generator lives in the pipeline repo, which holds `people.db`):
 ```
 cd ~/code/attunex/graph-pipeline
-python3 generate_person_pages.py        # writes into ~/attunex-site: p/, people/index.html, sitemap-people.xml
+python3 generate_person_pages.py        # writes into ~/attunex-site
+python3 generate_explore_data.py        # re-reads directory.v1.json for the explore map
 ```
-Quality gates: swept people only (`pulled_at`), featured appearances on non-AI
-shows only, >=2 appearances to publish. Coverage is stated "as of <date>" per page.
+Quality gates: featured appearances on non-AI shows only, >=10 of them to
+publish (mentions and AI-generated items never reach the markup). Swept people
+state "Updated <date>"; a person who falls below the bar has their page deleted.
 
 `people/curated-people.v1.json` is an existing app data asset — leave it in place.
 
