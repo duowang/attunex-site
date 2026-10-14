@@ -30,12 +30,18 @@ These URLs are referenced from App Store Connect (Support URL, Marketing URL, Pr
 
 These are **generated** from the people graph and should be regenerated before
 deploy (the generator lives in the pipeline repo, which holds `people.db`):
+Use Python 3.11 or later for graph exports; the map exporter reads ISO timestamps
+ending in `Z`, which Python 3.9 cannot parse.
 ```
 cd ~/code/attunex/graph-pipeline
 python3 generate_person_pages.py        # writes into ~/attunex-site
 python3 generate_explore_data.py        # re-reads directory.v1.json for the explore map
 ```
-Quality gates: featured appearances on non-AI shows only, >=10 of them to
+The pipeline’s `site-spotlight-people.txt` lists editorially selected people
+who may appear with at least two real featured episodes. Their identity, bio,
+and episodes still come from the graph.
+
+Quality gates: featured appearances on non-AI shows only, >=8 of them to
 publish (mentions and AI-generated items never reach the markup). Swept people
 state "Updated <date>"; a person who falls below the bar has their page deleted.
 
@@ -55,16 +61,17 @@ Add the domain in Google Search Console and submit `sitemap.xml` + `sitemap-peop
 
 The homepage loads `people/directory.v1.json`, generated alongside the person pages from the local graph. Names, bios, images, and counts are not maintained in website code. Search matches names and bio keywords, including accent-insensitive queries. The native form falls back to `/people?q=…`.
 
-`site.css` carries the shared visual/accessibility rules. The homepage uses three static screenshots (no carousel or autoplay). QR handoffs are generated locally on request using vendored `qrcode-generator` 2.0.4 (`vendor/qrcode.js`, MIT license in its header), with no third-party QR service. Guest QR codes preserve the web page, not an app follow; the released app does not handle person links yet.
+`site.css` carries the shared visual/accessibility rules. The homepage combines a working app preview centered on Gavin Baker, a live graph embed, and two static app screenshots. Its warm paper palette and serif headlines retain the app’s visual identity; people cards and search read the generated directory. QR handoffs are generated locally on request using vendored `qrcode-generator` 2.0.4 (`vendor/qrcode.js`, MIT license in its header), with no third-party QR service. Guest QR codes preserve the web page, not an app follow; the released app does not handle person links yet.
 
-Pricing copy currently identifies the **1.5** free limit (three active people), checked against its release tag. Development builds have a five-person limit; update the FAQ in both `index.html` and `support.html` when that version is public. Keep the support FAQ JSON-LD synchronized.
+The homepage describes the free person limit without a release-specific number; exact plan and trial terms are shown in the app. The support FAQ still identifies the **1.5** limit (three active people). Update its visible answer and FAQ JSON-LD together when changing that copy.
 
 ## Web preview (`/demo`)
 
 `demo/` is a small HTML/CSS/JS clone of the app's core flow (Listen feed, Search, person and podcast pages, follow with the free limit, Now Playing, the Read queue, Settings), embedded in the homepage hero as a phone frame and linkable on its own at `/demo/` (`/demo/?p=<slug>` opens a person). It runs on static JSON only:
 
 - `demo/data/p/<slug>.json` (per person), `demo/data/s/<show-id>.json` (per show, shows with 8+ graph episodes), `demo/data/shows.json` (show index). The people index is `people/directory.v1.json`.
-- Regenerate with the person pages: `python3 ~/code/attunex/graph-pipeline/generate_demo_data.py` (reads `people.db`, writes here). Same slugs and publish gate as `/p`.
+- Regenerate with the person pages: `python3 ~/code/attunex/graph-pipeline/generate_demo_data.py` (reads `people.db`, writes here), then run `python3 Tools/refresh_demo_shows.py` from this site checkout. The second step bounds show previews to the appearances already shipped in the person previews, keeping the static demo a sample and preventing large mention histories from exceeding the hosting asset limit. It also writes `demo/data/people.json`, so demo search offers only people with a playable preview. Same slugs as `/p`.
+- Gavin Baker is the homepage demo person: both embeds and their full-screen links use `?p=gavin-baker`, the fresh demo roster follows him, and new Explore visits start with him. All bio, portrait, episode, and connection data still comes from the graph exports.
 - Follows, playback positions, and theme live in the visitor's `localStorage`; the free limit (5 active people) and the Pro copy mirror the app. Audio streams from the publishers' enclosure URLs. Transcripts and summaries are not generated on the web; the Read tab shows one real summary from the App Store screenshot plus the publisher's notes.
 
 ## Explore the podcast graph

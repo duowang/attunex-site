@@ -216,6 +216,11 @@
       if (!document.body.contains(q) || !people) return;
       var found = people.filter(function (p) { return matches(p.name + " " + p.bio, q.value); });
       var searching = !!q.value.trim(), list = searching ? results : examples;
+      examples.hidden = searching; results.hidden = !searching;
+      if (!searching) {
+        var featured = (examples.getAttribute("data-featured-urls") || "").split(/\s+/);
+        found = featured.map(function (url) { return people.find(function (p) { return p.url === url; }); }).filter(Boolean).concat(found.filter(function (p) { return featured.indexOf(p.url) === -1; }));
+      }
       results.replaceChildren(); if (!searching) examples.replaceChildren();
       status.textContent = q.value.trim() ? (found.length ? found.length + (found.length === 1 ? " match · showing " : " matches · showing ") + Math.min(found.length, 3) : "No matches here. Try another name, or search in the app.") : "";
       found.slice(0, 3).forEach(function (p) {

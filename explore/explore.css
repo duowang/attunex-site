@@ -6,7 +6,7 @@
 @media(max-width:370px){.explore-masthead{gap:18px;padding:0 14px}.explore-masthead nav{gap:12px}.world-heading{padding:20px 14px}.heading-actions{flex-direction:column-reverse}.graph-node{width:85px}.graph-node .node-title{max-width:85px}.graph-node.root .node-title{font-size:14px}.graph-node.root .avatar{width:58px;height:58px}.graph-node .avatar{width:44px;height:44px}}
 
 /* Homepage preview: show one readable path, then open the full graph on a tap. */
-.embedded{background:#fff}.embedded .explore-masthead,.embedded .explore-intro,.embedded .people-panel,.embedded .connection-panel,.embedded .coverage-note,.embedded .skip{display:none}.embedded main{padding:0}.embedded .explore-layout{display:block;border:0;border-radius:0;min-height:0;box-shadow:none}.embedded .world-heading{padding:22px 22px 10px}.embedded .world-heading h2{font-size:25px}.embedded .world-heading .bio{font-size:12px}.embedded .graph{height:365px!important;min-height:365px}.embedded #graph-area{margin-top:0}.embedded .graph-node{width:110px}.embedded .graph-node .node-title{max-width:105px;font-size:12px}.embedded .graph-node.root .node-title{font-size:16px}.embedded .graph-node.root .avatar{width:66px;height:66px}.embedded .graph-columns{display:none}.embedded .graph-footer{padding:13px 8px}.embedded .graph-placeholder{min-height:365px}.embedded .heading-actions{flex-direction:row}.embedded .icon-button{display:none}.embedded .graph-trail{display:none}
+.embedded{background:#fff}.embedded .explore-masthead,.embedded .explore-intro,.embedded .people-panel,.embedded .connection-panel,.embedded .coverage-note,.embedded .skip{display:none}.embedded main{padding:0}.embedded .explore-layout{display:block;border:0;border-radius:0;min-height:0;box-shadow:none}.embedded .world-heading{padding:22px 22px 10px}.embedded .world-heading h2{font-size:25px}.embedded .world-heading .bio{font-size:12px}.embedded .graph{min-height:365px}.embedded #graph-area{margin-top:0}.embedded .graph-node{width:110px}.embedded .graph-node .node-title{max-width:105px;font-size:12px}.embedded .graph-node.root .node-title{font-size:16px}.embedded .graph-node.root .avatar{width:66px;height:66px}.embedded .graph-columns{display:none}.embedded .graph-footer{padding:13px 8px}.embedded .graph-placeholder{min-height:365px}.embedded .heading-actions{flex-direction:row}.embedded .icon-button{display:none}.embedded .graph-trail{display:none}
 /* Edges meet image centers; captions sit below the anchor without shifting it. */
 .graph-node{--node-size:52px;transform:translate(-50%,calc(var(--node-size) * -.5 - 4px));min-height:0}.graph-node.root{--node-size:84px}.graph-node.show{--node-size:56px}
 @media(min-width:1550px){.graph-node{--node-size:60px}.graph-node.show{--node-size:62px}}
@@ -14,3 +14,17 @@
 @media(max-width:700px){.graph-node{--node-size:48px}.graph-node.show{--node-size:50px}.graph-node.root{--node-size:65px}}
 @media(max-width:370px){.graph-node{--node-size:44px}.graph-node.root{--node-size:58px}}
 .embedded .graph-node.root{--node-size:66px}
+
+/* Spotlight episodes sit below the usual three-column connection map. */
+.connection-panel[hidden],.episodes-section[hidden]{display:none}
+.episodes-section{max-width:1040px;margin:28px auto 0;padding:28px 32px;border:1px solid #dfdad4;border-radius:16px;background:#fff}
+.episodes-section .eyebrow{font-size:12px;letter-spacing:.12em;color:var(--orange);margin:0 0 8px}
+.episodes-section h2{font:400 clamp(25px,3vw,34px) Georgia,serif;letter-spacing:-.035em;margin:0 0 8px}
+.episodes-section>p:not(.eyebrow){font-size:14px;color:var(--muted);margin:0}
+.episodes-section .episode-section{margin:20px 0 0}
+.episodes-section .episode-row{padding:15px 4px}
+.episodes-section .episode-copy strong{font-size:15px}
+@media(max-width:700px){.graph-columns{display:none}.episodes-section{margin:20px 0 0;padding:24px 20px;border-radius:12px}}
+.embedded .episodes-section{display:none}
+/* Fit the teaser path and its legend inside the homepage's compact window. */
+.embedded .graph{height:calc(100vh - 190px)!important;min-height:260px}

@@ -70,3 +70,17 @@ test('media and external links reject active URL schemes', () => {
   for (const url of ['javascript:alert(1)', 'data:text/html,test', undefined, '']) assert.equal(safeURL(url), '');
   assert.equal(safeURL('https://example.com/a.mp3'), 'https://example.com/a.mp3');
 });
+
+test('all podcasts appear up to eight shows, including podcasts with no onward connection', () => {
+  const person = {id:'root',name:'Root'};
+  const shows = Array.from({length:9}, (_, i) => ({id:`s${i}`,title:`Show ${i}`}));
+  const connections = [{showID:'s0',kind:'shared_show',person:{id:'peer',name:'Peer'}}];
+  const eight = graphLayout({person,shows:shows.slice(0,8),connections});
+  assert.equal(eight.shownShows.length, 8);
+  assert.equal(eight.hiddenShows, 0);
+  assert(eight.nodes.some(node => node.data.id === 's7'));
+  const nine = graphLayout({person,shows,connections});
+  assert.deepEqual(nine.shownShows.map(show => show.id), ['s0']);
+  assert.equal(nine.hiddenShows, 8);
+  assert.equal(graphLayout({person,shows:shows.slice(0,4),connections:[]}).shownShows.length, 4);
+});

@@ -15,6 +15,7 @@ let people = [], byID = new Map(), starters = [], payload, selected = null, trai
 let resultLimit = 12, toastTimer, currentAudio = '', episodeRows = [];
 const cache = new Map();
 const audio = $('audio');
+const hasEpisodeList = () => Array.isArray(payload?.episodes) && payload.episodes.length > 0;
 function announce(message) { $('announcement').textContent = message; }
 function toast(message) { $('toast').textContent = message; $('toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').hidden = true, 3800); }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify([...followed.values()])); return true; } catch { return false; } }
@@ -74,14 +75,12 @@ async function openPerson(id, {historyMode = 'push', resetTrail = false, focus =
     if (version !== request) return;
     if (previous && previous.id !== id && !resetTrail) trail = [...trail.filter(p => p.id !== previous.id && p.id !== id), previous].slice(-4);
     payload = data;
-    // Only shows on the map are selectable, and a show is on the map only when
-    // someone is reached through it — so with no connections there is nothing
-    // to select but the root.
+    // A small spotlight can show podcast nodes even without onward connections.
     const mapped = new Set(data.connections.map(c => c.showID));
     selected = data.connections.length ? {kind:'person', id:(data.connections.find(c => !followed.has(c.person.id)) || data.connections[0]).person.id} : {kind:'root', id};
     if (historyMode !== 'none') setURL(id, historyMode === 'replace');
     document.title = `${data.person.name}’s podcast world — Attunex`;
-    if (requestedShow && mapped.has(requestedShow)) selected = {kind:'show', id:requestedShow};
+    if (requestedShow && (mapped.has(requestedShow) || data.episodes?.some(e => e.showID === requestedShow))) selected = {kind:'show', id:requestedShow};
     renderAll();
     announce(`Exploring ${data.person.name}. ${mapped.size} podcasts lead somewhere new, out of ${data.shows.length}, and ${data.connections.length} connected people.`);
     if (focus) $('world').focus({preventScroll:true});
@@ -96,12 +95,16 @@ function renderBeyondSample() {
   $('world-heading').innerHTML = '';
   $('graph-area').innerHTML = `<div class="graph-placeholder"><h3>This person is beyond the web sample.</h3><p>attunex.app publishes part of the graph so you can try it in a browser. The iPhone app carries all of it.</p><a class="explore-button" href="${APP_URL}">Get Attunex for iPhone <span aria-hidden="true">↗</span></a><a href="/people">Browse people on the web</a></div>`;
   $('connection-panel').innerHTML = '<p class="quiet">Every path begins with a person.</p>';
+  $('connection-panel').hidden = false; $('episodes-section').hidden = true;
+  document.querySelector('.explore-layout').classList.remove('episode-layout');
   announce('This person is beyond the web sample. The iPhone app has the full graph.');
 }
 function renderError(message, retry, id = '') {
   $('world-heading').innerHTML = '';
   $('graph-area').innerHTML = `<div class="graph-placeholder"><h3>${escape(message)}</h3><p>Choose another person to keep exploring.</p>${retry ? `<button type="button" class="follow-button" data-open="${escape(id)}">Try again</button>` : ''}<a href="/people">Browse all people</a></div>`;
   $('connection-panel').innerHTML = '<p class="quiet">Every path begins with a person.</p>';
+  $('connection-panel').hidden = false; $('episodes-section').hidden = true;
+  document.querySelector('.explore-layout').classList.remove('episode-layout');
   announce(message);
 }
 function renderHeading() {
@@ -110,14 +113,13 @@ function renderHeading() {
 }
 function renderGraph() {
   const p = payload.person;
-  if (!payload.connections.length) {
+  if (!payload.connections.length && !payload.shows.length) {
     $('graph-hidden').hidden = true;
     $('graph-area').innerHTML = `<div class="graph-placeholder">${avatar(p)}<h3>More of ${escape(p.name)}’s world is still being mapped.</h3><p>Keep this person in your following, or choose another starting point.</p>${followButton(p)}</div>`;
     return;
   }
   const layout = graphLayout(EMBED ? {...payload, connections:payload.connections.slice(0, 1)} : payload);
-  // The podcasts that lead nowhere new are left off the map, not out of the
-  // story: a well-covered person is on ~100 shows and reached through a few.
+  // Large catalogs keep shows without onward connections below the map.
   // Not in the embed: it draws a single teaser path, so its hidden count would
   // include connections the slice dropped, which do lead somewhere.
   const hidden = $('graph-hidden');
@@ -136,12 +138,12 @@ function renderGraph() {
   $('graph-area').innerHTML = `<div class="graph" style="height:${layout.height}px"><div class="graph-columns" aria-hidden="true"><span style="left:15%">A starting point</span><span style="left:48%">Through podcasts</span><span style="left:83%">Discover people</span></div><svg class="graph-lines" viewBox="0 0 100 ${layout.height}" preserveAspectRatio="none" aria-hidden="true">${paths}</svg>${nodes}</div>`;
 }
 function fmtDate(date) { if (!date) return ''; const d = new Date(date); return Number.isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-US', {month:'short',year:'numeric',timeZone:'UTC'}); }
-function episodeGroup(title, episodes) {
+function episodeGroup(title, episodes, includeShow = false) {
   if (!episodes.length) return '';
-  return `<section class="episode-section"><h3>${escape(title)}</h3>${episodes.map(e => {
+  return `<section class="episode-section">${title ? `<h3>${escape(title)}</h3>` : ''}${episodes.map(e => {
     const idx = episodeRows.push(e) - 1;
-    const meta = [fmtDate(e.publishedAt), e.duration ? `${Math.round(e.duration / 60)} min` : '', e.languageCode?.toUpperCase()].filter(Boolean).join(' · ');
-    return `<button type="button" class="episode-row${currentAudio === e.audioURL ? ' playing' : ''}" data-play="${idx}" aria-label="Play ${escape(e.episodeTitle)}"><span class="play-disc" aria-hidden="true">▶</span><span class="episode-copy"><strong>${escape(e.episodeTitle)}</strong><small>${escape(meta)}</small></span></button>`;
+    const meta = [includeShow ? e.showTitle : '', fmtDate(e.publishedAt), e.duration ? `${Math.round(e.duration / 60)} min` : '', e.languageCode?.toUpperCase()].filter(Boolean).join(' · ');
+    return `<button type="button" class="episode-row${currentAudio === e.audioURL ? ' playing' : ''}" data-play="${idx}" data-show-id="${escape(e.showID || '')}" aria-label="Play ${escape(e.episodeTitle)}"><span class="play-disc" aria-hidden="true">▶</span><span class="episode-copy"><strong>${escape(e.episodeTitle)}</strong><small>${escape(meta)}</small></span></button>`;
   }).join('')}</section>`;
 }
 function profileLink(person) {
@@ -160,23 +162,32 @@ function personIdentity(person, action = 'none') {
   return `<div class="detail-person">${avatar(person, false, true)}<div><h2>${escape(person.name)}</h2>${followButton(person)}</div></div><p class="detail-bio">${escape(person.description || '')}</p>${cta}`;
 }
 function renderDetail() {
+  const panel = $('connection-panel');
+  panel.hidden = false;
   episodeRows = [];
   const p = payload.person;
   const c = selected?.kind === 'person' ? payload.connections.find(c => c.person.id === selected.id) : null;
   const show = payload.shows.find(s => s.id === (c?.showID || selected?.id));
-  const panel = $('connection-panel');
   if (c && show) {
     const groups = evidenceGroups(c, p);
     panel.innerHTML = `<div class="detail-identity"><p class="eyebrow">${followed.has(c.person.id) ? 'IN YOUR FOLLOWING' : 'BEYOND YOUR FOLLOWING'}</p>${personIdentity(c.person, c.expandable === false ? 'app' : 'explore')}<div class="connection-story"><p class="relationship">${c.kind === 'shared_episode' ? 'In the same episode' : 'Through a shared podcast'}</p><p><strong>${escape(p.name)}</strong> ${c.kind === 'shared_episode' ? 'and' : '→'} <strong>${escape(c.person.name)}</strong>${c.kind === 'shared_episode' ? ' are featured in the same episode of ' : ' both appear on '}<strong>${escape(show.title)}</strong>.</p></div>${profileLink(c.person)}</div><div class="detail-evidence">${groups.map(g => episodeGroup(g.title, g.episodes)).join('')}<p class="quiet" style="font-size:12px">${c.kind === 'shared_episode' ? 'Shared episodes may include compilations or clips.' : 'A shared show doesn’t necessarily mean a shared conversation.'}</p></div>`;
   } else if (selected?.kind === 'show' && show) {
     const connections = payload.connections.filter(c => c.showID === show.id);
-    const source = [...new Map(connections.flatMap(c => c.sourceAppearances).map(e => [e.audioURL, e])).values()];
+    const featured = payload.episodes?.filter(e => e.showID === show.id);
+    const source = featured?.length ? featured : [...new Map(connections.flatMap(c => c.sourceAppearances).map(e => [e.audioURL, e])).values()];
     panel.innerHTML = `<div class="detail-identity"><p class="eyebrow">A PODCAST CONNECTION</p><div class="detail-person">${avatar(show, true)}<h2>${escape(show.title)}</h2></div><p class="detail-bio">${escape(p.name)} has ${show.appearanceCount} identified ${show.appearanceCount === 1 ? 'appearance' : 'appearances'} here.</p>${connections.length ? '<h3 class="list-heading">People to explore</h3>' : ''}<div class="show-peers">${connections.map(c => `<button data-select="${escape(c.person.id)}" data-kind="person">${escape(c.person.name)} ${followed.has(c.person.id) ? '✓' : '→'}</button>`).join('')}</div>${safeURL(show.feedURL) ? `<a class="profile-link" href="${escape(safeURL(show.feedURL))}" target="_blank" rel="noopener">Open podcast RSS <span aria-hidden="true">↗</span></a>` : ''}</div><div class="detail-evidence">${episodeGroup(`Featuring ${p.name}`, source)}${source.length ? '' : '<p class="quiet">This map has no shared episode evidence to play for this show yet.</p>'}${profileLink(p)}</div>`;
   } else {
     panel.innerHTML = `<div class="detail-identity"><p class="eyebrow">YOUR STARTING POINT</p>${personIdentity(p)}${profileLink(p)}</div><div class="detail-evidence"><div class="connection-story"><p>Choose a podcast or a connected person on the map to explore their episodes.</p></div></div>`;
   }
 }
-function renderAll() { renderSidebar(); renderHeading(); renderGraph(); renderDetail(); }
+function renderEpisodes() {
+  const section = $('episodes-section');
+  const visible = hasEpisodeList() && !EMBED;
+  section.hidden = !visible;
+  if (!visible) { section.innerHTML = ''; return; }
+  section.innerHTML = `<p class="eyebrow">LISTEN TO THE EPISODES</p><h2>Every featured episode with ${escape(payload.person.name)}</h2><p>These are identified appearances across ${payload.shows.length} podcasts. Mentioned and AI-generated episodes are available on the <a href="/p/${encodeURIComponent(byID.get(payload.person.id)?.slug || '')}">full profile</a>.</p>${episodeGroup('', payload.episodes, true)}`;
+}
+function renderAll() { renderSidebar(); renderHeading(); renderGraph(); renderDetail(); renderEpisodes(); }
 function toggleFollow(id) {
   const p = byID.get(id) || (payload?.person.id === id ? payload.person : payload?.connections.find(c => c.person.id === id)?.person) || followed.get(id);
   if (!p) return;
@@ -184,7 +195,7 @@ function toggleFollow(id) {
   if (adding) followed.set(id, {id:p.id,name:p.name,description:p.description || '',imageURL:p.imageURL || ''}); else followed.delete(id);
   const saved = persist();
   renderSidebar();
-  if (payload && !loading) { renderHeading(); renderGraph(); renderDetail(); }
+  if (payload && !loading) { renderHeading(); renderGraph(); renderDetail(); renderEpisodes(); }
   toast(`${adding ? `Following ${p.name}` : `Unfollowed ${p.name}`}${saved ? '' : ' for this visit. Browser storage is unavailable.'}`);
 }
 async function playEpisode(index) {
@@ -195,7 +206,7 @@ async function playEpisode(index) {
   $('playing-title').textContent = e.episodeTitle; $('playing-show').textContent = e.showTitle;
   if (currentAudio !== e.audioURL) { currentAudio = e.audioURL; audio.src = src; }
   try { await audio.play(); } catch { $('audio-error').textContent = 'Playback couldn’t start. Try the play control, or choose another episode.'; $('audio-error').hidden = false; }
-  if (payload && !loading) renderDetail();
+  if (payload && !loading) { renderDetail(); renderEpisodes(); }
 }
 document.addEventListener('error', event => {
   const img = event.target;
@@ -214,7 +225,7 @@ document.addEventListener('click', async event => {
       return;
     }
     selected = {kind:button.dataset.kind, id:button.dataset.select};
-    renderGraph(); renderDetail();
+    renderGraph(); renderDetail(); renderEpisodes();
     const replacement = document.querySelector(`.graph-node[data-select="${CSS.escape(selected.id)}"]`); replacement?.focus({preventScroll:true});
     announce(`Selected ${button.getAttribute('aria-label') || button.textContent.trim()}. Connection details below the map on small screens.`);
     // On phones a node tap opens its evidence immediately, with the map still above it.
@@ -233,7 +244,7 @@ document.addEventListener('click', async event => {
 });
 $('person-search').addEventListener('input', () => { resultLimit = 12; renderSidebar(); });
 document.querySelector('.explore-search').addEventListener('submit', event => { event.preventDefault(); const first = searchPeople(people, $('person-search').value)[0]; if (first) openPerson(first.id, {resetTrail:true}); });
-$('close-player').addEventListener('click', () => { audio.pause(); audio.removeAttribute('src'); audio.load(); currentAudio = ''; $('player').hidden = true; document.body.classList.remove('has-player'); if (payload && !loading) renderDetail(); });
+$('close-player').addEventListener('click', () => { audio.pause(); audio.removeAttribute('src'); audio.load(); currentAudio = ''; $('player').hidden = true; document.body.classList.remove('has-player'); if (payload && !loading) { renderDetail(); renderEpisodes(); } });
 audio.addEventListener('error', () => { if (!currentAudio) return; $('audio-error').textContent = 'The podcast publisher’s audio couldn’t load. Try another episode.'; $('audio-error').hidden = false; });
 window.addEventListener('popstate', () => { const p = new URLSearchParams(location.search).get('p') || starters[0]?.id; if (p) openPerson(p, {historyMode:'none',resetTrail:true}); });
 window.addEventListener('storage', event => { if (event.key !== KEY) return; try { const saved = JSON.parse(event.newValue || '[]'); if (Array.isArray(saved)) followed = new Map(saved.filter(p => p && typeof p.id === 'string' && typeof p.name === 'string').map(p => [p.id,p])); renderSidebar(); if (payload && !loading) renderAll(); } catch { /* Ignore malformed storage. */ } });
@@ -244,7 +255,7 @@ async function boot() {
     people = data.people; byID = new Map(people.map(p => [p.id,p]));
     starters = people.filter(p => p.slug && p.connectionCount > 0); if (!starters.length) starters = people;
     renderSidebar();
-    const first = new URLSearchParams(location.search).get('p') || [...followed.keys()].find(id => byID.has(id)) || starters[0]?.id;
+    const first = new URLSearchParams(location.search).get('p') || [...followed.keys()].find(id => byID.has(id)) || people.find(p => p.slug === 'gavin-baker')?.id || starters[0]?.id;
     if (!first) { renderError('The map is being prepared. Come back soon.',false); return; }
     const date = fmtDate(data.generatedAt);
     const coverage = data.coverage || {};

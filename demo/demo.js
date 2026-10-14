@@ -12,7 +12,7 @@ const FREE_LIMIT = 5;                       // GuestCastModel.freeActivePersonLi
 const SPEEDS = [0.8, 1, 1.3, 1.5, 1.8, 2];  // EpisodePlaybackController presets
 const SKIPS = [15, 30, 45, 60, 90];
 const APP_STORE = "https://apps.apple.com/us/app/attunex-podcast-player/id6786431074";
-const DEFAULT_PEOPLE = ["jensen-huang", "steven-pinker", "demis-hassabis"];
+const DEFAULT_PEOPLE = ["gavin-baker", "jensen-huang", "steven-pinker", "demis-hassabis"];
 const DEFAULT_SHOWS = ["7eeae9d1-141e-5133-9e8f-6c1da695e40c"]; // Lex Fridman Podcast
 const PAGE = 25;
 // A real summary the app wrote on an iPhone (the App Store "Read" screenshot).
@@ -839,8 +839,9 @@ window.addEventListener("resize", layout);
 async function boot() {
   applyTheme(); layout();
   try {
-    const [dir, shows] = await Promise.all([getJSON("/people/directory.v1.json"), getJSON("/demo/data/shows.json")]);
-    DIR = dir.map((p) => Object.assign({}, p, { slug: p.url.split("/").pop() }));
+    const [dir, shows, slugs] = await Promise.all([getJSON("/people/directory.v1.json"), getJSON("/demo/data/shows.json"), getJSON("/demo/data/people.json")]);
+    const available = new Set(slugs);
+    DIR = dir.map((p) => Object.assign({}, p, { slug: p.url.split("/").pop() })).filter((p) => available.has(p.slug));
     DIR_BY_SLUG = new Map(DIR.map((p) => [p.slug, p]));
     SHOWS = shows; SHOWS_BY_ID = new Map(shows.map((s) => [s.id, s]));
   } catch (e) {

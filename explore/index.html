@@ -15,8 +15,8 @@
 <meta name="theme-color" content="#faf8f5">
 <link rel="icon" href="/img/icon-512.png">
 <link rel="stylesheet" href="/site.css?v=5">
-<link rel="stylesheet" href="/explore/explore.css?v=1">
-<script type="module" src="/explore/explore.js?v=1"></script>
+<link rel="stylesheet" href="/explore/explore.css?v=2">
+<script type="module" src="/explore/explore.js?v=2"></script>
 </head>
 <body class="explore-page">
 <a class="skip" href="#world">Skip to graph</a>
@@ -32,10 +32,11 @@
 <section class="world" id="world" tabindex="-1" aria-label="Podcast connections">
 <div id="world-heading"></div>
 <div id="graph-area"><div class="graph-placeholder"><span class="loading-orbit" aria-hidden="true"></span><p>Opening the podcast universe…</p></div></div>
-<div class="graph-footer"><span><i class="legend-person"></i> People</span><span><i class="legend-show"></i> Podcasts</span><span class="legend-edge"><i></i> Shared show</span><span class="legend-edge exact"><i></i> Same episode</span><span id="graph-hidden" hidden></span></div>
+<div class="graph-footer"><span><i class="legend-person"></i> People</span><span><i class="legend-show"></i> Podcasts</span><span class="legend-edge"><i></i> Appeared on show</span><span class="legend-edge exact"><i></i> Same episode</span><span id="graph-hidden" hidden></span></div>
 </section>
 <aside class="connection-panel" id="connection-panel" aria-label="Connection and episodes" tabindex="-1"><p class="quiet">Choose a connection to hear the story.</p></aside>
 </div>
+<section class="episodes-section" id="episodes-section" hidden></section>
 <p class="coverage-note" id="coverage-note">This map is a sample of the Attunex graph, drawn from identified podcast appearances. <a href="https://apps.apple.com/us/app/attunex-podcast-player/id6786431074">The iPhone app explores all of them <span aria-hidden="true">↗</span></a></p>
 </main>
 <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>

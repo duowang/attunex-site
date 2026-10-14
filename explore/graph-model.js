@@ -23,14 +23,11 @@ export function graphLayout(payload) {
   // People occupy one ordered column; show anchors stay spaced independently.
   // Each edge lives strictly between adjacent columns, away from other nodes.
   //
-  // Only shows that carry a connection get a node. The middle column is the
-  // route from the starting point to someone new, so a show nobody is reached
-  // through is a dead end — and there are a lot of them: a well-covered person
-  // appears on ~100 shows while at most a handful lead anywhere. Laying all of
-  // them out stacked 100 nodes 4px apart in a 654px column — not a crowded map
-  // so much as no map at all. `hiddenShows` is what the caller states instead.
+  // Small catalogs fit in the map. For larger catalogs, keep shows that
+  // lead to another person and count the rest below the map.
+  const showAll = payload.shows.length <= 8;
   const groups = payload.shows.map(show => ({show, peers:payload.connections.filter(c => c.showID === show.id)}))
-    .filter(g => g.peers.length);
+    .filter(g => showAll || g.peers.length);
   const peers = groups.flatMap(g => g.peers);
   // Height answers to whichever column needs more room. Sizing on people alone
   // is what let the show column overflow silently.
